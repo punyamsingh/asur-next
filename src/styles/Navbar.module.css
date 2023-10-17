@@ -1,0 +1,114 @@
+/* Navbar.module.css */
+
+/* Navbar styles */
+.nav {
+    width: 100%;
+    height: 65px;
+    position: fixed;
+    line-height: 65px;
+    text-align: center;
+    background-color: var(--goodpurple);
+    padding-bottom: 1rem;
+    transition: background-color 0.4s ease, padding 0.4s ease;
+    z-index: 1000;
+}
+
+/* Styles for when the navbar is affixed */
+.affix {
+    padding: 0;
+    background-color: var(--screenblack);
+}
+
+/* Container styles */
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo styles */
+.logo {
+    float: left;
+    width: auto;
+    height: auto;
+    padding-left: 3rem;
+}
+
+.logo a {
+    text-decoration: none;
+    color: var(--white);
+    font-size: 2.5rem;
+}
+
+.logo a:hover {
+    color: var(--green);
+}
+
+/* Main list styles */
+.mainList {
+    height: 65px;
+    float: right;
+}
+
+/* Navigation links styles */
+.navlinks {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navlinks li {
+    width: auto;
+    padding: 0 1.5rem;
+}
+
+.navlinks li a {
+    text-decoration: none;
+    color: var(--white);
+    line-height: 65px;
+    font-size: 1.8rem;
+}
+
+.navlinks li.active {
+    background-color: black;
+    border-radius: 1.4rem;
+    line-height: 55px;
+}
+
+.navlinks li.active a {
+    color: var(--codegreen);
+}
+
+/* Home section styles */
+.home {
+    width: 100%;
+    height: 100vh;
+    background-image: url(https://images.unsplash.com/photo-1498550744921-75f79806b8a7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b0f6908fa5e81286213c7211276e6b3d&auto=format&fit=crop&w=1500&q=80);
+    background-position: center top;
+    background-size: cover;
+}
+
+/* Heading styles */
+.myH2 {
+    text-align: center;
+    font-size: 4rem;
+    color: var(--goodpurple);
+}
+
+/* Paragraph styles */
+.myP {
+    text-align: justify;
+    padding: 2% 15%;
+    font-size: 20px;
+    color: var(--goodpurple);
+}
+
+/* Media query for smaller screens */
+@media all and (max-width: 700px) {
+    .myP {
+        padding: 2%;
+    }
+}
