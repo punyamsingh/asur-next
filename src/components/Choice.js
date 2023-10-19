@@ -1,24 +1,8 @@
 import Head from 'next/head';
 import { useUser } from '../contexts/UserContext';
 
-export default function Home() {
-    const { userType } = useUser();
-
-    let redirect = null;
-
-    if (userType === undefined) {
-        redirect = (<p>
-            {/* <Choice /> */}
-        </p>);
-    } else if (userType === 'student') {
-        redirect = (<p>
-            {/* Type padhle */}
-        </p>);
-    } else if (userType === 'teacher') {
-        redirect = (<p>
-            {/* Teachinggggg */}
-        </p>);
-    }
+export default function Choice() {
+    const { userType,setStudent,setTeacher } = useUser();
 
     return (
         <div>
@@ -29,7 +13,30 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            {redirect}
+            {/* {redirect} */}
+
+            {console.log(userType)}
+            
+            <div>
+                <h1>Welcome to the Next.js Site</h1>
+                <button onClick={setStudent}>I'm a Student</button>
+                <button onClick={setTeacher}>I'm a Teacher</button>
+                {userType && <p>Your user type is: {userType}</p>}
+
+                <SomeComponent />
+            </div>
+
+
+        </div>
+    );
+}
+
+function SomeComponent() {
+    const { userType } = useUser();
+
+    return (
+        <div>
+            {userType ? `You are a ${userType}` : 'Please select a user type'}
         </div>
     );
 }
