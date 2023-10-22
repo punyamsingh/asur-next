@@ -9,18 +9,10 @@ export default function Home() {
 
   let redirect = null;
 
-  if (userType === null) {
-    redirect = (<p>
-      <Choice />
-    </p>);
-  } else if (userType === 'student') {
-    redirect = (<p>
-      <Student />
-    </p>);
+  if (userType === 'student') {
+    redirect = <Student />;
   } else if (userType === 'teacher') {
-    redirect = (<p>
-      <Teacher />
-    </p>);
+    redirect = <Teacher />;
   }
 
   return (
@@ -32,7 +24,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>ASUR</h1>
-      {redirect}
+      {redirect || <Choice />}
       {console.log(userType)}
     </div>
   );
