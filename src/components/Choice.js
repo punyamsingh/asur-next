@@ -4,7 +4,7 @@ import style from '../styles/Choice.module.css';
 
 
 export default function Choice() {
-    // const { userType,setStudent,setTeacher } = useUser();
+    const { userType,setStudent,setTeacher } = useUser();
 
     return (
         <div className={style.main_container}>
@@ -21,12 +21,12 @@ export default function Choice() {
     );
 }
 
-// function SomeComponent() {
-//     const { userType } = useUser();
+function SomeComponent() {
+    const { userType } = useUser();
 
-//     return (
-//         <div>
-//             {userType ? `You are a ${userType}` : 'Please select a user type'}
-//         </div>
-//     );
-// }
+    return (
+        <div>
+            {userType ? `You are a ${userType}` : 'Please select a user type'}
+        </div>
+    );
+}
