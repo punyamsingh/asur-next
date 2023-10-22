@@ -1,42 +1,32 @@
 import Head from 'next/head';
 import { useUser } from '../contexts/UserContext';
+import style from '../styles/Choice.module.css';
+
 
 export default function Choice() {
-    const { userType,setStudent,setTeacher } = useUser();
+    // const { userType,setStudent,setTeacher } = useUser();
 
     return (
-        <div>
-            <Head>
-                <title>A.S.U.R.</title>
-                <meta name="description" content="ASUR" />
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
+        <div className={style.main_container}>
+        <div className={style.student}>
 
-            {/* {redirect} */}
+            <button className={style.button} onClick={() => setStudent()}>Student</button>
 
-            {console.log(userType)}
-            
-            <div>
-                <h1>Welcome to the Next.js Site</h1>
-                <button onClick={setStudent}>I'm a Student</button>
-                <button onClick={setTeacher}>I'm a Teacher</button>
-                {userType && <p>Your user type is: {userType}</p>}
+        </div>
 
-                <SomeComponent />
+            <div className={style.teacher}>
+            <button className={style.button} onClick={() => setTeacher()}>Teacher</button>
             </div>
-
-
         </div>
     );
 }
 
-function SomeComponent() {
-    const { userType } = useUser();
+// function SomeComponent() {
+//     const { userType } = useUser();
 
-    return (
-        <div>
-            {userType ? `You are a ${userType}` : 'Please select a user type'}
-        </div>
-    );
-}
+//     return (
+//         <div>
+//             {userType ? `You are a ${userType}` : 'Please select a user type'}
+//         </div>
+//     );
+// }
