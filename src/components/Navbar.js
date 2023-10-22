@@ -43,6 +43,8 @@ const Navbar = () => {
         const pathname = router.pathname;
         if (pathname === '/') {
             setActiveTab('Dashboard');
+        } else if (pathname === '/Dashboard') {
+            setActiveTab('Dashboard');
         } else if (pathname === '/Profile') {
             setActiveTab('Profile');
         } else if (pathname === '/Reviewing') {
@@ -64,7 +66,7 @@ const Navbar = () => {
                             className={activeTab === 'Dashboard' ? styles.active : ''}
                             onClick={() => handleTabClick('Dashboard')}
                         >
-                            <Link href="/">
+                            <Link href="/Dashboard">
                                 Dashboard
                             </Link>
                         </li>
@@ -80,7 +82,7 @@ const Navbar = () => {
                             className={activeTab === 'Logout' ? styles.active : ''}
                             onClick={() => handleTabClick('Logout')}
                         >
-                            <Link href="/Logout">
+                            <Link href="/">
                                 <button onClick={handleLogout}>Logout</button>
                             </Link>
                         </li>
