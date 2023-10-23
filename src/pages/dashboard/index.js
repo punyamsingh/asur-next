@@ -1,11 +1,20 @@
-import React from 'react';
+import { useUser } from '@/contexts/UserContext';
+import Navbar from '@/components/Navbar'; // Import the Navbar component
 
-const Dashboard = () => {
+export default function Dashboard() {
+    const { user } = useUser();
+
     return (
         <div>
-            <h1>Dashboard</h1>
+            <Navbar />
+            {user ? (
+                <div>
+                    <p>Hello, {user.email}</p>
+                    <p>You are a {user.userType}</p> Display the user's type
+                </div>
+            ) : (
+                <p>Please log in to see your dashboard.</p>
+            )}
         </div>
     );
-};
-
-export default Dashboard;
+}

@@ -1,32 +1,38 @@
 import Head from 'next/head';
+import { useState } from 'react';
+import Login from './Login'; // Import the Login component
 import { useUser } from '../contexts/UserContext';
 import style from '../styles/Choice.module.css';
 
-
 export default function Choice() {
-    const { userType,setStudent,setTeacher } = useUser();
+    const { setRole } = useUser(); // Use the setRole function
+    const [showLogin,setShowLogin] = useState(false);
+
+    const handleShowLogin = () => {
+        setShowLogin(true);
+    };
 
     return (
         <div className={style.main_container}>
-        <div className={style.student}>
+            {showLogin ? (
+                <Login /> // Render the Login component when showLogin is true
+            ) : (
+                <>
+                    <div className={style.student}>
+                        <button className={style.button} onClick={() => setRole('student')}>
+                            Student
+                        </button>
+                    </div>
 
-            <button className={style.button} onClick={() => setStudent()}>Student</button>
+                    <div className={style.teacher}>
+                        <button className={style.button} onClick={() => setRole('teacher')}>
+                            Teacher
+                        </button>
+                    </div>
+                </>
+            )}
 
-        </div>
 
-            <div className={style.teacher}>
-            <button className={style.button} onClick={() => setTeacher()}>Teacher</button>
-            </div>
-        </div>
-    );
-}
-
-function SomeComponent() {
-    const { userType } = useUser();
-
-    return (
-        <div>
-            {userType ? `You are a ${userType}` : 'Please select a user type'}
         </div>
     );
 }

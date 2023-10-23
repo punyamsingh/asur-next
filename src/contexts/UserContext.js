@@ -1,27 +1,20 @@
-// contexts/UserContext.js
 import { createContext,useState,useEffect,useContext } from 'react';
 
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
     const [userType,setUserType] = useState(null);
-    const [user,setUser] = useState(null); // New: to store user details
+    const [user,setUser] = useState(null);
 
-    const setStudent = () => {
-        setUserType('student');
-        sessionStorage.setItem('userType','student');
-    };
-
-    const setTeacher = () => {
-        setUserType('teacher');
-        sessionStorage.setItem('userType','teacher');
+    // Function to set user type
+    const setRole = (role) => {
+        setUserType(role);
+        sessionStorage.setItem('userType',role);
     };
 
     // New: Login function
-    const login = (email,password) => {
-        // Implement authentication logic based on email and password
-        // For simplicity, let's assume successful authentication
-        setUser({ email,userType });
+    const login = (email,role) => {
+        setUser({ email,userType: role });
     };
 
     // New: Logout function
@@ -40,7 +33,7 @@ export const UserProvider = ({ children }) => {
     },[]);
 
     return (
-        <UserContext.Provider value={{ userType,user,setStudent,setTeacher,login,logout }}>
+        <UserContext.Provider value={{ userType,user,setRole,login,logout }}>
             {children}
         </UserContext.Provider>
     );
