@@ -79,12 +79,13 @@ const Navbar = () => {
                             </Link>
                         </li>
                         <li
-                            className={activeTab === 'Logout' ? styles.active : ''}
+                            
                             onClick={() => handleTabClick('Logout')}
                         >
-                            <Link href="/">
-                                <button onClick={handleLogout}>Logout</button>
-                            </Link>
+                            <button onClick={handleLogout}>Go back</button>
+                            {/* <Link href="/">
+                                
+                            </Link> */}
                         </li>
                     </ul>
                 </div>
