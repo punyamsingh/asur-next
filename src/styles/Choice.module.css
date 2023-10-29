@@ -1,4 +1,4 @@
-.main_container{
+.main_container {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -7,18 +7,18 @@
     /* background: conic-gradient(red, #8a3433); */
 
     background-size: 100% 100%;
-background-position: 0px 0px,0px 0px,0px 0px,0px 0px,0px 0px;
-background-image: repeating-linear-gradient(315deg, #4100002E 92%, #073AFF00 100%),repeating-radial-gradient(75% 75% at 238% 218%, #FF969612 30%, #64697C14 39%),radial-gradient(99% 99% at 109% 2%, #B90000FF 0%, #0F000000 100%),radial-gradient(99% 99% at 21% 78%, #FF0700FF 0%, #FF000000 100%),radial-gradient(160% 154% at 711px -303px, #380707FF 0%, #000000FF 100%);
-background: linear-gradient(to right, #cf0527, #451666);
+    background-position: 0px 0px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
+    background-image: repeating-linear-gradient(315deg, #4100002E 92%, #073AFF00 100%), repeating-radial-gradient(75% 75% at 238% 218%, #FF969612 30%, #64697C14 39%), radial-gradient(99% 99% at 109% 2%, #B90000FF 0%, #0F000000 100%), radial-gradient(99% 99% at 21% 78%, #FF0700FF 0%, #FF000000 100%), radial-gradient(160% 154% at 711px -303px, #380707FF 0%, #000000FF 100%);
+    background: linear-gradient(to right, #cf0527, #451666);
 
 
 
 
 
 
-   }
+}
 
-.student{
+.student {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -26,14 +26,14 @@ background: linear-gradient(to right, #cf0527, #451666);
     height: 100vh;
     /* background-color: blue; */
     flex-basis: 50%;
-    
 
-    
-   
+
+
+
 
 }
 
-.teacher{
+.teacher {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -43,7 +43,7 @@ background: linear-gradient(to right, #cf0527, #451666);
     flex-basis: 50%;
 }
 
-.button{
+.button {
     width: 200px;
     height: 50px;
     background-color: white;

@@ -23,7 +23,7 @@ export default function Home() {
       {/* <h1>ASUR</h1> */}
       {userType ? ( // Check if userType is not null
         <div>
-          
+          {console.log(userType)}
           {userType === 'student' ? <Student /> : <Teacher />}
         </div>
       ) : (

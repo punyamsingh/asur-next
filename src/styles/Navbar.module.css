@@ -72,6 +72,18 @@
     font-size: 1.8rem;
 }
 
+.navlinks li button {
+    color: var(--white);
+    /* line-height: 65px; */
+    padding: 0rem 1rem;
+    font-size: 1.8rem;
+    background-color: #481665;
+    border-radius: 1.4rem;
+    border: 0;
+    border-style: double;
+    line-height: 55px;
+}
+
 .navlinks li.active {
     background-color: black;
     border-radius: 1.4rem;

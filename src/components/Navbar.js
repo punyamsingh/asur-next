@@ -1,4 +1,3 @@
-// Navbar.js
 import React,{ useState,useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -9,7 +8,7 @@ const Navbar = () => {
     const [scrolling,setScrolling] = useState(false);
     const [activeTab,setActiveTab] = useState('Dashboard');
     const router = useRouter();
-    const { userType,logout } = useUser(); // Import the logout function
+    const { logout,userType } = useUser(); // Import the logout function and userType
 
     const handleLogout = () => {
         // Call the logout function to clear user data
@@ -43,6 +42,8 @@ const Navbar = () => {
         const pathname = router.pathname;
         if (pathname === '/') {
             setActiveTab('Dashboard');
+        } else if (pathname === '/Dashboard') {
+            setActiveTab('Dashboard');
         } else if (pathname === '/Profile') {
             setActiveTab('Profile');
         } else if (pathname === '/Reviewing') {
@@ -64,24 +65,17 @@ const Navbar = () => {
                             className={activeTab === 'Dashboard' ? styles.active : ''}
                             onClick={() => handleTabClick('Dashboard')}
                         >
-                            <Link href="/">
-                                Dashboard
-                            </Link>
+                            <Link href="/Dashboard">Dashboard</Link>
                         </li>
                         <li
                             className={activeTab === 'Profile' ? styles.active : ''}
                             onClick={() => handleTabClick('Profile')}
                         >
-                            <Link href="/Profile">
-                                Profile
-                            </Link>
+                            <Link href="/Profile">Profile</Link>
                         </li>
-                        <li
-                            className={activeTab === 'Logout' ? styles.active : ''}
-                            onClick={() => handleTabClick('Logout')}
-                        >
-                            <Link href="/Logout">
-                                <button onClick={handleLogout}>Logout</button>
+                        <li onClick={() => handleTabClick('Logout')}>
+                            <Link href="/">
+                                <button onClick={handleLogout}>Go back</button>
                             </Link>
                         </li>
                     </ul>
