@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useUser } from '../contexts/UserContext';
-import { auth } from '../db/firebase'; // Import Firebase authentication
+import { app } from '../db/firebase'; // Import Firebase authentication
+import { getAuth,signInWithEmailAndPassword } from 'firebase/auth';
 import styles from '@/styles/Login.module.css';
 
+const auth = getAuth(app);
+
 const Login = () => {
-    const { login } = useUser(); // Import the login function
+    const { userType,login } = useUser(); // Import the login function
     const router = useRouter();
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
@@ -13,21 +16,17 @@ const Login = () => {
 
     const handleLogin = async () => {
         try {
-            // Validate email and password (you can add more validation)
+            // console.log("this is a", userType)
             if (!email || !password) {
                 setError('Please fill in both fields.');
                 return;
             }
-
-            // Authenticate the user using Firebase authentication
-            const userCredential = await auth?.signInWithEmailAndPassword(email,password);
-            console.log("processing");
-            console.log(userCredential)
-            // Check if the authentication was successful
+            const userCredential = await signInWithEmailAndPassword(auth,email,password);
+            // const user = userCredential.user;
             if (userCredential && userCredential.user) {
                 // Call the login function from the context and specify the role ('student' or 'teacher')
-                console.log("success");
-                login(email,'student'); // Replace 'student' with the appropriate role
+                console.log("successful login");
+                login(email,userType);
 
                 // Redirect to the dashboard
                 router.push('/dashboard');
@@ -35,6 +34,7 @@ const Login = () => {
                 setError('Authentication failed. Please check your credentials.');
             }
         } catch (error) {
+            console.error('Login error:',error);
             setError('Authentication failed. Please check your credentials.');
         }
     };

@@ -12,11 +12,13 @@ const firebaseConfig = {
     measurementId: "G-GQ1EZMC25G"
 };
 
-const app = initializeApp(firebaseConfig);
-let analytics;
+// const app = initializeApp(firebaseConfig);
+// let analytics;
 
-if (typeof window !== 'undefined') {
-    analytics = getAnalytics(app);
-}
+// if (typeof window !== 'undefined') {
+//     analytics = getAnalytics(app);
+// }
 
-export default app;
+// export default app;
+
+export const app = initializeApp(firebaseConfig);
