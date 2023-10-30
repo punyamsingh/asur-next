@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "firebase": "^10.5.0",
+    "mysql": "^2.18.1",
     "next": "13.5.5",
     "react": "^18",
     "react-dom": "^18"
