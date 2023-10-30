@@ -1,17 +1,17 @@
 import connection from './db.js';
 
-export default async function handler(req, res) {
+export default async function handler(req,res) {
   if (req.method === 'POST') {
     try {
-      const { FirstName, LastName, DOB, NetId } = req.body;
+      const { FirstName,LastName,DOB,NetId } = req.body;
 
       const insertQuery = `
       insert into student(First_Name,Last_Name,DOB,Net_ID) 
   values("${FirstName}","${LastName}","${DOB}","${NetId}");
       `;
 
-      const insertPromise = new Promise((resolve, reject) => {
-        connection.query(insertQuery, [FirstName, LastName, DOB, NetId], (error, results) => {
+      const insertPromise = new Promise((resolve,reject) => {
+        connection.query(insertQuery,[FirstName,LastName,DOB,NetId],(error,results) => {
           if (error) {
             reject(error);
           } else {
@@ -27,8 +27,8 @@ export default async function handler(req, res) {
         LIMIT 1;
       `;
 
-      const lastIdPromise = new Promise((resolve, reject) => {
-        connection.query(lastIdQuery, (error, lastIdResults) => {
+      const lastIdPromise = new Promise((resolve,reject) => {
+        connection.query(lastIdQuery,(error,lastIdResults) => {
           if (error) {
             reject(error);
           } else {
@@ -37,15 +37,15 @@ export default async function handler(req, res) {
         });
       });
 
-      Promise.all([insertPromise, lastIdPromise])
-        .then(([insertResults, lastIdResults]) => {
+      Promise.all([insertPromise,lastIdPromise])
+        .then(([insertResults,lastIdResults]) => {
           const id = lastIdResults[0].Roll_No;
           const enrollQuery = `
-          insert into StudentToSubject(Roll_No,Subject_Id) select ${id},subject_id from subject;
+          insert into studenttosubject(Roll_No,Subject_Id) select ${id},subject_id from subject;
           `;
 
-          const enrollPromise = new Promise((resolve, reject) => {
-            connection.query(enrollQuery, [id], (error, enrollResults) => {
+          const enrollPromise = new Promise((resolve,reject) => {
+            connection.query(enrollQuery,[id],(error,enrollResults) => {
               if (error) {
                 reject(error);
               } else {
