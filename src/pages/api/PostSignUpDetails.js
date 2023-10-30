@@ -1,6 +1,8 @@
 import connection from './db.js';
+import middleware from '@/cors.js';
 
 export default async function handler(req, res) {
+    await middleware(req, res);
   if (req.method === 'POST') {
     try {
       const { FirstName, LastName, DOB, NetId } = req.body;
@@ -41,7 +43,7 @@ export default async function handler(req, res) {
         .then(([insertResults, lastIdResults]) => {
           const id = lastIdResults[0].Roll_No;
           const enrollQuery = `
-          insert into StudentToSubject(Roll_No,Subject_Id) select ${id},subject_id from subject;
+          insert into studenttosubject(Roll_No,Subject_id) select ${id},Subject_ID from subject;
           `;
 
           const enrollPromise = new Promise((resolve, reject) => {

@@ -9,7 +9,7 @@ export default async function(req, res) {
         const {coursecode} = req.query;
         console.log(coursecode)
       const results = await new Promise((resolve, reject) => {
-        connection.query(`SELECT * FROM classroom WHERE room_id = (SELECT classroom_id FROM subject WHERE subject_id = ${coursecode})`, (error, results) => {
+        connection.query(`SELECT * FROM classroom WHERE room_id = (SELECT classroom_id FROM subject WHERE Subject_ID = ${coursecode})`, (error, results) => {
           if (error) {
             reject(error);
           } else {
