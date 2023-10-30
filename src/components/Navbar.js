@@ -6,7 +6,7 @@ import { useUser } from '../contexts/UserContext';
 
 const Navbar = () => {
     const [scrolling,setScrolling] = useState(false);
-    const [activeTab,setActiveTab] = useState('Dashboard');
+    const [activeTab,setActiveTab] = useState('dashboard');
     const router = useRouter();
     const { logout,userType } = useUser(); // Import the logout function and userType
 
@@ -40,14 +40,14 @@ const Navbar = () => {
     // Update active tab based on current pathname
     useEffect(() => {
         const pathname = router.pathname;
-        if (pathname === '/') {
-            setActiveTab('Dashboard');
-        } else if (pathname === '/Dashboard') {
-            setActiveTab('Dashboard');
-        } else if (pathname === '/Profile') {
-            setActiveTab('Profile');
-        } else if (pathname === '/Reviewing') {
-            setActiveTab('Reviewing');
+        if (pathname === '') {
+            setActiveTab('dashboard');
+        } else if (pathname === '/') {
+            setActiveTab('dashboard');
+        } else if (pathname === '/dashboard') {
+            setActiveTab('dashboard');
+        } else if (pathname === '/profile') {
+            setActiveTab('profile');
         }
     },[router.pathname]);
 
@@ -62,18 +62,18 @@ const Navbar = () => {
                 <div id="mainListDiv" className={styles.mainList}>
                     <ul className={styles.navlinks}>
                         <li
-                            className={activeTab === 'Dashboard' ? styles.active : ''}
-                            onClick={() => handleTabClick('Dashboard')}
+                            className={activeTab === 'dashboard' ? styles.active : ''}
+                            onClick={() => handleTabClick('dashboard')}
                         >
-                            <Link href="/Dashboard">Dashboard</Link>
+                            <Link href="/dashboard">Dashboard</Link>
                         </li>
                         <li
-                            className={activeTab === 'Profile' ? styles.active : ''}
-                            onClick={() => handleTabClick('Profile')}
+                            className={activeTab === 'profile' ? styles.active : ''}
+                            onClick={() => handleTabClick('profile')}
                         >
-                            <Link href="/Profile">Profile</Link>
+                            <Link href="/profile">Profile</Link>
                         </li>
-                        <li onClick={() => handleTabClick('Logout')}>
+                        <li onClick={() => handleTabClick('logout')}>
                             <Link href="/">
                                 <button onClick={handleLogout}>Go back</button>
                             </Link>
