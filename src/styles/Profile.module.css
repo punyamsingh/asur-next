@@ -1,0 +1,22 @@
+.navigation_bar{
+    height: 12vh;
+}
+
+
+.profile_container{
+
+    height: 88vh;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+}
+
+.profile{
+    
+    width: 75%;
+    height: fit-content;
+    min-height: 400px;
+    background-color: aqua;
+
+}
