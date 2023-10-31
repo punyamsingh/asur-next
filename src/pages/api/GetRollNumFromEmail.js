@@ -7,9 +7,9 @@ export default async function(req, res) {
   await middleware(req, res);
   try {
     if (req.method === 'GET') {
-        const{coursecode}=req.query;
+        const{email}=req.query;
       const results = await new Promise((resolve, reject) => {
-        connection.query(`SELECT LIVE FROM subject where subject_id=${coursecode}`, (error, results) => {
+        connection.query(`SELECT roll_no FROM student where net_id=${email}`, (error, results) => {
           if (error) {
             reject(error);
           } else {
