@@ -18,7 +18,12 @@ export default async function(req, res) {
         });
       });
       
-      res.status(200).json(results);
+      //res.status(200).json(results);
+       if (results.length > 0) {
+        res.status(200).json(results[0]); // Return the first element as a single JSON object
+      } else {
+        res.status(404).json({ error: 'No matching data found' });
+      }
     } else {
       res.status(405).json({ error: 'Method not allowed' });
     }
