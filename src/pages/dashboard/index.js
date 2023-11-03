@@ -40,6 +40,90 @@ export default function Dashboard() {
                
         </tr>
 
+        <tr>
+               <td>1</td>
+               <td >Introduction to C Programming <br/> </td>
+               <td id={styles.button}><button className={styles.button}>Initiate</button></td>
+               
+        </tr>
+
+
+        <tr>
+               <td>1</td>
+               <td >Introduction to C Programming <br/> </td>
+               <td id={styles.button}><button className={styles.button}>Initiate</button></td>
+               
+        </tr>
+
+
+        <tr>
+               <td>1</td>
+               <td >Introduction to C Programming <br/> </td>
+               <td id={styles.button}><button className={styles.button}>Initiate</button></td>
+               
+        </tr>
+
+
+        <tr>
+               <td>1</td>
+               <td >Introduction to C Programming <br/> </td>
+               <td id={styles.button}><button className={styles.button}>Initiate</button></td>
+               
+        </tr>
+
+
+        <tr>
+               <td>1</td>
+               <td >Introduction to C Programming <br/> </td>
+               <td id={styles.button}><button className={styles.button}>Initiate</button></td>
+               
+        </tr>
+
+        <tr>
+               <td>1</td>
+               <td >Introduction to C Programming <br/> </td>
+               <td id={styles.button}><button className={styles.button}>Initiate</button></td>
+               
+        </tr>
+
+        <tr>
+               <td>1</td>
+               <td >Introduction to C Programming <br/> </td>
+               <td id={styles.button}><button className={styles.button}>Initiate</button></td>
+               
+        </tr>
+
+
+        <tr>
+               <td>1</td>
+               <td >Introduction to C Programming <br/> </td>
+               <td id={styles.button}><button className={styles.button}>Initiate</button></td>
+               
+        </tr>
+
+
+        <tr>
+               <td>1</td>
+               <td >Introduction to C Programming <br/> </td>
+               <td id={styles.button}><button className={styles.button}>Initiate</button></td>
+               
+        </tr>
+
+
+        <tr>
+               <td>1</td>
+               <td >Introduction to C Programming <br/> </td>
+               <td id={styles.button}><button className={styles.button}>Initiate</button></td>
+               
+        </tr>
+
+        <tr>
+               <td>1</td>
+               <td >Introduction to C Programming <br/> </td>
+               <td id={styles.button}><button className={styles.button}>Initiate</button></td>
+               
+        </tr>
+
 
         
         

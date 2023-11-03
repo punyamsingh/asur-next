@@ -18,6 +18,22 @@ export default function Choice() {
                 <Login /> // Render the Login component when showLogin is true
             ) : (
                 <>
+                <div className={style.heading}>
+
+                    Attendence System using Recognition
+
+                </div>
+                   
+                    
+                    <div className={style.upper_choice_div}>
+                      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1xfWdYfEPJTuwGxVwiTwI7WxI8c92mwmoOVQAowYoC1ByPUUiyCxOgscNPz73rwMcOro&usqp=CAU" alt="Avatar" className={style.avatar}/>
+                      <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" className={style.avatar}/>
+
+                      
+                    </div>
+                    
+                    <div className={style.lower_choice_div}>
+
                     <div className={style.student}>
                         <button className={style.button} onClick={() => setRole('student')}>
                             Student
@@ -29,6 +45,10 @@ export default function Choice() {
                             Teacher
                         </button>
                     </div>
+
+                      
+
+                     </div>
                 </>
             )}
 

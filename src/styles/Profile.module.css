@@ -6,7 +6,8 @@
 .profile_container{
 
     height: 88vh;
-    background-color: red;
+    background-image: linear-gradient(to right, #f43b47 0%, #453a94 100%);
+    
     display: flex;
     justify-content: center;
     padding: 50px;
@@ -16,16 +17,22 @@
     width: 75%;
     height: 69vh;
     min-height: 400px;
-    background-color: aqua;
+    
+   
+    background-image: linear-gradient(to top, #5ee7df 0%, #b490ca 100%);
+    /* border: 2px solid black; */
+
     border-radius: 50px;
 
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+
 }
 
 .left{
-background-color: antiquewhite;
+/* background-color: antiquewhite; */
 height: 100%;
 flex-basis: 50%;
 

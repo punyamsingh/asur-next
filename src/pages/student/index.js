@@ -30,6 +30,81 @@ const Student = () => {
 
                         </tr>
 
+                        <tr>
+                            <td>1</td>
+                            <td>Introduction to C Programming <br /> <span className={styles.instructor_name}>Harish Karnik</span> </td>
+                            <td>Germany</td>
+
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>Introduction to C Programming <br /> <span className={styles.instructor_name}>Harish Karnik</span> </td>
+                            <td>Germany</td>
+
+                        </tr>
+
+                        
+
+                         <tr>
+                            <td>1</td>
+                            <td>Introduction to C Programming <br /> <span className={styles.instructor_name}>Harish Karnik</span> </td>
+                            <td>Germany</td>
+
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>Introduction to C Programming <br /> <span className={styles.instructor_name}>Harish Karnik</span> </td>
+                            <td>Germany</td>
+
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>Introduction to C Programming <br /> <span className={styles.instructor_name}>Harish Karnik</span> </td>
+                            <td>Germany</td>
+
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>Introduction to C Programming <br /> <span className={styles.instructor_name}>Harish Karnik</span> </td>
+                            <td>Germany</td>
+
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>Introduction to C Programming <br /> <span className={styles.instructor_name}>Harish Karnik</span> </td>
+                            <td>Germany</td>
+
+                        </tr>
+
+
+                        
+
+                        
+
+                        <tr>
+                            <td>1</td>
+                            <td>Introduction to C Programming <br /> <span className={styles.instructor_name}>Harish Karnik</span> </td>
+                            <td>Germany</td>
+
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Introduction to C Programming <br /> <span className={styles.instructor_name}>Harish Karnik</span> </td>
+                            <td>Germany</td>
+
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Introduction to C Programming <br /> <span className={styles.instructor_name}>Harish Karnik</span> </td>
+                            <td>Germany</td>
+
+                        </tr>
+
 
 
 
