@@ -17,7 +17,7 @@ const AttendanceModal = ({ course,onClose }) => {
                     <p><strong>Attendance Location:</strong> {course.attendance}</p>
                     {/* Display attendance records here */}
                     <ul>
-                        {course.attendanceRecords.map((record,index) => (
+                        {course?.attendanceRecords?.map((record,index) => (
                             <li key={index}>{record}</li>
                         ))}
                     </ul>
