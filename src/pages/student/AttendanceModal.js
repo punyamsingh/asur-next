@@ -12,9 +12,9 @@ const AttendanceModal = ({ course,onClose }) => {
                     </button>
                 </div>
                 <div className={styles.modalContent}>
-                    <h3>{course.name}</h3>
-                    <p><strong>Instructor:</strong> {course.instructor}</p>
-                    <p><strong>Attendance Location:</strong> {course.attendance}</p>
+                    <h3>{course?.name}</h3>
+                    <p><strong>Instructor:</strong> {course?.instructor}</p>
+                    <p><strong>Attendance Location:</strong> {course?.attendance}</p>
                     {/* Display attendance records here */}
                     <ul>
                         {course?.attendanceRecords?.map((record,index) => (
