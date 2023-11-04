@@ -1,78 +1,60 @@
-.navigation_area{
+.navigation_area {
     height: 10vh;
-    /* background-color: aqua; */
+    background-color: rgb(129, 27, 27)
+    /* You can uncomment this line to set the background color */
 }
 
-.container{
-    background-image: linear-gradient(to right, #f43b47 0%, #453a94 100%);
+.container {
+    background-image: linear-gradient(to right, #f43b47, #453a94);
     height: 90vh;
     width: 100%;
     display: flex;
     justify-content: center;
-
-overflow-y: scroll;
-
-
-  
+    overflow-y: scroll;
 }
 
-.container::-webkit-scrollbar{
+.container::-webkit-scrollbar {
     width: 12px;
 }
 
-
-
-.container::-webkit-scrollbar-thumb{
+.container::-webkit-scrollbar-thumb {
     background: rgb(255, 172, 72);
     border: 3px solid transparent;
     border-radius: 1rem;
     background-clip: content-box;
-  
 }
 
-.table{
-    /* border-collapse: separate; */
+.table {
     border-spacing: 15px;
-    
-background-color: wheat;
-width: 60%;
-
-padding: 15px;
-margin: 25px 0px;
-border-radius: 50px;
-font-size: 1.2rem;
-color: black;
-
-height: 90%;
-
-
-
-
+    background-color: wheat;
+    width: 60%;
+    padding: 15px;
+    margin: 25px 0px;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    color: black;
+    height: 90%;
 }
 
-
-
-#sno{
+#sno {
     width: 20%;
 }
 
-#course_name,#attendence{
+#course_name,
+#attendence {
     width: 40%;
 }
 
-.th{
+.th {
     text-align: left;
-   
 }
 
-.instructor_name{
+.instructor_name {
     font-size: 1rem;
-    
 }
 
 /* Student.module.css */
 
-/* Background for the modal */
 .modalBackground {
     position: fixed;
     top: 0;
@@ -86,10 +68,8 @@ height: 90%;
     align-items: center;
 }
 
-/* Modal container */
 .modalContainer {
     background: #fff;
-    /* White background */
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     max-width: 80%;
@@ -97,53 +77,42 @@ height: 90%;
     text-align: left;
 }
 
-/* Modal header */
 .modalHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-/* Close button */
 .closeButton {
     background: none;
     border: none;
     font-size: 20px;
     cursor: pointer;
     color: #333;
-    /* Dark gray color for the close button */
 }
 
-/* Modal content */
 .modalContent {
     padding: 10px;
 }
 
-/* Course title */
 .modalContent h3 {
     font-size: 24px;
     margin: 0;
     color: #333;
-    /* Dark gray color for the title */
 }
 
-/* Other text content */
 .modalContent p {
     font-size: 16px;
     margin: 10px 0;
     color: #666;
-    /* Medium gray color for other text content */
 }
 
-/* List of attendance records */
 .modalContent ul {
     list-style: disc;
     margin-left: 20px;
 }
 
-/* List items in attendance records */
 .modalContent li {
     font-size: 14px;
     color: #666;
-    /* Medium gray color for list items */
 }
