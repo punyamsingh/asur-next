@@ -26,10 +26,9 @@ const Login = () => {
             if (userCredential && userCredential.user) {
                 // Call the login function from the context and specify the role ('student' or 'teacher')
                 console.log("successful login");
+                console.log(userType);
                 login(email,userType);
-
-                // Redirect to the dashboard
-                router.push('/dashboard');
+                router.push(`/${userType}`);
             } else {
                 setError('Authentication failed. Please check your credentials.');
             }

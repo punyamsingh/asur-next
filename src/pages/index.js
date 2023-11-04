@@ -1,8 +1,9 @@
 import Head from 'next/head';
 import { useUser } from '../contexts/UserContext';
-import Choice from '../components/Choice';
+
 import Student from './student/index';
 import Teacher from './teacher/index';
+import Choice from '@/pages/Choice';
 
 export default function Home() {
   const { userType,logout } = useUser(); // Import the logout function
@@ -21,14 +22,17 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* <h1>ASUR</h1> */}
-      {userType ? ( // Check if userType is not null
+
+      <Choice />
+
+      {/* {userType ? ( // Check if userType is not null
         <div>
           {console.log(userType)}
           {userType === 'student' ? <Student /> : <Teacher />}
         </div>
       ) : (
         <Choice />
-      )}
+      )} */}
     </div>
   );
 }

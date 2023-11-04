@@ -37,3 +37,42 @@
 .login_error {
     color: red;
 }
+
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    /* Semi-transparent background overlay */
+    z-index: 999;
+    /* Ensure it appears on top of other content */
+}
+
+/* Modal Content */
+.modal_content {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    width: 80%;
+    /* Adjust the width to your preference */
+    max-width: 400px;
+    /* Adjust the maximum width */
+}
+
+/* Close Button */
+.close_button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
