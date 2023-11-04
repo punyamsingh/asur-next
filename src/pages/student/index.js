@@ -52,7 +52,7 @@ const Student = () => {
         const fetchData = async () => {
             try {
                 // Replace 'YOUR_API_ENDPOINT' with the actual API endpoint
-                const response = await fetch('YOUR_API_ENDPOINT');
+                const response = await fetch('https://asur-ams.vercel.app/api/GetStudentViewWeb?rollNo=100');
 
                 if (!response.ok) {
                     throw new Error('API request failed');

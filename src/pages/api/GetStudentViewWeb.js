@@ -1,10 +1,9 @@
 // 
-
 import connection from './db.js';
-
+import middleware from '@/cors.js';
 export default async function(req, res) {
   try {
-   
+   await middleware(req, res);
     if (req.method === 'GET') {
         const { rollNo } = req.query;
       const results = await new Promise((resolve, reject) => {
