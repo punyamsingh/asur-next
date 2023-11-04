@@ -22,7 +22,7 @@ export default async function handler(req, res) {
         });
       });
 
-      res.status(200).json({ message: 'Attendance marked successfully' });
+      res.status(200).json({ message: 'Made class Live successful' });
     } catch (error) {
       res.status(500).json({ error: 'Error marking attendance' });
     }
