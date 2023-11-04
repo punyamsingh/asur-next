@@ -1,12 +1,12 @@
 // 
 import connection from './db.js';
 import middleware from '@/cors.js';
-export default async function(req, res) {
+export default async function (req,res) {
   try {
-   await middleware(req, res);
+    await middleware(req,res);
     if (req.method === 'GET') {
-        const { rollNo } = req.query;
-      const results = await new Promise((resolve, reject) => {
+      const { rollNo } = req.query;
+      const results = await new Promise((resolve,reject) => {
         connection.query(` SELECT
          subject.subject_id,
             subject.subject_name,
@@ -18,15 +18,17 @@ export default async function(req, res) {
         FROM subject
         JOIN attendance_details ON subject.subject_id = attendance_details.subject_id
         WHERE attendance_details.roll_no = ${rollNo}
-        GROUP BY subject.subject_id, subject.subject_name, subject.teachername, subject.classroom_id;`, (error, results) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(results);
+        GROUP BY subject.subject_id, subject.subject_name, subject.teachername, subject.classroom_id;`,(error,results) => {
+          (error,results) => {
+            if (error) {
+              reject(error);
+            } else {
+              resolve(results);
+            }
           }
         });
       });
-      
+
       res.status(200).json(results);
       // if (results.length === 0) {
       //   // Create the specific response structure with 0% for each subject

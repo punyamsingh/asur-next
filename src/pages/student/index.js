@@ -10,44 +10,6 @@ const Student = () => {
     const [data,setData] = useState([]);
     const [loading,setLoading] = useState(true);
 
-    const courseData = [
-        {
-            subject_id: 'CSD101',
-            subject_name: 'Introduction to C Programming',
-            classroom_id: 'D217',
-            teachername: 'Harish Karnik',
-            attendance_percent: 66.77,
-        },
-        {
-            subject_id: 'MAT202',
-            subject_name: 'Advanced Mathematics',
-            classroom_id: 'E102',
-            teachername: 'Linda Johnson',
-            attendance_percent: 78.92,
-        },
-        {
-            subject_id: 'ENG105',
-            subject_name: 'English Composition',
-            classroom_id: 'B311',
-            teachername: 'David Smith',
-            attendance_percent: 88.45,
-        },
-        {
-            subject_id: 'PHY301',
-            subject_name: 'Physics for Engineers',
-            classroom_id: 'A205',
-            teachername: 'Alice Brown',
-            attendance_percent: 72.34,
-        },
-        {
-            subject_id: 'CHE201',
-            subject_name: 'Chemistry Fundamentals',
-            classroom_id: 'C114',
-            teachername: 'Robert Wilson',
-            attendance_percent: 65.89,
-        },
-    ];
-
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -59,6 +21,7 @@ const Student = () => {
                 }
 
                 const apiData = await response.json();
+                console.log(apiData);
                 setData(apiData); // Set the fetched data in the state
                 setLoading(false); // Update loading state
             } catch (error) {

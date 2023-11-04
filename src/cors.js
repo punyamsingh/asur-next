@@ -2,12 +2,13 @@ import Cors from 'cors';
 
 // Initialize the cors middleware
 const cors = Cors({
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  methods: ['GET','POST','PUT','DELETE','OPTIONS'],
+  allowOrigin: '*',
 });
 
-export default function middleware(req, res) {
-  return new Promise((resolve, reject) => {
-    cors(req, res, (result) => {
+export default function middleware(req,res) {
+  return new Promise((resolve,reject) => {
+    cors(req,res,(result) => {
       if (result instanceof Error) {
         return reject(result);
       }
