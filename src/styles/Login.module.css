@@ -6,7 +6,8 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background: linear-gradient(to right, #cf0527, #451666);
+    background-image: linear-gradient(to bottom, #070302, #902c2e);
+    
 }
 
 .login_input {
