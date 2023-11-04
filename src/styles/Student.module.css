@@ -4,8 +4,9 @@
     /* You can uncomment this line to set the background color */
 }
 
-.container {
-    background-image: linear-gradient(to right, #f43b47, #453a94);
+.container{
+    background-image: linear-gradient(to bottom, #070302, #902c2e);
+    
     height: 90vh;
     width: 100%;
     display: flex;

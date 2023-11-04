@@ -4,7 +4,8 @@
 
 .container{
     height: 90vh;
-    background-image: linear-gradient(to right, #f43b47 0%, #453a94 100%);
+    background-image: linear-gradient(to bottom, #070302, #902c2e);
+    
    
     display: flex;
     justify-content: center;
