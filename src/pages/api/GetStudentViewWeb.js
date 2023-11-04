@@ -9,11 +9,17 @@ export default async function(req, res) {
         const { rollNo } = req.query;
       const results = await new Promise((resolve, reject) => {
         connection.query(` SELECT
-        ad.Subject_ID,
-        (SUM(CASE WHEN ad.PorA = 'P' THEN 1 ELSE 0 END) / COUNT(DISTINCT ad.Date_marked)) * 100 AS Percentage
-        FROM attendance_details AS ad
-        WHERE ad.Roll_No = ${rollNo}
-        GROUP BY ad.Subject_ID;`, (error, results) => {
+         subject.subject_id,
+            subject.subject_name,
+            subject.teachername,
+            subject.classroom_id,
+            COUNT(CASE WHEN attendance_details.PorA = 'P' THEN 1 ELSE NULL END) AS P_count,
+            COUNT(CASE WHEN attendance_details.PorA = 'A' THEN 1 ELSE NULL END) AS A_count,
+            (COUNT(CASE WHEN attendance_details.PorA = 'P' THEN 1 ELSE NULL END) / COUNT(*)) * 100 AS attendance_percent
+        FROM subject
+        JOIN attendance_details ON subject.subject_id = attendance_details.subject_id
+        WHERE attendance_details.roll_no = ${rollNo}
+        GROUP BY subject.subject_id, subject.subject_name, subject.teachername, subject.classroom_id;`, (error, results) => {
           if (error) {
             reject(error);
           } else {

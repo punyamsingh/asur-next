@@ -8,7 +8,7 @@ export default async function handler(req, res) {
       // Your SQL query
       const query = `
       UPDATE subject
-  SET  LIVE= "L"
+  SET  LIVE= "NL"
   WHERE subject_id="${course_id}"
       `;
 
@@ -22,7 +22,7 @@ export default async function handler(req, res) {
         });
       });
 
-      res.status(200).json({ message: 'Made class Live successful' });
+      res.status(200).json({ message: 'Class not live successful' });
     } catch (error) {
       res.status(500).json({ error: 'Error marking attendance' });
     }

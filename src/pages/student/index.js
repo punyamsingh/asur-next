@@ -1,120 +1,61 @@
 import Login from "@/components/Login";
+import React,{ useState } from 'react';
 import Navbar from "@/components/Navbar";
-import React from "react";
 import styles from "@/styles/Student.module.css";
+import AllCourses from "@/pages/student/AllCourses";
+import AttendanceModal from './AttendanceModal';
 
 const Student = () => {
+
+    // Define your course data here (replace this with your actual data)
+    const courseData = [
+        {
+            id: 1,
+            name: 'Introduction to C Programming',
+            attendance: 'D217',
+            instructor: 'Harish Karnik',
+            attendanceRecords: [], // Add attendance records for this course
+        },
+        {
+            id: 2,
+            name: 'Physics 101',
+            attendance: 'B108',
+            instructor: 'Mayukh Majumder',
+            attendanceRecords: [], // Add attendance records for this course
+        },
+        {
+            id: 3,
+            name: 'Introduction to Python Programming',
+            attendance: 'D217',
+            instructor: 'Harish Karnik',
+            attendanceRecords: [], // Add attendance records for this course
+        },
+        {
+            id: 4,
+            name: 'Introduction to C++ Programming',
+            attendance: 'D217',
+            instructor: 'Harish Karnik',
+            attendanceRecords: [], // Add attendance records for this course
+        },
+        {
+            id: 5,
+            name: 'Introduction to Java Programming',
+            attendance: 'D217',
+            instructor: 'Harish Karnik',
+            attendanceRecords: [], // Add attendance records for this course
+        },
+    ];
+
+    const [data,setData] = useState(courseData);
+
     return (
         <div>
             <div className={styles.navigation_area}>
                 <Navbar />
             </div>
 
-            <div className={styles.container}>
-                <table className={styles.table}>
+            <AllCourses courseData={data} />
 
-                    <thead >
-                        <tr>
-                            <th id={styles.sno} className={styles.th}>S.No</th>
-                            <th id={styles.course_name} className={styles.th}>Course Name </th>
-                            <th id={styles.attendence} className={styles.th}>Attendence</th>
-
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Introduction to C Programming <br /> <span className={styles.instructor_name}>Harish Karnik</span> </td>
-                            <td>Germany</td>
-
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>Introduction to C Programming <br /> <span className={styles.instructor_name}>Harish Karnik</span> </td>
-                            <td>Germany</td>
-
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>Introduction to C Programming <br /> <span className={styles.instructor_name}>Harish Karnik</span> </td>
-                            <td>Germany</td>
-
-                        </tr>
-
-                        
-
-                         <tr>
-                            <td>1</td>
-                            <td>Introduction to C Programming <br /> <span className={styles.instructor_name}>Harish Karnik</span> </td>
-                            <td>Germany</td>
-
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>Introduction to C Programming <br /> <span className={styles.instructor_name}>Harish Karnik</span> </td>
-                            <td>Germany</td>
-
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>Introduction to C Programming <br /> <span className={styles.instructor_name}>Harish Karnik</span> </td>
-                            <td>Germany</td>
-
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>Introduction to C Programming <br /> <span className={styles.instructor_name}>Harish Karnik</span> </td>
-                            <td>Germany</td>
-
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>Introduction to C Programming <br /> <span className={styles.instructor_name}>Harish Karnik</span> </td>
-                            <td>Germany</td>
-
-                        </tr>
-
-
-                        
-
-                        
-
-                        <tr>
-                            <td>1</td>
-                            <td>Introduction to C Programming <br /> <span className={styles.instructor_name}>Harish Karnik</span> </td>
-                            <td>Germany</td>
-
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Introduction to C Programming <br /> <span className={styles.instructor_name}>Harish Karnik</span> </td>
-                            <td>Germany</td>
-
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Introduction to C Programming <br /> <span className={styles.instructor_name}>Harish Karnik</span> </td>
-                            <td>Germany</td>
-
-                        </tr>
-
-
-
-
-                    </tbody>
-
-                </table>
-            </div>
-
-            {/* <h1>Student</h1> */}
-            {/* <Login /> */}
         </div>
     );
 };
