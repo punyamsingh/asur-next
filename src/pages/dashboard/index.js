@@ -2,9 +2,12 @@ import { useUser } from '@/contexts/UserContext';
 import Navbar from '@/components/Navbar'; // Import the Navbar component
 import styles from '@/styles/Teacher.module.css';
 import TeacherDashboard from '@/components/TeacherDashboard';
+import Choice from '@/pages/Choice';
+import Student from '@/pages/student/index';
+
 
 export default function Dashboard() {
-       const { user } = useUser();
+       const { user,userType } = useUser();
 
        return (
               <div>

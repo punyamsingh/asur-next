@@ -1,7 +1,7 @@
 import React from 'react'
 // import { useUser } from '../../contexts/UserContext';
 import {useUser} from '@/contexts/UserContext';
-import Choice from '@/components/Choice';
+import Choice from '@/pages/Choice';
 import Navbar from '@/components/Navbar';
 import profile from '@/styles/Profile.module.css'
 
