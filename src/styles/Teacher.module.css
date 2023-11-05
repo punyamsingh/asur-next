@@ -32,7 +32,8 @@
 .table{
     border-collapse: separate;
     border-spacing: 15px;
-background-color: rgb(156, 255, 255);
+/* background-color: rgb(156, 255, 255); */
+background-color: #902c2e;
 width: 60%;
 height: fit-content;
 padding: 15px;
