@@ -22,10 +22,10 @@ export default function Choice() {
             {showLogin && (
                 <div className={styles.modal}>
                     <div className={styles.modal_content}>
-                        <button className={styles.close_button} onClick={closeLoginModal}>
+                        {/* <button className={styles.close_button} onClick={closeLoginModal}>
                             Close
-                        </button>
-                        <Login />
+                        </button> */}
+                        <Login setShowLogin={setShowLogin} />
                     </div>
                 </div>
             )}

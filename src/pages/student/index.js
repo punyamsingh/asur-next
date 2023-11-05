@@ -39,29 +39,6 @@ const Student = ({apiData}) => {
         setLoading(false);
     })
 
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         try {
-    //             // Replace 'YOUR_API_ENDPOINT' with the actual API endpoint
-    //             const response = await fetch('https://asur-ams.vercel.app/api/GetStudentViewWeb?rollNo=100');
-
-    //             if (!response.ok) {
-    //                 throw new Error('API request failed');
-    //             }
-
-    //             const apiData = await response.json();
-    //             console.log(apiData);
-    //             setData(apiData); // Set the fetched data in the state
-    //             setLoading(false); // Update loading state
-    //         } catch (error) {
-    //             console.error('API request failed:',error);
-    //             // setLoading(false); // Update loading state in case of an error
-    //         }
-    //     };
-
-    //     fetchData();
-    // },[]);
-
     return (
         <div>
             <div className={styles.navigation_area}>

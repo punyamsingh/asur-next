@@ -1,71 +1,60 @@
 /* Login.module.css */
 
+/* Container for the entire login screen */
 .login_container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    background-image: linear-gradient(to bottom, #070302, #902c2e);
-    
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.9);
+    /* Semi-transparent background overlay */
+    z-index: 999;
+    /* Ensure it appears on top of other content */
+    padding: 20px;
+    border-radius: 10px;
 }
 
+/* Input Fields */
 .login_input {
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
     height: 40px;
     padding: 10px;
     margin: 10px;
     font-size: 1.2rem;
 }
 
+/* Login Button */
 .login_button {
-    width: 200px;
+    width: 100%;
+    max-width: 200px;
     height: 50px;
-    background-color: var(--goodpurple);
-    border: 1px solid var(--screenblack);
+    background-color: #7c28a1;
+    /* Purple color */
+    border: none;
     border-radius: 5px;
-    color: var(--white);
+    color: #fff;
+    /* White color */
     font-size: 1.5rem;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .login_button:hover {
-    background-color: var(--green);
+    background-color: #4CAF50;
+    /* Green color */
 }
 
+/* Error Message */
 .login_error {
     color: red;
 }
 
-.modal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    /* Semi-transparent background overlay */
-    z-index: 999;
-    /* Ensure it appears on top of other content */
-}
-
-/* Modal Content */
-.modal_content {
-    background: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    position: relative;
-    width: 80%;
-    /* Adjust the width to your preference */
-    max-width: 400px;
-    /* Adjust the maximum width */
-}
-
+/* Close Button */
 /* Close Button */
 .close_button {
     position: absolute;
@@ -75,4 +64,8 @@
     border: none;
     cursor: pointer;
     font-size: 18px;
+    color: #fff;
+    /* White color */
+    z-index: 1;
+    /* Ensure it appears on top of the modal content */
 }

@@ -8,7 +8,7 @@ export default async function (req,res) {
       const { rollNo } = req.query;
       const results = await new Promise((resolve,reject) => {
         connection.query(` SELECT
-         subject.subject_id,
+            subject.subject_id,
             subject.subject_name,
             subject.teachername,
             subject.classroom_id,
