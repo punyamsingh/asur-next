@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useUser } from '../contexts/UserContext';
-import { app } from '../db/firebase';
+import { app } from '../db/firebase'; // Import Firebase authentication
 import { getAuth,signInWithEmailAndPassword } from 'firebase/auth';
+import { getFirestore,collection,query,where,getDocs } from 'firebase/firestore'; // Import Firestore functions
 import styles from '@/styles/Login.module.css';
 
 const auth = getAuth(app);
+const db = getFirestore(app);
 
 const Login = ({ setShowLogin }) => {
     const { userType,login } = useUser();
@@ -20,9 +22,31 @@ const Login = ({ setShowLogin }) => {
                 setError('Please fill in both fields.');
                 return;
             }
+
             const userCredential = await signInWithEmailAndPassword(auth,email,password);
+
             if (userCredential && userCredential.user) {
-                console.log("successful login");
+                const user = userCredential.user;
+
+                // Check userType and isTeacher
+                if (userType === 'teacher') {
+                    const userRef = collection(db,'Users');
+                    const q = query(userRef,where('email','==',email));
+                    const snapshot = await getDocs(q);
+
+                    if (snapshot.docs.length > 0) {
+                        const userData = snapshot.docs[0].data();
+                        if (userData.isTeacher !== true) {
+                            setError('You are not authorized as a teacher.');
+                            return;
+                        }
+                    } else {
+                        setError('User not found in the database.');
+                        return;
+                    }
+                }
+
+                console.log('Successful login');
                 console.log(userType);
                 login(email,userType);
                 router.push(`/${userType}`);
