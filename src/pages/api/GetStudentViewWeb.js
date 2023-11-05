@@ -25,25 +25,10 @@ export default async function (req,res) {
             } else {
               resolve(results);
             }
-          }
+          };
         });
       });
-
       res.status(200).json(results);
-      // if (results.length === 0) {
-      //   // Create the specific response structure with 0% for each subject
-      //   const emptyResponse = [
-      //     { "Subject_ID": "CCC708", "Percentage": 0 },
-      //     { "Subject_ID": "CSD101", "Percentage": 0 },
-      //     { "Subject_ID": "CSD102", "Percentage": 0 },
-      //     { "Subject_ID": "CSD311", "Percentage": 0 },
-      //     { "Subject_ID": "MAT376", "Percentage": 0 },
-      //     // Add more subjects as needed
-      //   ];
-      //   res.status(200).json(emptyResponse);
-      // } else {
-      //   res.status(200).json(results);
-      // }
     } else {
       res.status(405).json({ error: 'Method not allowed' });
     }
