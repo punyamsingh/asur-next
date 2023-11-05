@@ -5,33 +5,62 @@ import styles from "@/styles/Student.module.css";
 import AllCourses from "@/pages/student/AllCourses";
 import AttendanceModal from './AttendanceModal';
 
-const Student = () => {
+export async function getServerSideProps(context) {
+    // const[deptName,SetDeptName]=useState('');
+    
+    try {
+        const response = await fetch(`https://asur-ams.vercel.app/api/GetStudentViewWeb?rollNo=100`);
+        if (!response.ok) {
+            throw new Error(`Error fetching data: ${response.statusText}`);
+        }
+
+        const apiData = await response.json();
+        console.log(apiData)
+        return {
+            props: {
+                apiData
+            },
+        };
+    } catch (error) {
+        console.error('Error:', error);
+        return {
+            notFound: true, // or handle the error in your preferred way
+        };
+    }
+}
+
+const Student = ({apiData}) => {
 
     const [data,setData] = useState([]);
     const [loading,setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                // Replace 'YOUR_API_ENDPOINT' with the actual API endpoint
-                const response = await fetch('https://asur-ams.vercel.app/api/GetStudentViewWeb?rollNo=100');
+        setData(apiData);
+        setLoading(false);
+    })
 
-                if (!response.ok) {
-                    throw new Error('API request failed');
-                }
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             // Replace 'YOUR_API_ENDPOINT' with the actual API endpoint
+    //             const response = await fetch('https://asur-ams.vercel.app/api/GetStudentViewWeb?rollNo=100');
 
-                const apiData = await response.json();
-                console.log(apiData);
-                setData(apiData); // Set the fetched data in the state
-                setLoading(false); // Update loading state
-            } catch (error) {
-                console.error('API request failed:',error);
-                // setLoading(false); // Update loading state in case of an error
-            }
-        };
+    //             if (!response.ok) {
+    //                 throw new Error('API request failed');
+    //             }
 
-        fetchData();
-    },[]);
+    //             const apiData = await response.json();
+    //             console.log(apiData);
+    //             setData(apiData); // Set the fetched data in the state
+    //             setLoading(false); // Update loading state
+    //         } catch (error) {
+    //             console.error('API request failed:',error);
+    //             // setLoading(false); // Update loading state in case of an error
+    //         }
+    //     };
+
+    //     fetchData();
+    // },[]);
 
     return (
         <div>
