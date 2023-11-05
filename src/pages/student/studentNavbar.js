@@ -2,7 +2,7 @@ import React,{ useState,useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styles from '@/styles/Navbar.module.css';
-import { useUser } from '../contexts/UserContext';
+import { useUser } from '@/contexts/UserContext';
 
 const Navbar = () => {
     const [scrolling,setScrolling] = useState(false);
