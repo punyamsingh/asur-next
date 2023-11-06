@@ -1,47 +1,40 @@
 import useSWR from 'swr';
-import { useState, useEffect } from 'react';
+import { useState,useEffect } from 'react'; // Import useState and useEffect
 import Navbar from "./studentNavbar";
 import styles from "@/styles/Student.module.css";
 import AllCourses from "@/pages/student/AllCourses";
-import { useUser } from '@/contexts/UserContext';
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const Dashboard = () => {
-    const { userType, user } = useUser();
-    const [rollNumber, setRollNumber] = useState(null); // State to store roll number
-    const [courseData, setCourseData] = useState([]);
+    const sample = [
+        {
+            courseID: 1,
+            subject_id: 'Introduction to C Programming',
+            attendance: 'D217',
+            teachername: 'Harish Karnik',
+            attendanceRecords: [], // Add attendance records for this course
+        },
+        {
+            courseID: 2,
+            subject_id: 'Physics 101',
+            attendance: 'B108',
+            teachername: 'Mayukh Majumder',
+            attendanceRecords: [], // Add attendance records for this course
+        }];
 
-    // Fetch the student's roll number outside of useEffect
-    const { data: rollNumberData, error: rollNumberError } = useSWR(
-        user ? `/api/GetRollNumFromEmail?email="${user.email}"` : null,
-        fetcher
-    );
-
-    // Inside a useEffect, set the roll number if it's available
-    useEffect(() => {
-        if (rollNumberData) {
-            console.log(rollNumberData[0]?.roll_no);
-            setRollNumber(rollNumberData[0]?.roll_no);
-        }
-    }, [rollNumberData]);
-
-    // Use rollNumber as a dependency for fetching the student data
-    const { data: apiData, error: apiError } = useSWR(
-        rollNumber ? `/api/GetStudentViewWeb?rollNo=${rollNumber}` : null,
-        fetcher
-    );
+    const { data: apiData,error } = useSWR('/api/GetStudentViewWeb?rollNo=100',fetcher);
+    const [courseData,setCourseData] = useState(sample); // Initialize as an empty array
 
     useEffect(() => {
         if (apiData) {
             // Check if apiData is available
-            console.log(apiData);
             setCourseData(apiData);
         }
-    }, [apiData]);
+    },[apiData]); // Update courseData when apiData changes
 
-    if (apiError) {
-        console.error('Error:', apiError);
+    if (error) {
+        console.error('Error:',error);
         return (
             <div>
                 <p>Error fetching data.</p>
@@ -55,16 +48,17 @@ const Dashboard = () => {
                 <Navbar />
             </div>
 
-            {courseData.length === 0 ? (
+            {courseData.length === 0 ? ( // Check courseData
                 <p>Loading...</p>
             ) : (
-                <AllCourses courseData={courseData} />
+                <AllCourses courseData={courseData} /> // Use courseData
             )}
         </div>
     );
 };
 
 export default Dashboard;
+
 
 // Define your course data here (replace this with your actual data)
 // const courseData = [
