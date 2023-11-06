@@ -20,12 +20,12 @@
     font-family: sans-serif;
 }
 
-.container::-webkit-scrollbar {
-    width: 12px;
+.courseList::-webkit-scrollbar {
+    width: 4px;
 }
 
-.container::-webkit-scrollbar-thumb {
-    background: rgb(255, 172, 72);
+.courseList::-webkit-scrollbar-thumb {
+    background: rgb(168, 168, 168);
     border: 3px solid transparent;
     border-radius: 1rem;
     background-clip: content-box;
@@ -45,8 +45,9 @@
     border: 2px solid white;
     box-shadow: rgba(255, 255, 255, 1) 0px 4px 20px;
     border-radius: 30px;
-    height: fit-content;
 
+
+    overflow-y: scroll;
 }
 
 .tableRowEven {
