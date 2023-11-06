@@ -65,13 +65,13 @@ const Navbar = () => {
                             className={activeTab === 'dashboard' ? styles.active : ''}
                             onClick={() => handleTabClick('dashboard')}
                         >
-                            <Link href="/dashboard">Dashboard</Link>
+                            <Link href="/student/dashboard">Dashboard</Link>
                         </li>
                         <li
                             className={activeTab === 'profile' ? styles.active : ''}
                             onClick={() => handleTabClick('profile')}
                         >
-                            <Link href="/profile">Profile</Link>
+                            <Link href="/student/profile">Profile</Link>
                         </li>
                         <li onClick={() => handleTabClick('logout')}>
                             <Link href="/">

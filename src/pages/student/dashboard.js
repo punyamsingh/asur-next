@@ -1,16 +1,39 @@
-import React,{ useState,useEffect } from 'react';
-import Dashboard from './dashboard';
-import styles from '@/styles/Student.module.css';
+import useSWR from 'swr';
+import Navbar from "./studentNavbar";
+import styles from "@/styles/Student.module.css";
+import AllCourses from "@/pages/student/AllCourses";
 
-const Student = () => {
+const fetcher = (url) => fetch(url).then((res) => res.json());
+
+const Dashboard = () => {
+    const { data: apiData,error } = useSWR('/api/GetStudentViewWeb?rollNo=100',fetcher);
+
+    if (error) {
+        console.error('Error:',error);
+        return (
+            <div>
+                <p>Error fetching data.</p>
+            </div>
+        );
+    }
+
     return (
         <div>
-            <Dashboard />
+            <div className={styles.navigation_area}>
+                <Navbar />
+            </div>
+
+            {!apiData ? (
+                <p>Loading...</p>
+            ) : (
+                <AllCourses courseData={apiData} />
+            )}
         </div>
     );
 };
 
-export default Student;
+export default Dashboard;
+
 
 // Define your course data here (replace this with your actual data)
 // const courseData = [

@@ -2,7 +2,7 @@ import React,{ useState,useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styles from '@/styles/Navbar.module.css';
-import { useUser } from '../contexts/UserContext';
+import { useUser } from '@/contexts/UserContext';
 
 const Navbar = () => {
     const [scrolling,setScrolling] = useState(false);
@@ -65,13 +65,13 @@ const Navbar = () => {
                             className={activeTab === 'dashboard' ? styles.active : ''}
                             onClick={() => handleTabClick('dashboard')}
                         >
-                            <Link href="/dashboard">Dashboard</Link>
+                            <Link href="/teacher/dashboard">Dashboard</Link>
                         </li>
                         <li
                             className={activeTab === 'profile' ? styles.active : ''}
                             onClick={() => handleTabClick('profile')}
                         >
-                            <Link href="/profile">Profile</Link>
+                            <Link href="/teacher/profile">Profile</Link>
                         </li>
                         <li onClick={() => handleTabClick('logout')}>
                             <Link href="/">
