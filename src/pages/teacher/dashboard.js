@@ -74,6 +74,8 @@ const Dashboard = () => {
                 Initiate Attendance
               </th>
             </tr>
+            <tr></tr>
+            <tr></tr>
           </thead>
 
           <tbody>
