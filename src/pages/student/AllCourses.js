@@ -15,43 +15,38 @@ const AllCourses = ({ courseData }) => {
 
     return (
         <div className={styles.container}>
-            <table className={styles.table}>
-                <thead>
-                    <tr>
-                        <th id={styles.sno} className={styles.th}>S.No</th>
-                        <th id={styles.id} className={styles.th}>Course ID</th>
-                        <th id={styles.course_name} className={styles.th}>Course Name</th>
-                        <th id={styles.inst_name} className={styles.th}>Instructor Name</th>
-                        <th id={styles.location} className={styles.th}>Location</th>
-                        <th id={styles.attendence} className={styles.th}>Attendance %</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {courseData?.length === 0 && (
-                        <tr>
-                            <td colSpan="6" className={styles.noCourse}>
-                                No courses found
-                            </td>
-                        </tr>
-                    )}
-                    {courseData?.map((course,index) => (
-                        <tr key={course.subject_id} onClick={() => openModal(course)} className={styles.sty}>
-                            <td>{index + 1}</td>
-                            <td>{course.subject_id}</td>
-                            <td>{course.subject_name}</td>
-                            <td>{course.teachername}</td>
-                            <td>{course.classroom_id}</td>
-                            <td id={styles.atten}>{course.attendance_percent}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+            <div className={styles.courseList}>
+                {courseData?.length === 0 ? (
+                    <div className={styles.noCourse}>No courses found</div>
+                ) : (
+                    courseData?.map((course,index) => (
+                        <div
+                            key={course.subject_id}
+                            className={index % 2 === 0 ? styles.tableRowEven : styles.tableRowOdd}
+                            onClick={() => openModal(course)}
+                        >
+                            <div className={styles.cell}>
+                                <div className={styles.courseInfo}>
+                                    <div className={styles.courseID}>{course.subject_id}</div>
+                                    <div className={styles.teacherName}>{course.teachername}</div>
+                                </div>
+                            </div>
+                            <div className={styles.cell}>
+                                <div className={styles.courseName}>{course.subject_name}</div>
+                            </div>
+                            <div className={styles.cell}>
+                                <div className={styles.pieChart}>
+                                    {/* Render a pie chart for attendance percent */}
+                                    {course.attendance_percent}%
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                )}
+            </div>
 
             {selectedCourse && (
-                <AttendanceModal
-                    course={selectedCourse}
-                    onClose={closeModal}
-                />
+                <AttendanceModal course={selectedCourse} onClose={closeModal} />
             )}
         </div>
     );

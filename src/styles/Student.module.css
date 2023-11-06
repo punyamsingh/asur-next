@@ -1,17 +1,19 @@
+/* Navigation styles */
 .navigation_area {
     height: 10vh;
     background-color: #000;
-    /* You can uncomment this line to set the background color */
 }
 
-.container{
+/* Container styles */
+.container {
     background-image: linear-gradient(to bottom, #070302, #902c2e);
-    
-    height: 90vh;
+    height: 200%;
     width: 100%;
+    padding: 2rem 5rem;
     display: flex;
     justify-content: center;
     overflow-y: scroll;
+    font-family: sans-serif;
 }
 
 .container::-webkit-scrollbar {
@@ -25,23 +27,83 @@
     background-clip: content-box;
 }
 
-.table {
-    border-spacing: 15px;
-    background-color: wheat;
-    width: 70%;
-    padding: 15px;
-    margin: 25px 0px;
-    border-radius: 50px;
-    font-size: 1.2rem;
-    color: black;
-    height: 90%;
+/* Course details styles */
+.courseList {
+    background-color: #262626;
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(3, 101, 214, 0.786)3px;
+
 }
+
+.tableRowEven {
+    align-self: stretch;
+    border-radius: 3px;
+    background-color: #902c2e;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    font-size: 1rem;
+}
+
+.tableRowOdd {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    font-size: 1rem;
+    justify-content: space-between;
+}
+
+.cell {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    text-align: center;
+}
+
+.courseInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.courseID {
+    font-weight: 600;
+}
+
+.teacherName {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.courseName {
+    font-weight: 600;
+}
+
+.pieChart {
+    font-weight: 600;
+    color: #333;
+    /* Style the pie chart text */
+}
+
+.noCourse {
+    text-align: center;
+    font-weight: 600;
+    padding: 15px;
+    font-size: 1.2rem;
+    color: #666;
+}
+
+/* Your existing styles below */
 
 #sno {
     width: 5%;
 }
 
-#id{
+#id {
     width: 10%;
 }
 
@@ -49,11 +111,11 @@
     width: 25%;
 }
 
-#attendence{
+#attendence {
     text-align: center;
 }
 
-#location{
+#location {
     width: 10%;
 }
 
@@ -62,20 +124,15 @@
     width: 20%;
 }
 
-#atten{
+#atten {
     text-align: center;
-    
-
 }
-
-
 
 .instructor_name {
     font-size: 1rem;
 }
 
 /* Student.module.css */
-
 .modalBackground {
     position: fixed;
     top: 0;
@@ -138,7 +195,7 @@
     color: #666;
 }
 
-.sty{
+.sty {
     width: 100%;
     background-color: #fff;
     border: 2px solid black;

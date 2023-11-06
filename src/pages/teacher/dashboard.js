@@ -1,14 +1,16 @@
 import useSWR from 'swr';
 import Navbar from './teacherNavbar';
 import styles from '@/styles/Teacher.module.css';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const Dashboard = () => {
     const { data: apiData,error } = useSWR('/api/GetCourseList',fetcher);
-
     const [liveCourses,setLiveCourses] = useState(new Set());
+
+    // Initialize apiData as an empty array
+    const [courseData,setCourseData] = useState([]);
 
     const handleInitiateClick = async (course_id) => {
         try {
@@ -34,6 +36,12 @@ const Dashboard = () => {
             console.error('Error:',error);
         }
     };
+
+    useEffect(() => {
+        if (apiData) {
+            setCourseData(apiData);
+        }
+    },[apiData]);
 
     if (error) {
         return (
@@ -66,7 +74,7 @@ const Dashboard = () => {
                     </thead>
 
                     <tbody>
-                        {apiData?.map((course,index) => (
+                        {courseData?.map((course,index) => (
                             <tr key={index}>
                                 <td>{index + 1}</td>
                                 <td>
