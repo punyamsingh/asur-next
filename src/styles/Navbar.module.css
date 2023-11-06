@@ -11,6 +11,7 @@
     padding-bottom: 1rem;
     transition: background-color 0.4s ease, padding 0.4s ease;
     z-index: 1000;
+    background-color: #262622;
 }
 
 /* Styles for when the navbar is affixed */
@@ -28,10 +29,18 @@
 
 /* Logo styles */
 .logo {
-    float: left;
-    width: auto;
-    height: auto;
-    padding-left: 3rem;
+   
+    padding-left: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    
+}
+
+.logoImage {
+    width: 150px;
+    height: 100%;
 }
 
 .logo a {
@@ -85,7 +94,8 @@
 }
 
 .navlinks li.active {
-    background-color: black;
+    background-color: rgb(218, 56, 56);
+    background-color: #b03739;
     border-radius: 1.4rem;
     line-height: 55px;
 }

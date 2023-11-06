@@ -1,5 +1,10 @@
 .navigation_bar{
     height: 12vh;
+    background-color: #262626;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
 }
 
 
@@ -12,6 +17,7 @@
     display: flex;
     justify-content: center;
     padding: 50px;
+    background-image: linear-gradient(to top, #070302, #902c2e);
 }
 
 .profile{   
@@ -20,48 +26,66 @@
     min-height: 400px;
     
    
-    background-image: linear-gradient(to top, #5ee7df 0%, #b490ca 100%);
+    /* background-image: linear-gradient(to top, #5ee7df 0%, #b490ca 100%);
+    background-image: linear-gradient(to bottom, #070302, #902c2e); */
+    background-color: #262626;
+
+    border: 2px solid white;
+
+    
     /* border: 2px solid black; */
 
     border-radius: 50px;
 
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    box-shadow: rgba(255, 255, 255, 0.56) 0px 10px 70px 4px;
+
 
 }
 
 .left{
 /* background-color: antiquewhite; */
-height: 100%;
-flex-basis: 50%;
-
+height: 60%;
+width: 100%;
 display: flex;
 justify-content: center;
 align-items: center;
-
+flex-direction: column;
+padding-top: 10px;
 
 }
 
-.right{
-    flex-basis: 50%;
-    height: 100%;
+.name{
+    color: white;
+    font-family: sans-serif;
+    margin-top: 10px;
+}
 
-    padding: 100px;
+.right{
+    height: 40%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .image{
     overflow: hidden;
-    height: 50%;
-    width: 50%;
+    height: 220px;
+    width: 220px;
     border-radius: 100%;
+    border: 2px solid white;
 }
 
 .image img{
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: 100;
+    /* object-fit: cover; */
+    
 }
 
 .info{
@@ -70,11 +94,22 @@ align-items: center;
 
 
 .credentials{
-    font-weight: bold;
     width: 150px;
     display: inline-block;
+    color: white;
 }
 
 .info p{
     margin: 20px 0px;
+}
+
+
+.white{
+    color: white;
+}
+
+.bi{
+    color: white;
+    font-family: sans-serif;
+letter-spacing: 1px;
 }
