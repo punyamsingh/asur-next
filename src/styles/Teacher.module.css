@@ -9,7 +9,7 @@
 
 .container{
     height: 90vh;
-    background-image: linear-gradient(to bottom, #070302, #902c2e);
+    background-image: linear-gradient(to top, #070302, #902c2e);
     
    
     display: flex;
