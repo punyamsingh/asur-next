@@ -21,20 +21,20 @@ const AllCourses = ({ courseData }) => {
                         <th id={styles.sno} className={styles.th}>S.No</th>
                         <th id={styles.id} className={styles.th}>Course ID</th>
                         <th id={styles.course_name} className={styles.th}>Course Name</th>
-                        <th id={styles.attendence} className={styles.th}>Instructor Name</th>
-                        <th id={styles.attendence} className={styles.th}>Location</th>
+                        <th id={styles.inst_name} className={styles.th}>Instructor Name</th>
+                        <th id={styles.location} className={styles.th}>Location</th>
                         <th id={styles.attendence} className={styles.th}>Attendance %</th>
                     </tr>
                 </thead>
                 <tbody>
                     {courseData?.map((course,index) => (
-                        <tr key={course.subject_id} onClick={() => openModal(course)}>
+                        <tr className={styles.styling} key={course.subject_id} onClick={() => openModal(course)}>
                             <td>{index + 1}</td>
                             <td>{course.subject_id}</td>
                             <td>{course.subject_name}</td>
                             <td>{course.teachername}</td>
                             <td>{course.classroom_id}</td>
-                            <td>{course.attendance_percent}</td>
+                            <td id={styles.atten}>{course.attendance_percent}</td>
                         </tr>
                     ))}
                 </tbody>

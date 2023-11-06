@@ -65,7 +65,7 @@ const Login = ({ setShowLogin }) => {
             <button className={styles.close_button} onClick={() => setShowLogin(false)}>
                 Close
             </button>
-            <label>
+            <label className={styles.label}>
                 Email:
                 <input
                     className={styles.login_input}
@@ -74,7 +74,7 @@ const Login = ({ setShowLogin }) => {
                     onChange={(e) => setEmail(e.target.value)}
                 />
             </label>
-            <label>
+            <label className={styles.label}>
                 Password:
                 <input
                     className={styles.login_input}

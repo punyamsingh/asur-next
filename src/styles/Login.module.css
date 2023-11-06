@@ -1,7 +1,9 @@
 /* Login.module.css */
 
+
 /* Container for the entire login screen */
 .login_container {
+   
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,12 +12,17 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.9);
+    background: white;
     /* Semi-transparent background overlay */
     z-index: 999;
     /* Ensure it appears on top of other content */
     padding: 20px;
     border-radius: 10px;
+    color: black;
+}
+
+.label{
+    width: 100%;
 }
 
 /* Input Fields */

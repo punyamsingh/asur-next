@@ -28,7 +28,7 @@
 .table {
     border-spacing: 15px;
     background-color: wheat;
-    width: 60%;
+    width: 70%;
     padding: 15px;
     margin: 25px 0px;
     border-radius: 50px;
@@ -38,17 +38,37 @@
 }
 
 #sno {
-    width: 20%;
+    width: 5%;
 }
 
-#course_name,
-#attendence {
-    width: 40%;
+#id{
+    width: 10%;
+}
+
+#course_name {
+    width: 25%;
+}
+
+#attendence{
+    text-align: center;
+}
+
+#location{
+    width: 10%;
 }
 
 .th {
     text-align: left;
+    width: 20%;
 }
+
+#atten{
+    text-align: center;
+    
+
+}
+
+
 
 .instructor_name {
     font-size: 1rem;
@@ -116,4 +136,8 @@
 .modalContent li {
     font-size: 14px;
     color: #666;
+}
+
+.styling{
+    
 }
