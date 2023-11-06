@@ -5,7 +5,7 @@
     justify-content: center;
     min-height: 100vh;
     background-image: linear-gradient(to bottom, #070302, #902c2e);
-    gap: 5rem;
+    gap: 7.5rem;
 }
 
 .heading {
@@ -54,6 +54,10 @@
     cursor: pointer;
     font-size: 1.5rem;
     padding: 10px;
+}
+
+.logoImage{
+    height: 85px;
 }
 
 /* 

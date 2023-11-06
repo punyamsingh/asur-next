@@ -1,5 +1,10 @@
 .navigation_area{
     height: 10vh;
+    display: flex;
+    background-color: #262626;
+    align-items: center;
+    justify-content: center;
+    color: white;
 }
 
 .container{
@@ -11,6 +16,7 @@
     justify-content: center;
     
     overflow-y: scroll;
+    color: white;
 
 }
 
@@ -32,27 +38,28 @@
 .table{
     border-collapse: separate;
     border-spacing: 15px;
-/* background-color: rgb(156, 255, 255); */
-background-color: #902c2e;
+    min-height: 60vh;
+background-color: #262626;
 width: 60%;
 height: fit-content;
 padding: 15px;
 margin: 25px 0px;
 border-radius: 50px;
 font-size: 1.2rem;
+border: 2px solid white;
 }
 
 .button{
     width: 80px;
     padding: 5px;
     border-radius: 10px;
-    background-color: rgb(248, 148, 27);
+    background-color: rgb(255, 255, 255);
 }
 
 .button:hover{
     background-color: rgb(248, 172, 79);
     cursor: pointer;
-    border: 2px solid rgb(248, 148, 27);
+    border: 2px solid rgb(201, 201, 201);
 }
 
 #button{

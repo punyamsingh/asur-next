@@ -79,7 +79,7 @@ const Navbar = () => {
             </li>
             <li onClick={() => handleTabClick("logout")}>
               <Link href="/">
-                <button onClick={handleLogout}>Go back</button>
+                <button onClick={handleLogout}>Sign Out</button>
               </Link>
             </li>
           </ul>

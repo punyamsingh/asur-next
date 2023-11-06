@@ -2,12 +2,16 @@
 .navigation_area {
     height: 10vh;
     background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
 }
 
 /* Container styles */
 .container {
-    background-image: linear-gradient(to bottom, #070302, #902c2e);
-    height: 200%;
+    background-image: linear-gradient(to top, #070302, #902c2e);
+    height: 90vh;
     width: 100%;
     padding: 2rem 5rem;
     display: flex;
@@ -33,6 +37,17 @@
     display: flex;
     flex-direction: column;
     box-shadow: rgba(3, 101, 214, 0.786)3px;
+    width: 60vw;
+    color: white;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    padding: 15px;
+    border: 2px solid white;
+    box-shadow: rgba(255, 255, 255, 1) 0px 4px 20px;
+    border-radius: 30px;
+
+    
+  
 
 }
 
@@ -45,6 +60,9 @@
     align-items: flex-start;
     justify-content: space-between;
     font-size: 1rem;
+    border-radius: 15px;
+    margin: 15px;
+    border: 2px solid rgb(199, 199, 199);
 }
 
 .tableRowOdd {
@@ -53,6 +71,7 @@
     align-items: flex-start;
     font-size: 1rem;
     justify-content: space-between;
+    
 }
 
 .cell {
@@ -77,16 +96,20 @@
 .teacherName {
     font-size: 0.9rem;
     color: #666;
+    color: white;
+    margin-top: 10px;
 }
 
 .courseName {
     font-weight: 600;
+    margin-top: 15px;
 }
 
 .pieChart {
     font-weight: 600;
-    color: #333;
+    color: white;
     /* Style the pie chart text */
+    margin-top: 15px;
 }
 
 .noCourse {
@@ -200,3 +223,4 @@
     background-color: #fff;
     border: 2px solid black;
 }
+
