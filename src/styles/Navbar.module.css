@@ -11,6 +11,7 @@
     padding-bottom: 1rem;
     transition: background-color 0.4s ease, padding 0.4s ease;
     z-index: 1000;
+    background-color: #262622;
 }
 
 /* Styles for when the navbar is affixed */

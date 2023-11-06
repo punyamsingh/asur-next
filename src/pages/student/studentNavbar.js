@@ -40,13 +40,11 @@ const Navbar = () => {
     // Update active tab based on current pathname
     useEffect(() => {
         const pathname = router.pathname;
-        if (pathname === '') {
+        if (pathname === '/student') {
             setActiveTab('dashboard');
-        } else if (pathname === '/') {
+        } else if (pathname === '/student/dashboard') {
             setActiveTab('dashboard');
-        } else if (pathname === '/dashboard') {
-            setActiveTab('dashboard');
-        } else if (pathname === '/profile') {
+        } else if (pathname === '/student/profile') {
             setActiveTab('profile');
         }
     },[router.pathname]);
