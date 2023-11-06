@@ -138,6 +138,8 @@
     color: #666;
 }
 
-.styling{
-    
+.sty{
+    width: 100%;
+    background-color: #fff;
+    border: 2px solid black;
 }

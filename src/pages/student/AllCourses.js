@@ -27,8 +27,15 @@ const AllCourses = ({ courseData }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {courseData?.map((course,index) => (
-                        <tr className={styles.styling} key={course.subject_id} onClick={() => openModal(course)}>
+                    {courseData?.length === 0 && (
+                        <tr>
+                            <td colSpan="6" className={styles.noCourse}>
+                                No courses found
+                            </td>
+                        </tr>
+                    )}
+                    {courseData.map((course,index) => (
+                         <tr key={course.subject_id} onClick={() => openModal(course)} className={styles.sty}>
                             <td>{index + 1}</td>
                             <td>{course.subject_id}</td>
                             <td>{course.subject_name}</td>
