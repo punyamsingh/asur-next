@@ -29,6 +29,7 @@ export default function Choice() {
             <div className={styles.heading}>
                 Attendance System Using Recognition
                 <h1> ASUR </h1>
+                
             </div>
 
             <div className={styles.cards_container}>

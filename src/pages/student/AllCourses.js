@@ -34,8 +34,8 @@ const AllCourses = ({ courseData }) => {
                             </td>
                         </tr>
                     )}
-                    {courseData.map((course,index) => (
-                         <tr key={course.subject_id} onClick={() => openModal(course)} className={styles.sty}>
+                    {courseData?.map((course,index) => (
+                        <tr key={course.subject_id} onClick={() => openModal(course)} className={styles.sty}>
                             <td>{index + 1}</td>
                             <td>{course.subject_id}</td>
                             <td>{course.subject_name}</td>

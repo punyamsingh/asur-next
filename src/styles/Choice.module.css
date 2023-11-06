@@ -56,7 +56,8 @@
     padding: 10px;
 }
 
-/* @media (min-width: 1024px) {
+/* 
+@media (min-width: 1024px) {
     .main_container {
         flex-direction: column;
     }
