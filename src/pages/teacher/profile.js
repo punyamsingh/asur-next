@@ -21,12 +21,17 @@ const Profile = () => {
                                 <div className={profile.image}>
                                     <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" className={profile.avatar} />
                                 </div>
+                                <h1 className={profile.name}>Snehasis Mukherjee</h1>
+
                             </div>
                             <div className={profile.right}>
                                 <div className={profile.info}>
-                                    <p> <span className={profile.credentials}>Teacher Name</span> Snehasis Mukherjee </p>
-                                    <p> <span className={profile.credentials}>Teacher ID</span> 2110110836 </p>
-                                    <p> <span className={profile.credentials}>Department</span> CSE   </p>
+                                <h4 className={profile.bi}>Basic Information</h4>
+
+                                    <p className={profile.white}> <span className={profile.credentials}>Teacher ID</span> 2110110836 </p>
+                                    <p className={profile.white}> <span className={profile.credentials}>Department</span> CSE   </p>
+                                    <p className={profile.white}> <span className={profile.credentials}>E-Mail</span> snehasis.mukherjee@snu.edu.in   </p>
+
                                 </div>
                             </div>
                         </div>
