@@ -1,4 +1,4 @@
-.navigation_area{
+.navigation_area {
     height: 10vh;
     display: flex;
     background-color: #262626;
@@ -7,50 +7,50 @@
     color: white;
 }
 
-.container{
+.container {
     height: 90vh;
     background-image: linear-gradient(to top, #070302, #902c2e);
-    
-   
+
+
     display: flex;
     justify-content: center;
-    
+
     overflow-y: scroll;
     color: white;
     font-family: sans-serif;
 
 }
 
-.container::-webkit-scrollbar{
+.container::-webkit-scrollbar {
     width: 12px;
 }
 
 
 
-.container::-webkit-scrollbar-thumb{
+.container::-webkit-scrollbar-thumb {
     background: rgb(255, 172, 72);
     border: 3px solid transparent;
     border-radius: 1rem;
     background-clip: content-box;
-  
+
 }
 
 
-.table{
+.table {
     border-collapse: separate;
     border-spacing: 15px;
     min-height: 60vh;
-background-color: #262626;
-width: 60%;
-height: fit-content;
-padding: 15px;
-margin: 25px 0px;
-border-radius: 50px;
-font-size: 1.2rem;
-border: 2px solid white;
+    background-color: #262626;
+    width: 60%;
+    height: fit-content;
+    padding: 15px;
+    margin: 25px 0px;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    border: 2px solid white;
 }
 
-.button{
+.button {
     width: 80px;
     padding: 5px;
     border-radius: 10px;
@@ -58,39 +58,45 @@ border: 2px solid white;
     /* background-color: rgb(244, 159, 55); */
 
     color: black;
-    
+
 }
 
-.button:hover{
+.button:hover {
     background-color: green;
     cursor: pointer;
     border: 2px solid rgb(201, 201, 201);
     color: white;
     /* border: 2px solid black; */
     letter-spacing: 0.5px;
-    
+
 }
 
-#button{
+#button {
     justify-content: center;
     align-items: center;
     display: flex;
     box-sizing: border-box;
-    
+
     /* background-color: #902c2e; */
 }
 
-#sno{
+#sno {
     text-align: center;
     width: 20%;
 }
 
-#subName{
+#subName {
     padding-left: 90px;
-    
-     text-align: start;
+
+    text-align: start;
     /* background-color: #902c2e; */
     width: 45%;
-   
+
 }
 
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}

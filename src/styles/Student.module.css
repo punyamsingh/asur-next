@@ -225,3 +225,11 @@
     border: 2px solid black;
 }
 
+.loader {
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+    height: 100vh;
+
+}
+

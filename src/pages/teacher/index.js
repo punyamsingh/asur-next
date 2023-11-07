@@ -2,7 +2,7 @@ import React,{ useState,useEffect } from 'react';
 import styles from '@/styles/Teacher.module.css';
 import Dashboard from './dashboard';
 
-const Teacher = ({ apiData }) => {
+const Teacher = () => {
   return (
     <div>
       <Dashboard />

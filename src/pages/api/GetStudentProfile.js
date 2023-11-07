@@ -2,13 +2,13 @@
 
 import connection from './db.js';
 
-export default async function(req, res) {
+export default async function (req,res) {
   try {
-   
+
     if (req.method === 'GET') {
-        const { rollNo } = req.query;
-      const results = await new Promise((resolve, reject) => {
-        connection.query(`select * from student where roll_no=${rollNo}`, (error, results) => {
+      const { rollNo } = req.query;
+      const results = await new Promise((resolve,reject) => {
+        connection.query(`select * from student where roll_no=${rollNo}`,(error,results) => {
           if (error) {
             reject(error);
           } else {
@@ -16,7 +16,7 @@ export default async function(req, res) {
           }
         });
       });
-      
+
       res.status(200).json(results);
     } else {
       res.status(405).json({ error: 'Method not allowed' });

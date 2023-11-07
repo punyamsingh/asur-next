@@ -1,19 +1,21 @@
 import useSWR from 'swr';
-import { useState, useEffect } from 'react';
+import { useState,useEffect } from 'react';
 import Navbar from "./studentNavbar";
 import styles from "@/styles/Student.module.css";
 import AllCourses from "@/pages/student/AllCourses";
 import { useUser } from '@/contexts/UserContext';
+import { HashLoader } from 'react-spinners';
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const Dashboard = () => {
-    const { userType, user } = useUser();
-    const [rollNumber, setRollNumber] = useState(null); // State to store roll number
-    const [courseData, setCourseData] = useState([]);
+    const { userType,user } = useUser();
+    const [rollNumber,setRollNumber] = useState(null); // State to store roll number
+    const [courseData,setCourseData] = useState([]);
+    const [loading,setLoading] = useState(true);
 
     // Fetch the student's roll number outside of useEffect
-    const { data: rollNumberData, error: rollNumberError } = useSWR(
+    const { data: rollNumberData,error: rollNumberError } = useSWR(
         user ? `/api/GetRollNumFromEmail?email="${user.email}"` : null,
         fetcher
     );
@@ -24,10 +26,10 @@ const Dashboard = () => {
             console.log(rollNumberData[0]?.roll_no);
             setRollNumber(rollNumberData[0]?.roll_no);
         }
-    }, [rollNumberData]);
+    },[rollNumberData]);
 
     // Use rollNumber as a dependency for fetching the student data
-    const { data: apiData, error: apiError } = useSWR(
+    const { data: apiData,error: apiError } = useSWR(
         rollNumber ? `/api/GetStudentViewWeb?rollNo=${rollNumber}` : null,
         fetcher
     );
@@ -37,11 +39,13 @@ const Dashboard = () => {
             // Check if apiData is available
             console.log(apiData);
             setCourseData(apiData);
+            // Set loading to false when data is successfully fetched
+            setLoading(false);
         }
-    }, [apiData]);
+    },[apiData]);
 
     if (apiError) {
-        console.error('Error:', apiError);
+        console.error('Error:',apiError);
         return (
             <div>
                 <p>Error fetching data.</p>
@@ -55,8 +59,10 @@ const Dashboard = () => {
                 <Navbar />
             </div>
 
-            {courseData.length === 0 ? (
-                <p>Loading...</p>
+            {loading ? (
+                <div className={styles.loader}>
+                    <HashLoader color="red" loading={true} size={50} />
+                </div>
             ) : (
                 <AllCourses courseData={courseData} />
             )}

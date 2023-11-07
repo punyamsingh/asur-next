@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useUser } from '../contexts/UserContext';
+import { useUser } from '@/contexts/UserContext';
 
 import Student from './student/index';
 import Teacher from './teacher/index';
@@ -21,18 +21,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <h1>ASUR</h1> */}
-
       <Choice />
-
-      {/* {userType ? ( // Check if userType is not null
-        <div>
-          {console.log(userType)}
-          {userType === 'student' ? <Student /> : <Teacher />}
-        </div>
-      ) : (
-        <Choice />
-      )} */}
     </div>
   );
 }
