@@ -1,7 +1,9 @@
 import connection from './db.js';
+import middleware from '@/cors.js';
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
+    await middleware(req, res);
     try {
         const {course_id}=req.body
 

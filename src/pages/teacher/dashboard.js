@@ -5,7 +5,6 @@ import { useState,useEffect } from "react";
 import { HashLoader } from 'react-spinners';
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
-
 const Dashboard = () => {
     const { data: apiData,error } = useSWR("/api/GetCourseList",fetcher);
     const [liveCourses,setLiveCourses] = useState(new Set());
