@@ -7,7 +7,7 @@ import profile from '@/styles/Profile.module.css';
 
 const Profile = () => {
     const { userType } = useUser();
-    console.log(userType);
+    // console.log(userType);
     return (
         <div>
             {userType ? ( // Check if userType is not null

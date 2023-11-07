@@ -61,9 +61,9 @@ export default async function handler(req, res) {
           return enrollPromise;
         })
         .then((id) => {
-            console.log("mummy")
-            console.log(id)
-            console.log("mummy")
+            // console.log("mummy")
+            // console.log(id)
+            // console.log("mummy")
           const insertAttendanceQuery = `
             INSERT INTO attendance_details (Roll_No, Subject_ID, Date_Marked, PorA, Percentage)
             SELECT st.Roll_No, sub.Subject_ID, '1000-01-01', 'P', 0

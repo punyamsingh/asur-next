@@ -23,7 +23,7 @@ const Dashboard = () => {
     // Inside a useEffect, set the roll number if it's available
     useEffect(() => {
         if (rollNumberData) {
-            console.log(rollNumberData[0]?.roll_no);
+            // console.log(rollNumberData[0]?.roll_no);
             setRollNumber(rollNumberData[0]?.roll_no);
         }
     },[rollNumberData]);
@@ -37,7 +37,7 @@ const Dashboard = () => {
     useEffect(() => {
         if (apiData) {
             // Check if apiData is available
-            console.log(apiData);
+            // console.log(apiData);
             setCourseData(apiData);
             // Set loading to false when data is successfully fetched
             setLoading(false);

@@ -90,7 +90,7 @@ async function createUserInFirebase(email, password, FirstName, LastName) {
         displayName: `${FirstName} ${LastName}`,
       });
   
-      console.log('User created:', user.uid);
+      // console.log('User created:', user.uid);
     } catch (error) {
       console.error('Error creating user:', error);
       throw error; // Rethrow the error to be handled in your endpoint code

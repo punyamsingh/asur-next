@@ -72,7 +72,7 @@ const Login = ({ setShowLogin }) => {
                 }
 
                 console.log('Successful login');
-                console.log(userType);
+                // console.log(userType);
                 login(email,userType);
                 router.push(`/${userType}`);
                 setShowLogin(false); // Close the modal
