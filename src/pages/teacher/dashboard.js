@@ -5,6 +5,7 @@ import { useState,useEffect } from "react";
 import { HashLoader } from 'react-spinners';
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
+
 const Dashboard = () => {
   const { data: apiData,error } = useSWR("/api/GetCourseList",fetcher);
   const [liveCourses,setLiveCourses] = useState(new Set());
@@ -41,7 +42,12 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (apiData) {
-      setCourseData(apiData);
+      // Update the courseData state with the live status
+      const updatedCourseData = apiData.map((course) => ({
+        ...course,
+        liveStatus: course.LIVE === "NL" ? "Initiate" : "End Class",
+      }));
+      setCourseData(updatedCourseData);
       // Set loading to false when data is successfully fetched
       setLoading(false);
     }
@@ -96,10 +102,7 @@ const Dashboard = () => {
                       className={styles.button}
                       onClick={() => handleInitiateClick(course.Subject_ID)}
                     >
-                      {/* {liveCourses.has(course.Subject_ID)
-                        ? "End Class"
-                        : "Initiate"} */}
-                      {course.LIVE === "NL" ? "Initiate" : "End Class"}
+                      {course.liveStatus}
                     </button>
                   </td>
                 </tr>
