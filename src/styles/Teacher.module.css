@@ -80,6 +80,38 @@
     /* background-color: #902c2e; */
 }
 
+/* Active Button Styles */
+.activeButton {
+    width: 80px;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: green;
+    color: white;
+}
+
+.activeButton:hover {
+    background-color: #902c2e;
+    cursor: pointer;
+    border: 2px solid rgb(201, 201, 201);
+    letter-spacing: 0.5px;
+}
+
+/* Non-active Button Styles */
+.nonActiveButton {
+    width: 80px;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: #902c2e;
+    color: white;
+}
+
+.nonActiveButton:hover {
+    background-color: green;
+    cursor: pointer;
+    border: 2px solid rgb(201, 201, 201);
+    letter-spacing: 0.5px;
+}
+
 #sno {
     text-align: center;
     width: 20%;
