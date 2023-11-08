@@ -82,7 +82,7 @@
 
 /* Active Button Styles */
 .activeButton {
-    width: 80px;
+    width: 10rem;
     padding: 8px;
     border-radius: 10px;
     background-color: green;
@@ -98,7 +98,7 @@
 
 /* Non-active Button Styles */
 .nonActiveButton {
-    width: 80px;
+    width: 10rem;
     padding: 8px;
     border-radius: 10px;
     background-color: #902c2e;

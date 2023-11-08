@@ -54,7 +54,7 @@ const Dashboard = () => {
   useEffect(() => {
     if (apiData) {
       // Update the courseData state with the live status
-      const updatedCourseData = apiData.map((course) => ({
+      const updatedCourseData = apiData?.map((course) => ({
         ...course,
         liveStatus: course.LIVE === "NL" ? "Initiate" : "End Class",
       }));
@@ -110,7 +110,7 @@ const Dashboard = () => {
                     </td>
                     <td id={styles.button}>
                       <button
-                        className={`${course.LIVE === "NL"
+                        className={`${course.liveStatus === "Initiate"
                             ? styles.nonActiveButton
                             : styles.activeButton
                           }`}
