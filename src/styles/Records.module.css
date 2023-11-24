@@ -1,9 +1,21 @@
 .navigation_bar {
-    /* CSS properties for the navigation bar */
+    height: 12vh;
+    background-color: #171717;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
 }
 
 .container {
-    /* CSS properties for the main container */
+    height: 88vh;
+        background-image: linear-gradient(to bottom, #070302, #902c2e);
+    
+    
+        display: flex;
+        justify-content: center;
+        padding: 50px;
+        background-image: linear-gradient(to top, #070302, #902c2e);
 }
 
 .input {

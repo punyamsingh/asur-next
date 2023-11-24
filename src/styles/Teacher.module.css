@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 /*Button Font*/
 
 .navigation_area {
@@ -8,37 +8,28 @@
     align-items: center;
     justify-content: center;
     color: white;
-    border-bottom: 2px solid wheat;
 }
 
 .container {
     height: 88vh;
     background-image: linear-gradient(to top, #070302, #902c2e);
-
-
     display: flex;
     justify-content: center;
-
     overflow-y: scroll;
     color: white;
     font-family: sans-serif;
-
 }
 
 .container::-webkit-scrollbar {
     width: 12px;
 }
 
-
-
 .container::-webkit-scrollbar-thumb {
     background: rgb(255, 172, 72);
     border: 3px solid transparent;
     border-radius: 1rem;
     background-clip: content-box;
-
 }
-
 
 .table {
     border-collapse: separate;
@@ -61,7 +52,6 @@
     background-color: rgb(255, 255, 255);
     /* background-color: rgb(244, 159, 55); */
     color: black;
-
 }
 
 .button:hover {
@@ -71,7 +61,6 @@
     color: white;
     /* border: 2px solid black; */
     letter-spacing: 0.5px;
-
 }
 
 #button {
@@ -105,7 +94,7 @@
     border-radius: 10px;
     background-color: #902c2e;
     color: white;
-    font-family: 'Quantico', sans-serif;
+    font-family: "Quantico", sans-serif;
 }
 
 .nonActiveButton:hover {
@@ -126,7 +115,6 @@
     text-align: start;
     /* background-color: #902c2e; */
     width: 45%;
-
 }
 
 .loader {

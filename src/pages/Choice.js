@@ -6,7 +6,7 @@ import Head from "next/head";
 
 export default function Choice() {
   const { setRole } = useUser();
-  const [showLogin, setShowLogin] = useState(false);
+  const [showLogin,setShowLogin] = useState(false);
 
   const handleShowLogin = (value) => {
     setRole(value);
@@ -25,16 +25,6 @@ export default function Choice() {
     <>
 
       <div className={styles.main_container}>
-        <Head>
-          <meta charSet="UTF-8" />
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-          <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css' />
-
-          <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Orbitron&display=swap" rel="stylesheet" />
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-        </Head>
-
         {showLogin && (
           <div className={styles.modal}>
             <div className={styles.modal_content}>
@@ -85,7 +75,7 @@ export default function Choice() {
         <div className={styles.cards_container}>
           <div className={styles.card} onClick={() => handleShowLogin("student")}>
             <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1xfWdYfEPJTuwGxVwiTwI7WxI8c92mwmoOVQAowYoC1ByPUUiyCxOgscNPz73rwMcOro&usqp=CAU"
+              src="https://cdn-icons-png.flaticon.com/512/1509/1509606.png"
               alt="Student Avatar"
               className={styles.card_image}
             />
@@ -94,7 +84,7 @@ export default function Choice() {
 
           <div className={styles.card} onClick={() => handleShowLogin("teacher")}>
             <img
-              src="https://www.w3schools.com/howto/img_avatar.png"
+              src="https://cdn-icons-png.flaticon.com/512/776/776251.png"
               alt="Teacher Avatar"
               className={styles.card_image}
             />
