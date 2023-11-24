@@ -233,3 +233,35 @@
 
 }
 
+
+/* rahul */
+.attendanceTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.attendanceTable th, .attendanceTable td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.attendanceTable th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+    .attendanceTable {
+        overflow-x: auto;
+        display: block;
+    }
+
+    .attendanceTable th, .attendanceTable td {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+}
