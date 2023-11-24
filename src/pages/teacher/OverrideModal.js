@@ -33,7 +33,7 @@ const OverrideModal = ({ closeModal,data }) => {
                             </div>
                             <div className={styles.attDetailsItems}>
                                 <p>Course ID:</p>
-                                <p>{data.Subject_ID}</p>
+                                <p>{data?.Subject_ID}</p>
                             </div>
                             <div className={styles.attDetailsItems}>
                                 <label>
