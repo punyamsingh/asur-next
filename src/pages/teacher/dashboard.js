@@ -12,15 +12,53 @@ const Dashboard = () => {
   const [courseData, setCourseData] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // const handleInitiateClick = async (course_id) => {
+  //   try {
+  //     // Find the course to update its loading state
+  //     const courseToUpdate = courseData.find((course) => course.Subject_ID === course_id);
+  //     if (courseToUpdate) {
+  //       courseToUpdate.loading = true;
+  //       setCourseData([...courseData]);
+  //     }
+
+  //     const response = await fetch("http://localhost:3000/api/toggleLive", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({ course_id }),
+  //     });
+
+  //     if (response.ok) {
+  //       if (liveCourses.has(course_id)) {
+  //         liveCourses.delete(course_id);
+  //       } else {
+  //         liveCourses.add(course_id);
+  //       }
+  //       setLiveCourses(new Set(liveCourses));
+
+  //       // Find the course to update its loading state
+  //       if (courseToUpdate) {
+  //         courseToUpdate.loading = false;
+  //         courseToUpdate.liveStatus = course.liveStatus === "NL" ? "Initiate" : "End Class";
+  //         setCourseData([...courseData]);
+  //       }
+  //     } else {
+  //       console.error("Error:", response.statusText);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error:", error);
+  //   }
+  // };
+
   const handleInitiateClick = async (course_id) => {
     try {
-      // Find the course to update its loading state
       const courseToUpdate = courseData.find((course) => course.Subject_ID === course_id);
       if (courseToUpdate) {
         courseToUpdate.loading = true;
         setCourseData([...courseData]);
       }
-
+  
       const response = await fetch("https://asur-ams.vercel.app/api/toggleLive", {
         method: "POST",
         headers: {
@@ -28,7 +66,7 @@ const Dashboard = () => {
         },
         body: JSON.stringify({ course_id }),
       });
-
+  
       if (response.ok) {
         if (liveCourses.has(course_id)) {
           liveCourses.delete(course_id);
@@ -36,13 +74,20 @@ const Dashboard = () => {
           liveCourses.add(course_id);
         }
         setLiveCourses(new Set(liveCourses));
-
+  
         // Find the course to update its loading state
-        if (courseToUpdate) {
-          courseToUpdate.loading = false;
-          courseToUpdate.liveStatus = course.LIVE === "NL" ? "Initiate" : "End Class";
-          setCourseData([...courseData]);
-        }
+        const updatedCourseData = courseData.map((c) => {
+          if (c.Subject_ID === course_id) {
+            return {
+              ...c,
+              loading: false,
+              liveStatus: c.liveStatus === "Initiate" ? "End Class" : "Initiate",
+            };
+          }
+          return c;
+        });
+  
+        setCourseData(updatedCourseData);
       } else {
         console.error("Error:", response.statusText);
       }
@@ -59,6 +104,7 @@ const Dashboard = () => {
         liveStatus: course.LIVE === "NL" ? "Initiate" : "End Class",
       }));
       setCourseData(updatedCourseData);
+      console.log(updatedCourseData)
       // Set loading to false when data is successfully fetched
       setLoading(false);
     }
@@ -88,7 +134,7 @@ const Dashboard = () => {
             <thead>
               <tr>
                 <th id={styles.sno} className={styles.th}>
-                  S.No
+                  Course ID
                 </th>
                 <th id={styles.course_name} className={styles.th}>
                   Course Name
@@ -104,7 +150,7 @@ const Dashboard = () => {
             <tbody>
               {courseData.length>0 && courseData?.map((course, index) => (
                 <tr key={index}>
-                  <td id={styles.sno}>{index + 1}</td>
+                  <td id={styles.sno}>{course.Subject_ID}</td>
                   <td id={styles.subName}>
                     {course.Subject_Name} <br />
                   </td>
