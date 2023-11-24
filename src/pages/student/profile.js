@@ -9,7 +9,7 @@ import profile from '@/styles/Profile.module.css';
 import { HashLoader } from 'react-spinners';
 import styles from "@/styles/Student.module.css";
 const fetcher = (url) => fetch(url).then((res) => res.json());
-import styles from '@/styles/Profile.module.css';
+// import styles from '@/styles/Profile.module.css';
 
 const Profile = () => {
     const { userType,user} = useUser();
