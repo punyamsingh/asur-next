@@ -1,10 +1,11 @@
 .navigation_bar{
     height: 12vh;
-    background-color: #262626;
+    background-color: #171717;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
+    border-bottom: 2px solid wheat;
 }
 
 
@@ -42,7 +43,8 @@
     justify-content: center;
     align-items: center;
     box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
-    box-shadow: rgba(255, 255, 255, 0.56) 0px 10px 70px 4px;
+    /* box-shadow: rgba(255, 255, 255, 0.56) 0px 10px 70px 4px; */
+    box-shadow: rgb(105, 100, 89) 0px 10px 70px 4px;
 
 
 }

@@ -1,16 +1,16 @@
 import useSWR from "swr";
 import Navbar from "./teacherNavbar";
 import styles from "@/styles/Teacher.module.css";
-import { useState,useEffect } from "react";
-import { HashLoader,BeatLoader } from 'react-spinners';
+import { useState, useEffect } from "react";
+import { HashLoader, BeatLoader } from 'react-spinners';
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const Dashboard = () => {
-  const { data: apiData,error } = useSWR("/api/GetCourseList",fetcher);
-  const [liveCourses,setLiveCourses] = useState(new Set());
-  const [courseData,setCourseData] = useState([]);
-  const [loading,setLoading] = useState(true);
+  const { data: apiData, error } = useSWR("/api/GetCourseList", fetcher);
+  const [liveCourses, setLiveCourses] = useState(new Set());
+  const [courseData, setCourseData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const handleInitiateClick = async (course_id) => {
     try {
@@ -21,7 +21,7 @@ const Dashboard = () => {
         setCourseData([...courseData]);
       }
 
-      const response = await fetch("https://asur-ams.vercel.app/api/toggleLive",{
+      const response = await fetch("https://asur-ams.vercel.app/api/toggleLive", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -44,10 +44,10 @@ const Dashboard = () => {
           setCourseData([...courseData]);
         }
       } else {
-        console.error("Error:",response.statusText);
+        console.error("Error:", response.statusText);
       }
     } catch (error) {
-      console.error("Error:",error);
+      console.error("Error:", error);
     }
   };
 
@@ -62,7 +62,7 @@ const Dashboard = () => {
       // Set loading to false when data is successfully fetched
       setLoading(false);
     }
-  },[apiData]);
+  }, [apiData]);
 
   if (error) {
     return (
@@ -102,29 +102,29 @@ const Dashboard = () => {
             </thead>
 
             <tbody>
-                {courseData?.map((course,index) => (
-                  <tr key={index}>
-                    <td id={styles.sno}>{index + 1}</td>
-                    <td id={styles.subName}>
-                      {course.Subject_Name} <br />
-                    </td>
-                    <td id={styles.button}>
-                      <button
-                        className={`${course.liveStatus === "Initiate"
-                            ? styles.nonActiveButton
-                            : styles.activeButton
-                          }`}
-                        onClick={() => handleInitiateClick(course.Subject_ID)}
-                      >
-                        {course.loading ? (
-                          <BeatLoader color="red" loading={true}/>
-                        ) : (
-                          course.liveStatus
-                        )}
-                      </button>
-                    </td>
-                  </tr>
-                ))}
+              {courseData?.map((course, index) => (
+                <tr key={index}>
+                  <td id={styles.sno}>{index + 1}</td>
+                  <td id={styles.subName}>
+                    {course.Subject_Name} <br />
+                  </td>
+                  <td id={styles.button}>
+                    <button
+                      className={`${course.liveStatus === "Initiate"
+                        ? styles.nonActiveButton
+                        : styles.activeButton
+                        }`}
+                      onClick={() => handleInitiateClick(course.Subject_ID)}
+                    >
+                      {course.loading ? (
+                        <BeatLoader color="red" loading={true} />
+                      ) : (
+                        course.liveStatus
+                      )}
+                    </button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
