@@ -56,7 +56,8 @@ const AttendanceModal = ({ course, onClose }) => {
                     </button>
                 </div>
                 <div className={styles.modalContent}>
-                    <h3>{course?.subject_id}</h3>
+                    <h3><strong>Course ID:</strong> {course?.subject_id}</h3>
+                    <h3><strong>Classroom:</strong> {course?.classroom_id}</h3>
                     {/* <p><strong>Instructor:</strong> {course?.instructor}</p>
                     <p><strong>Attendance Location:</strong> {course?.attendance}</p> */}
                     {/* Display attendance records in a table */}
@@ -69,7 +70,7 @@ const AttendanceModal = ({ course, onClose }) => {
                                     {/* <th>Roll No</th>
                                     <th>Subject ID</th> */}
                                     <th>Date Marked</th>
-                                    <th>Time Marked</th>
+                                    {/* <th>Time Marked</th> */}
                                     <th>Attendance Status</th>
                                 </tr>
                             </thead>
@@ -87,11 +88,11 @@ const AttendanceModal = ({ course, onClose }) => {
                                         {record.Date_marked.split('T')[0]==="0999-12-31" || record.Date_marked.split('T')[0]==="1000-01-01" ?(
                                             <>
                                         <td>Default</td>
-                                        <td>Default</td>
+                                        {/* <td>Default</td> */}
                                         </>):(
                                             <>
                                         <td>{record.Date_marked.split('T')[0]}</td>
-                                        <td>{record.Date_marked.split('T')[1]}</td>
+                                        {/* <td>{record.Date_marked.split('T')[1]}</td> */}
                                         </>)}
                                         {/* <td>{record.Date_marked}</td> */}
                                         <td>{record.PorA}</td>
