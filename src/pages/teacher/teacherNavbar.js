@@ -46,6 +46,8 @@ const Navbar = () => {
       setActiveTab("dashboard");
     } else if (pathname === "/teacher/profile") {
       setActiveTab("profile");
+    } else if (pathname === "/teacher/records") {
+      setActiveTab("records");
     }
   }, [router.pathname]);
 
@@ -76,6 +78,12 @@ const Navbar = () => {
               onClick={() => handleTabClick("profile")}
             >
               <Link href="/teacher/profile">Profile</Link>
+            </li>
+            <li
+              className={activeTab === "records" ? styles.active : ""}
+              onClick={() => handleTabClick("records")}
+            >
+              <Link href="/teacher/records">Records</Link>
             </li>
             <li onClick={() => handleTabClick("logout")}>
               <Link href="/">
