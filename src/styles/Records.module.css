@@ -35,7 +35,8 @@
     font-size: 16px;
 }
 
-.goButton,.clearButton {
+.goButton,
+.clearButton {
     padding: 10px 20px;
     background-color: #902c2e;
     color: #fff;
@@ -46,6 +47,7 @@
     margin-left: 10px;
     transition: background-color 0.3s;
 }
+
 .goButton:hover,
 .clearButton:hover {
     background-color: #0056b3;
@@ -118,7 +120,8 @@
     padding: 20px;
     border-radius: 8px;
     width: 60%;
-    max-width: 400px; /* Set a maximum width as needed */
+    max-width: 400px;
+    /* Set a maximum width as needed */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     display: flex;
 }
@@ -225,7 +228,7 @@
 }
 
 
-.closeButton{
+.closeButton {
     position: relative;
     margin-left: auto;
     z-index: 1000;
@@ -236,14 +239,14 @@
     cursor: pointer;
 }
 
-.attDetails{
+.attDetails {
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin: 0 1rem;
 }
 
-.attDetailsItems{
+.attDetailsItems {
     display: flex;
     justify-content: space-between;
     margin: 0.5rem 0;
@@ -270,4 +273,44 @@
     outline: none;
     border-color: #007bff;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.7);
+}
+
+.present {
+    /* background-color: #28a745; */
+    color: #28a745;
+    border: 2px solid #28a745;
+    background-color: #171717;
+}
+
+.present,
+.absent {
+    /* box-shadow: rgba(255, 255, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset; */
+    width: 5rem;
+    border-radius: 2rem;
+    text-align: center;
+    /* height: 1.4rem; */
+    font-weight: 700;
+    padding: 0.2rem;
+}
+
+.present:hover {
+    /* background-color: #218838; */
+}
+
+.absent {
+    /* background-color: #dc3545; */
+    /* color: white; */
+    color: #dc3545;
+    border: 2px solid#dc3545;
+    background-color: #171717;
+}
+
+.absent:hover {
+    /* background-color: #c82333; */
+}
+
+.courseID, .dateMarked, .presence{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

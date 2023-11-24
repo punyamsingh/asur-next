@@ -1,21 +1,23 @@
-// OverrideModal.js
 import React,{ useState } from 'react';
 import styles from '@/styles/Records.module.css';
-import { format } from 'date-fns'; // Import the format function from date-fns
-
+import { format } from 'date-fns';
+import LoadingBar from 'react-top-loading-bar'; // Import the LoadingBar component
 
 const OverrideModal = ({ closeModal,data }) => {
     const [selectedStatus,setSelectedStatus] = useState(data?.PorA);
+    const [progress,setProgress] = useState(0); // State to manage loading bar progress
 
     const handleSave = async () => {
         try {
+            setProgress(30); // Set initial progress
+
             const values = {
                 stud_id: data?.Roll_No.toString(),
                 course_id: data?.Subject_ID.toString(),
                 date: formatDate(data?.Date_marked).toString(),
                 attendance_status: selectedStatus.toString(),
             };
-            console.log(values);
+
             const response = await fetch('/api/MarkAttendance',{
                 method: 'POST',
                 headers: {
@@ -23,6 +25,8 @@ const OverrideModal = ({ closeModal,data }) => {
                 },
                 body: JSON.stringify(values),
             });
+
+            setProgress(60); // Set progress after fetching data
 
             if (response.ok) {
                 // Perform any other operations if needed
@@ -37,6 +41,8 @@ const OverrideModal = ({ closeModal,data }) => {
         } catch (error) {
             console.error('Error marking attendance:',error);
             // Handle error, e.g., show an error message to the user
+        } finally {
+            setProgress(100); // Set progress to 100 after the operation is complete
         }
     };
 
@@ -50,10 +56,9 @@ const OverrideModal = ({ closeModal,data }) => {
         }
     };
 
-
     return (
         <div className={styles.modalBackground}>
-            {console.log(data)}
+            <LoadingBar color="#ffffff" height={5} progress={progress} onLoaderFinished={() => setProgress(0)} />
             <div className={styles.overlay}>
                 <div className={styles.modal}>
                     <div className={styles.modalContent}>

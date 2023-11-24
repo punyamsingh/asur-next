@@ -96,11 +96,8 @@ const Records = () => {
                                     onClick={() => openModal(record)}
                                 >
                                     <div className={styles.courseID}>{record.Subject_ID}</div>
-                                    <div className={styles.dateMarked}>
-                                        {formatDate(record.Date_marked)}
-                                        {/* {record.Date_marked} */}
-                                    </div>
-                                    <div className={styles.presence}>
+                                    <div className={styles.dateMarked}>{formatDate(record.Date_marked)}</div>
+                                    <div className={`${styles.presence} ${record.PorA === 'P' ? styles.present : styles.absent}`}>
                                         {record.PorA === 'P' ? 'Present' : 'Absent'}
                                     </div>
                                 </div>
