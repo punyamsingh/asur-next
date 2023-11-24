@@ -53,10 +53,13 @@ const Records = () => {
     };
 
     const formatDate = (date) => {
-        const formattedDate = format(new Date(date),'yyyy-MM-dd');
-        return formattedDate;
-        // const options = { year: 'numeric',month: '2-digit',day: '2-digit' };
-        // return new Date(isoDate).toLocaleDateString('en-US',options);
+        try {
+            const formattedDate = format(new Date(date),'yyyy-MM-dd');
+            return formattedDate;
+        } catch (error) {
+            console.error('Error formatting date:',error);
+            return 'Invalid Date';
+        }
     };
 
     return (

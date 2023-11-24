@@ -9,7 +9,6 @@ const OverrideModal = ({ closeModal,data }) => {
 
     const handleSave = async () => {
         try {
-            const isoDate = new Date(data?.Date_marked).toISOString();
             const values = {
                 stud_id: data?.Roll_No.toString(),
                 course_id: data?.Subject_ID.toString(),
@@ -42,9 +41,15 @@ const OverrideModal = ({ closeModal,data }) => {
     };
 
     const formatDate = (date) => {
-        const formattedDate = format(new Date(date),'yyyy-MM-dd');
-        return formattedDate;
+        try {
+            const formattedDate = format(new Date(date),'yyyy-MM-dd');
+            return formattedDate;
+        } catch (error) {
+            console.error('Error formatting date:',error);
+            return 'Invalid Date';
+        }
     };
+
 
     return (
         <div className={styles.modalBackground}>
