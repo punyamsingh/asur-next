@@ -52,7 +52,7 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    if (apiData) {
+    if (apiData && apiData.length > 0) {
       // Update the courseData state with the live status
       const updatedCourseData = apiData?.map((course) => ({
         ...course,
@@ -102,7 +102,7 @@ const Dashboard = () => {
             </thead>
 
             <tbody>
-              {courseData?.map((course, index) => (
+              {courseData.length>0 && courseData?.map((course, index) => (
                 <tr key={index}>
                   <td id={styles.sno}>{index + 1}</td>
                   <td id={styles.subName}>
