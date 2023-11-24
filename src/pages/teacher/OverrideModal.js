@@ -1,25 +1,57 @@
 // OverrideModal.js
 import React,{ useState } from 'react';
 import styles from '@/styles/Records.module.css';
+import { format } from 'date-fns'; // Import the format function from date-fns
+
 
 const OverrideModal = ({ closeModal,data }) => {
     const [selectedStatus,setSelectedStatus] = useState(data?.PorA);
 
-    const handleSave = () => {
-        // Perform save operation with selectedStatus
-        // ...
+    const handleSave = async () => {
+        try {
+            const isoDate = new Date(data?.Date_marked).toISOString();
+            const values = {
+                stud_id: data?.Roll_No.toString(),
+                course_id: data?.Subject_ID.toString(),
+                date: formatDate(data?.Date_marked).toString(),
+                attendance_status: selectedStatus.toString(),
+            };
+            console.log(values);
+            const response = await fetch('/api/MarkAttendance',{
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(values),
+            });
 
-        // Close the modal
-        closeModal();
+            if (response.ok) {
+                // Perform any other operations if needed
+                // ...
+
+                // Close the modal
+                closeModal();
+            } else {
+                console.error('Error marking attendance:',response.statusText);
+                // Handle error, e.g., show an error message to the user
+            }
+        } catch (error) {
+            console.error('Error marking attendance:',error);
+            // Handle error, e.g., show an error message to the user
+        }
+    };
+
+    const formatDate = (date) => {
+        const formattedDate = format(new Date(date),'yyyy-MM-dd');
+        return formattedDate;
     };
 
     return (
         <div className={styles.modalBackground}>
+            {console.log(data)}
             <div className={styles.overlay}>
-                {/* <div className={styles.overlay} onClick={closeModal}></div> */}
                 <div className={styles.modal}>
                     <div className={styles.modalContent}>
-
                         <button className={styles.closeButton} onClick={closeModal}>
                             &times;
                         </button>
@@ -29,7 +61,7 @@ const OverrideModal = ({ closeModal,data }) => {
                         <div className={styles.attDetails}>
                             <div className={styles.attDetailsItems}>
                                 <p>Date:</p>
-                                <p>{new Date(data?.Date_marked).toLocaleDateString()}</p>
+                                <p>{formatDate(data?.Date_marked)}</p>
                             </div>
                             <div className={styles.attDetailsItems}>
                                 <p>Course ID:</p>

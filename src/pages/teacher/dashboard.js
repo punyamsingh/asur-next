@@ -12,45 +12,6 @@ const Dashboard = () => {
   const [courseData, setCourseData] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // const handleInitiateClick = async (course_id) => {
-  //   try {
-  //     // Find the course to update its loading state
-  //     const courseToUpdate = courseData.find((course) => course.Subject_ID === course_id);
-  //     if (courseToUpdate) {
-  //       courseToUpdate.loading = true;
-  //       setCourseData([...courseData]);
-  //     }
-
-  //     const response = await fetch("http://localhost:3000/api/toggleLive", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({ course_id }),
-  //     });
-
-  //     if (response.ok) {
-  //       if (liveCourses.has(course_id)) {
-  //         liveCourses.delete(course_id);
-  //       } else {
-  //         liveCourses.add(course_id);
-  //       }
-  //       setLiveCourses(new Set(liveCourses));
-
-  //       // Find the course to update its loading state
-  //       if (courseToUpdate) {
-  //         courseToUpdate.loading = false;
-  //         courseToUpdate.liveStatus = course.liveStatus === "NL" ? "Initiate" : "End Class";
-  //         setCourseData([...courseData]);
-  //       }
-  //     } else {
-  //       console.error("Error:", response.statusText);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error:", error);
-  //   }
-  // };
-
   const handleInitiateClick = async (course_id) => {
     try {
       const courseToUpdate = courseData.find((course) => course.Subject_ID === course_id);

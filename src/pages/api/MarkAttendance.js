@@ -10,7 +10,7 @@ export default async function handler(req, res) {
       insert into attendance_details values(${stud_id},"${course_id}","${date}","${attendance_status}",0)
     on duplicate key update PorA="${attendance_status}"
       `;
-
+      
       const results = await new Promise((resolve, reject) => {
         connection.query(query, [stud_id, course_id, date, attendance_status, attendance_status], (error, results) => {
           if (error) {
