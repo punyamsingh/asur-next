@@ -29,7 +29,7 @@ const OverrideModal = ({ closeModal,data }) => {
                         <div className={styles.attDetails}>
                             <div className={styles.attDetailsItems}>
                                 <p>Date:</p>
-                                <p>{new Date(data.Date_marked).toLocaleDateString()}</p>
+                                <p>{new Date(data?.Date_marked).toLocaleDateString()}</p>
                             </div>
                             <div className={styles.attDetailsItems}>
                                 <p>Course ID:</p>
