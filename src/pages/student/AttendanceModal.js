@@ -84,7 +84,7 @@ const AttendanceModal = ({ course, onClose }) => {
                                         </li> */}
                                         {/* <td>{record.Roll_No}</td>
                                         <td>{record.Subject_ID}</td> */}
-                                        {record.Date_marked.split('T')[0]==="0999-12-31"?(
+                                        {record.Date_marked.split('T')[0]==="0999-12-31" || record.Date_marked.split('T')[0]==="1000-01-01" ?(
                                             <>
                                         <td>Default</td>
                                         <td>Default</td>
