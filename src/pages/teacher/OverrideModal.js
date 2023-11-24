@@ -3,7 +3,7 @@ import React,{ useState } from 'react';
 import styles from '@/styles/Records.module.css';
 
 const OverrideModal = ({ closeModal,data }) => {
-    const [selectedStatus,setSelectedStatus] = useState(data.PorA);
+    const [selectedStatus,setSelectedStatus] = useState(data?.PorA);
 
     const handleSave = () => {
         // Perform save operation with selectedStatus
