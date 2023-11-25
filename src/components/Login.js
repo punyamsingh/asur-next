@@ -93,7 +93,7 @@ const Login = ({ setShowLogin }) => {
     return (
         <div className={styles.login_container}>
             <button className={styles.close_button} onClick={() => setShowLogin(false)}>
-                Close
+                &times;
             </button>
             <label className={styles.label}>
                 Email:
