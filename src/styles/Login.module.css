@@ -70,8 +70,8 @@
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 18px;
-    color: #fff;
+    font-size: 2rem;
+    color: black;
     /* White color */
     z-index: 1;
     /* Ensure it appears on top of the modal content */
