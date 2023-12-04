@@ -1,28 +1,14 @@
-const mysql = require('mysql');
-
-const dbName="asur"
-const userName="root"
-const passw="RahulSQL2002"//change this when using on your local machine
-
-// const connection = mysql.createConnection({
-//   host: "localhost",
-//   user: userName,
-//   password: passw,//my database password
-//   database: dbName,
-// });
-
-
-
+// db.js
+import mysql from 'mysql';
 
 const connection = mysql.createConnection({
-  host: 'sql12.freesqldatabase.com',
-  user: 'sql12657868',
-  password: 'H8296G9hGs',
-  database: 'sql12657868',
+  host: process.env.NEXT_PUBLIC_DB_HOST,
+  user: process.env.NEXT_PUBLIC_DB_USER,
+  password: process.env.NEXT_PUBLIC_DB_PASSWORD,
+  database: process.env.NEXT_PUBLIC_DB_NAME,
 });
 
-
-connection.connect(err => {
+connection.connect((err) => {
   if (err) {
     console.error('Database connection error: ' + err.stack);
     return;
