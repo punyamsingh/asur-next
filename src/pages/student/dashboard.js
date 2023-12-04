@@ -25,7 +25,7 @@ const Dashboard = () => {
         if (rollNumberData) {
             // console.log(rollNumberData[0]?.roll_no);
             setRollNumber(rollNumberData[0]?.roll_no);
-            console.log(rollNumber)
+            // console.log(rollNumber)
         }
     },[rollNumberData]);
 

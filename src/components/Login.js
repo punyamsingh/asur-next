@@ -71,7 +71,7 @@ const Login = ({ setShowLogin }) => {
                     }
                 }
 
-                console.log('Successful login');
+                // console.log('Successful login');
                 // console.log(userType);
                 login(email,userType);
                 router.push(`/${userType}`);

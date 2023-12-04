@@ -65,7 +65,7 @@ const Dashboard = () => {
         liveStatus: course.LIVE === "NL" ? "Initiate" : "End Class",
       }));
       setCourseData(updatedCourseData);
-      console.log(updatedCourseData)
+      // console.log(updatedCourseData)
       // Set loading to false when data is successfully fetched
       setLoading(false);
     }

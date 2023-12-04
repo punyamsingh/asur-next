@@ -29,14 +29,14 @@ const Profile = () => {
     useEffect(() => {
         if (user) {
 
-            console.log(user.email)
+            // console.log(user.email)
         }
         if (rollNumberData) {
             // console.log(rollNumberData[0]?.roll_no);
             setRollNumber(rollNumberData[0]?.roll_no);
-            console.log(rollNumber)
+            // console.log(rollNumber)
             if (rollNumber) {
-                console.log(studProfileData)
+                // console.log(studProfileData)
             }
         }
     }, [rollNumberData], [studProfileData]);

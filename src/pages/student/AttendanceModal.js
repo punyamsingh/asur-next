@@ -21,16 +21,16 @@ const AttendanceModal = ({ course, onClose }) => {
     );
 
     useEffect(() => {
-        console.log("cpurse")
-        console.log(course)
+        // console.log("cpurse")
+        // console.log(course)
         // setCourseId(course?.course_id);
     }, []);
 
     useEffect(() => {
         if (rollNumberData) {
             setRollNumber(rollNumberData[0]?.roll_no);
-            console.log(rollNumberData[0]?.roll_no)
-            console.log(rollNumber)
+            // console.log(rollNumberData[0]?.roll_no)
+            // console.log(rollNumber)
         }
     }, [rollNumberData]);
 
@@ -38,11 +38,11 @@ const AttendanceModal = ({ course, onClose }) => {
         if (studAttData) {
             setStudAtt(studAttData);
             // console.log(studAtt)
-            console.log("yoyoyo")
-            console.log(studAttData)
+            // console.log("yoyoyo")
+            // console.log(studAttData)
             setStudAtt(studAttData);
-            console.log("nonon")
-            console.log(studAtt)
+            // console.log("nonon")
+            // console.log(studAtt)
         }
     }, [studAttData]);
 
