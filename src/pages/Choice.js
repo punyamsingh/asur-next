@@ -17,13 +17,8 @@ export default function Choice() {
     setShowLogin(false);
   };
 
-
-
   return (
-
-
     <>
-
       <div className={styles.main_container}>
         {showLogin && (
           <div className={styles.modal}>
@@ -37,36 +32,37 @@ export default function Choice() {
           <img
             src="/assets/Asur text.png"
             alt="..."
-            className={styles.logoImage} // Add a class for the image
+            className={styles.logoImage} // Add a className for the image
           />
-          <span class="wrap" aria-hidden="true">
-            <span class={styles.particle} id={styles.p1}></span>
-            <span class={styles.particle} id={styles.p2}></span>
-            <span class={styles.particle} id={styles.p3} ></span>
-            <span class={styles.particle} id={styles.p4} ></span>
-            <span class={styles.particle} id={styles.p5}></span>
-            <span class={styles.particle} id={styles.p6} ></span>
-            <span class={styles.particle} id={styles.p7} ></span>
-            <span class={styles.particle} id={styles.p8} ></span>
-            <span class={styles.particle} id={styles.p9} ></span>
-            <span class={styles.particle} id={styles.p10} ></span>
-            <span class={styles.particle} id={styles.p11}></span>
-            <span class={styles.particle} id={styles.p12} ></span>
+          <span className="wrap" aria-hidden="true">
+            <span className={styles.particle} id={styles.p1}></span>
+            <span className={styles.particle} id={styles.p2}></span>
+            <span className={styles.particle} id={styles.p3}></span>
+            <span className={styles.particle} id={styles.p4}></span>
+            <span className={styles.particle} id={styles.p5}></span>
+            <span className={styles.particle} id={styles.p6}></span>
+            <span className={styles.particle} id={styles.p7}></span>
+            <span className={styles.particle} id={styles.p8}></span>
+            <span className={styles.particle} id={styles.p9}></span>
+            <span className={styles.particle} id={styles.p10}></span>
+            <span className={styles.particle} id={styles.p11}></span>
+            <span className={styles.particle} id={styles.p12}></span>
           </span>
-          <p className={styles.asur}>Attendance System Using Recognition
-            <span class="wrap" aria-hidden="true">
-              <span class={styles.particle} id={styles.p1}></span>
-              <span class={styles.particle} id={styles.p2}></span>
-              <span class={styles.particle} id={styles.p3} ></span>
-              <span class={styles.particle} id={styles.p4} ></span>
-              <span class={styles.particle} id={styles.p5}></span>
-              <span class={styles.particle} id={styles.p6} ></span>
-              <span class={styles.particle} id={styles.p7} ></span>
-              <span class={styles.particle} id={styles.p8} ></span>
-              <span class={styles.particle} id={styles.p9} ></span>
-              <span class={styles.particle} id={styles.p10} ></span>
-              <span class={styles.particle} id={styles.p11}></span>
-              <span class={styles.particle} id={styles.p12} ></span>
+          <p className={styles.asur}>
+            Attendance System Using Recognition
+            <span className="wrap" aria-hidden="true">
+              <span className={styles.particle} id={styles.p1}></span>
+              <span className={styles.particle} id={styles.p2}></span>
+              <span className={styles.particle} id={styles.p3}></span>
+              <span className={styles.particle} id={styles.p4}></span>
+              <span className={styles.particle} id={styles.p5}></span>
+              <span className={styles.particle} id={styles.p6}></span>
+              <span className={styles.particle} id={styles.p7}></span>
+              <span className={styles.particle} id={styles.p8}></span>
+              <span className={styles.particle} id={styles.p9}></span>
+              <span className={styles.particle} id={styles.p10}></span>
+              <span className={styles.particle} id={styles.p11}></span>
+              <span className={styles.particle} id={styles.p12}></span>
             </span>
           </p>
           {/* <h1> ASUR </h1> */}
@@ -92,10 +88,6 @@ export default function Choice() {
           </div>
         </div>
       </div>
-
-
-
     </>
-
   );
 }
