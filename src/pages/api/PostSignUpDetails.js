@@ -1,68 +1,52 @@
-import connection from './db.js';
+import supabase from './db.js';
 import middleware from '@/cors.js';
 
 export default async function handler(req,res) {
   if (req.method === 'POST') {
     try {
+      await middleware(req,res);
       const { FirstName,LastName,DOB,NetId } = req.body;
 
-      const insertQuery = `
-      insert into student(First_Name,Last_Name,DOB,Net_ID) 
-  values("${FirstName}","${LastName}","${DOB}","${NetId}");
-      `;
+      // Insert the new student
+      const { data: insertData,error: insertError } = await supabase
+        .from('student')
+        .insert([
+          {
+            First_Name: FirstName,
+            Last_Name: LastName,
+            DOB: DOB,
+            net_id: NetId,
+          },
+        ])
+        .select('Roll_No')
+        .single();
 
-      const insertPromise = new Promise((resolve,reject) => {
-        connection.query(insertQuery,[FirstName,LastName,DOB,NetId],(error,results) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(results);
-          }
-        });
-      });
+      if (insertError) {
+        throw insertError;
+      }
 
-      const lastIdQuery = `
-        SELECT Roll_No
-        FROM student
-        ORDER BY Roll_No DESC
-        LIMIT 1;
-      `;
+      const id = insertData.Roll_No;
 
-      const lastIdPromise = new Promise((resolve,reject) => {
-        connection.query(lastIdQuery,(error,lastIdResults) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(lastIdResults);
-          }
-        });
-      });
+      // Enroll the new student into all subjects
+      const { data: enrollData,error: enrollError } = await supabase
+        .from('studenttosubject')
+        .insert(
+          supabase
+            .from('subject')
+            .select('Subject_ID')
+            .then((subjects) =>
+              subjects.data.map((subject) => ({
+                Roll_No: id,
+                Subject_ID: subject.Subject_ID,
+              }))
+            )
+        );
 
-      Promise.all([insertPromise,lastIdPromise])
-        .then(([insertResults,lastIdResults]) => {
-          const id = lastIdResults[0].Roll_No;
-          const enrollQuery = `
-          insert into studenttosubject(Roll_No,Subject_Id) select ${id},subject_id from subject;
-          `;
+      if (enrollError) {
+        throw enrollError;
+      }
 
-          const enrollPromise = new Promise((resolve,reject) => {
-            connection.query(enrollQuery,[id],(error,enrollResults) => {
-              if (error) {
-                reject(error);
-              } else {
-                resolve(enrollResults);
-              }
-            });
-          });
-
-          return enrollPromise;
-        })
-        .then(() => {
-          res.status(200).json({ message: 'Sign up details sent to DB successfully' });
-        })
-        .catch((error) => {
-          res.status(500).json({ error: 'Error signing up' });
-        });
+      res.status(200).json({ message: 'Sign up details sent to DB successfully' });
     } catch (error) {
       res.status(500).json({ error: 'Error signing up' });
     }
