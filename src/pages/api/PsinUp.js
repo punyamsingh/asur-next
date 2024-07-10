@@ -1,94 +1,72 @@
-import connection from './db.js';
+import supabase from './db.js';
 import middleware from '@/cors.js';
 
-export default async function handler(req, res) {
+export default async function handler(req,res) {
   if (req.method === 'POST') {
     try {
       // await middleware(req, res)
-      const { FirstName, LastName, DOB, NetId } = req.body;
+      const { FirstName,LastName,DOB,NetId } = req.body;
 
-      const insertQuery = `
-        INSERT INTO student (First_Name, Last_Name, DOB, Net_ID) 
-        VALUES ("${FirstName}", "${LastName}", "${DOB}", "${NetId}");
-      `;
+      // Insert the new student
+      const { data: insertData,error: insertError } = await supabase
+        .from('student')
+        .insert([
+          {
+            First_Name: FirstName,
+            Last_Name: LastName,
+            DOB: DOB,
+            Net_ID: NetId,
+          },
+        ])
+        .select('Roll_No')
+        .single();
 
-      const insertPromise = new Promise((resolve, reject) => {
-        connection.query(insertQuery, (error, results) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(results);
-          }
-        });
-      });
+      if (insertError) {
+        throw insertError;
+      }
 
-      const lastIdQuery = `
-        SELECT Roll_No
-        FROM student
-        ORDER BY Roll_No DESC
-        LIMIT 1;
-      `;
+      const id = insertData.Roll_No;
 
-      const lastIdPromise = new Promise((resolve, reject) => {
-        connection.query(lastIdQuery, (error, lastIdResults) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(lastIdResults);
-          }
-        });
-      });
+      // Enroll the new student into all subjects
+      const { data: subjects,error: subjectsError } = await supabase
+        .from('subject')
+        .select('subject_id');
 
-      Promise.all([insertPromise, lastIdPromise])
-        .then(([insertResults, lastIdResults]) => {
-          const id = lastIdResults[0].Roll_No;
+      if (subjectsError) {
+        throw subjectsError;
+      }
 
-          const enrollQuery = `
-            INSERT INTO studenttosubject (Roll_No, Subject_Id)
-            SELECT ${id}, subject_id FROM subject;
-          `;
+      const enrollments = subjects.map(subject => ({
+        Roll_No: id,
+        Subject_Id: subject.subject_id,
+      }));
 
-          const enrollPromise = new Promise((resolve, reject) => {
-            connection.query(enrollQuery, [id], (error, enrollResults) => {
-              if (error) {
-                reject(error);
-              } else {
-                resolve(enrollResults);
-              }
-            });
-          });
+      const { error: enrollError } = await supabase
+        .from('studenttosubject')
+        .insert(enrollments);
 
-          return enrollPromise;
-        })
-        .then((id) => {
-            // console.log("mummy")
-            // console.log(id)
-            // console.log("mummy")
-          const insertAttendanceQuery = `
-            INSERT INTO attendance_details (Roll_No, Subject_ID, Date_Marked, PorA, Percentage)
-            SELECT st.Roll_No, sub.Subject_ID, '1000-01-01', 'P', 0
-            FROM student st, subject sub
-            WHERE st.Roll_No = ?;
-          `;
+      if (enrollError) {
+        throw enrollError;
+      }
 
-          const insertAttendancePromise = new Promise((resolve, reject) => {
-            connection.query(insertAttendanceQuery, [id], (error, insertAttendanceResults) => {
-              if (error) {
-                reject(error);
-              } else {
-                resolve(insertAttendanceResults);
-              }
-            });
-          });
+      // Insert default attendance
+      const attendance = subjects.map(subject => ({
+        Roll_No: id,
+        Subject_ID: subject.subject_id,
+        Date_Marked: '1000-01-01',
+        PorA: 'P',
+        Percentage: 0,
+      }));
 
-          return insertAttendancePromise;
-        })
-        .then(() => {
-          res.status(200).json({ message: 'Sign up details sent to DB successfully' });
-        })
-        .catch((error) => {
-          res.status(500).json({ error: 'Error signing up: ' + error.message });
-        });
+      const { error: attendanceError } = await supabase
+        .from('attendance_details')
+        .insert(attendance);
+
+      if (attendanceError) {
+        throw attendanceError;
+      }
+
+      res.status(200).json({ message: 'Sign up details sent to DB successfully' });
     } catch (error) {
       res.status(500).json({ error: 'Error signing up: ' + error.message });
     }
