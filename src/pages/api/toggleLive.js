@@ -1,35 +1,39 @@
-import connection from './db.js';
+import supabase from './db.js';
 import middleware from '@/cors.js';
 
-export default async function handler(req, res) {
+export default async function handler(req,res) {
   if (req.method === 'POST') {
-    await middleware(req, res);
+    await middleware(req,res);
     try {
-        const {course_id}=req.body
+      const { course_id } = req.body;
 
-      // Your SQL query
-      const query = `
-      UPDATE subject
-        SET LIVE = CASE
-          WHEN LIVE = 'L' THEN 'NL'
-          ELSE 'L'
-        END
-        WHERE subject_id = "${course_id}";
-      `;
+      // Toggle the LIVE status of the subject
+      const { data: subjects,error: subjectsError } = await supabase
+        .from('subject')
+        .select('LIVE')
+        .eq('subject_id',course_id)
+        .single();
 
-      const results = await new Promise((resolve, reject) => {
-        connection.query(query, [course_id], (error, results) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(results);
-          }
-        });
-      });
+      if (subjectsError) {
+        throw subjectsError;
+      }
 
-      res.status(200).json({ message: 'Class not live successful' });
+      const currentLiveStatus = subjects.LIVE;
+
+      const { data: updateData,error: updateError } = await supabase
+        .from('subject')
+        .update({
+          LIVE: currentLiveStatus === 'L' ? 'NL' : 'L',
+        })
+        .eq('subject_id',course_id);
+
+      if (updateError) {
+        throw updateError;
+      }
+
+      res.status(200).json({ message: 'Class LIVE status updated successfully' });
     } catch (error) {
-      res.status(500).json({ error: 'Error marking attendance' });
+      res.status(500).json({ error: 'Error updating class LIVE status: ' + error.message });
     }
   } else {
     res.status(405).json({ error: 'Method not allowed' });
