@@ -1,26 +1,24 @@
-// 
-
-import connection from './db.js';
+import supabase from './db.js';
 import middleware from '@/cors.js';
 
-export default async function(req, res) {
-  await middleware(req, res);
+export default async function handler(req,res) {
+  await middleware(req,res);
   try {
     if (req.method === 'GET') {
-        const{coursecode}=req.query;
-      const results = await new Promise((resolve, reject) => {
-        connection.query(`SELECT LIVE FROM subject where subject_id=${coursecode}`, (error, results) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(results);
-          }
-        });
-      });
-      
-      //res.status(200).json(results);
-       if (results.length > 0) {
-        res.status(200).json(results[0]); // Return the first element as a single JSON object
+      const { coursecode } = req.query;
+
+      const { data,error } = await supabase
+        .from('subject')
+        .select('LIVE')
+        .eq('Subject_ID',coursecode)
+        .single();
+
+      if (error) {
+        throw error;
+      }
+
+      if (data) {
+        res.status(200).json(data); // Return the data as a JSON object
       } else {
         res.status(404).json({ error: 'No matching data found' });
       }
@@ -28,7 +26,7 @@ export default async function(req, res) {
       res.status(405).json({ error: 'Method not allowed' });
     }
   } catch (error) {
-    res.status(500).json({ error: 'Error fetching data' });
+    res.status(500).json({ error: 'Error fetching data',details: error.message });
   } finally {
     res.end();
   }
