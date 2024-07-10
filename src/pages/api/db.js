@@ -2,10 +2,10 @@
 import mysql from 'mysql';
 
 const connection = mysql.createConnection({
-  host:"sql12.freesqldatabase.com",
-  user: "sql12719142",
-  password: "zv2Vuh5uLG",
-  database: "sql12719142",
+  host:"asur-db-aws.cfkka2su8evj.us-east-1.rds.amazonaws.com",
+  user: "admin",
+  password: "asuraws2024",
+  database: "asur",
 });
 
 connection.connect((err) => {
@@ -13,7 +13,11 @@ connection.connect((err) => {
     console.error('Database connection error: ' + err.stack);
     return;
   }
-  // console.log('Connected to the database');
+  console.log('Connected to the database');
+  console.log('Connection Details:');
+  console.log('Host:', connection.config.host);
+  console.log('User:', connection.config.user);
+  console.log('Database:', connection.config.database);
 });
 
 export default connection;

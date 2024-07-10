@@ -20,6 +20,7 @@ export default async function (req,res) {
         WHERE attendance_details.roll_no = ${rollNo}
         GROUP BY subject.subject_id, subject.subject_name, subject.teachername, subject.classroom_id;`,(error,results) => {
           if (error) {
+            console.log(error);
             reject(error);
           } else {
             resolve(results);

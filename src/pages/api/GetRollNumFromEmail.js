@@ -11,8 +11,10 @@ export default async function(req, res) {
       const results = await new Promise((resolve, reject) => {
         connection.query(`SELECT roll_no FROM student where net_id=${email}`, (error, results) => {
           if (error) {
+            console.log(error);
             reject(error);
           } else {
+            console.log(results)
             resolve(results);
           }
         });
@@ -23,6 +25,8 @@ export default async function(req, res) {
       res.status(405).json({ error: 'Method not allowed' });
     }
   } catch (error) {
+    
+    console.log(error);
     res.status(500).json({ error: 'Error fetching data' });
   } finally {
     res.end();
