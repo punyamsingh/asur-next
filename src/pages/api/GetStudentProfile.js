@@ -1,23 +1,19 @@
-// 
-
-import connection from './db.js';
+import supabase from './db.js';
 
 export default async function (req,res) {
   try {
-
     if (req.method === 'GET') {
       const { rollNo } = req.query;
-      const results = await new Promise((resolve,reject) => {
-        connection.query(`select * from student where roll_no=${rollNo}`,(error,results) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(results);
-          }
-        });
-      });
+      const { data,error } = await supabase
+        .from('student')
+        .select('*')
+        .eq('Roll_No',rollNo);
 
-      res.status(200).json(results);
+      if (error) {
+        throw error;
+      }
+
+      res.status(200).json(data);
     } else {
       res.status(405).json({ error: 'Method not allowed' });
     }
