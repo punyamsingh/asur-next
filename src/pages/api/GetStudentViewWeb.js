@@ -11,7 +11,7 @@ export default async function (req,res) {
       if (error) {
         throw error;
       }
-
+      console.log(data)
       res.status(200).json(data);
     } else {
       res.status(405).json({ error: 'Method not allowed' });

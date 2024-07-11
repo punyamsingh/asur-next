@@ -16,7 +16,7 @@ const Dashboard = () => {
 
     // Fetch the student's roll number outside of useEffect
     const { data: rollNumberData,error: rollNumberError } = useSWR(
-        user ? `/api/GetRollNumFromEmail?email="${user.email}"` : null,
+        user ? `/api/GetRollNumFromEmail?email=${user.email}` : null,
         fetcher
     );
 

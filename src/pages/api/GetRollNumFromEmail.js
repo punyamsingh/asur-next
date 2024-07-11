@@ -9,7 +9,7 @@ export default async function handler(req,res) {
 
       const { data,error } = await supabase
         .from('student')
-        .select('Roll_No')
+        .select('roll_no')
         .eq('net_id',email)
         .single();
 
