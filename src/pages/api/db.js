@@ -2,10 +2,10 @@
 import mysql from 'mysql';
 
 const connection = mysql.createConnection({
-  host:"asur-db-aws.cfkka2su8evj.us-east-1.rds.amazonaws.com",
-  user: "admin",
-  password: "asuraws2024",
-  database: "asur",
+  host:process.env.NEXT_PUBLIC_AWS_DB_URL,
+  user: process.env.NEXT_PUBLIC_AWS_DB_USER,
+  password: process.env.NEXT_PUBLIC_AWS_DB_PASSWORD,
+  database: process.env.NEXT_PUBLIC_AWS_DB_NAME,
 });
 
 connection.connect((err) => {
