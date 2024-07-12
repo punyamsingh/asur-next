@@ -14,7 +14,6 @@ connection.connect((err) => {
     return;
   }
   console.log('Connected to the database');
-  console.log('Connection Details:');
   console.log('Host:', connection.config.host);
   console.log('User:', connection.config.user);
   console.log('Database:', connection.config.database);
