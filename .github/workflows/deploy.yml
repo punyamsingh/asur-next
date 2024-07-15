@@ -16,7 +16,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16'  # Specify your Node.js version
+          node-version: "16" # Specify your Node.js version
 
       - name: Deploy to EC2
         uses: appleboy/ssh-action@v0.1.8
@@ -31,5 +31,3 @@ jobs:
             npm install  # Install dependencies
             npm run build  # Build the project
             pm2 reload all  # Reload all PM2 processes to pick up the new code
-
-This is my final config file after every pull do I need to restart nginx?
