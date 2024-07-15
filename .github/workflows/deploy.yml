@@ -1,0 +1,35 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - aws-test-local # Change this to the branch you want to deploy from
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'  # Specify your Node.js version
+
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /asur-next-ci-cd/asur-next  # Change this to your project directory on the EC2 instance
+            git fetch origin aws-test-local  # Fetch the latest code from the specified branch
+            git reset --hard origin/aws-test-local  # Reset the working directory to the latest commit from the specified branch
+            npm install  # Install dependencies
+            npm run build  # Build the project
+            pm2 reload all  # Reload all PM2 processes to pick up the new code
+
+This is my final config file after every pull do I need to restart nginx?

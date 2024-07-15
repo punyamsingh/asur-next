@@ -20,7 +20,7 @@ const Dashboard = () => {
         setCourseData([...courseData]);
       }
   
-      const response = await fetch("https://asur-ams.vercel.app/api/toggleLive", {
+      const response = await fetch("https://asur-ams.twilightparadox.com/api/toggleLive", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
