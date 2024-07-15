@@ -75,7 +75,7 @@ export default function Choice() {
               alt="Student Avatar"
               className={styles.card_image}
             />
-            <button className={styles.card_button}>Student</button>
+            <button className={styles.card_button}>Student Dashboard</button>
           </div>
 
           <div className={styles.card} onClick={() => handleShowLogin("teacher")}>
