@@ -26,10 +26,10 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd asur-next-ci-cd/asur-next  # Change this to your project directory on the EC2 instance
-            git fetch origin aws-test-local  # Fetch the latest code from the specified branch
+            git pull origin aws-test-local  # Fetch the latest code from the specified branch
             git reset --hard origin/aws-test-local  # Reset the working directory to the latest commit from the specified branch
             npm install  # Install dependencies
             npm run build  # Build the project
-            sudo pm2 stop all  # Stop all PM2 processes
-            sudo pm2 start npm --name "nextjs-app" -- start # Reload all PM2 processes to pick up the new code
+            sudo pm2 delete all  # Stop all PM2 processes
+            sudo pm2 start npm --name "asur-nextjs-app" -- start # Reload all PM2 processes to pick up the new code
             sudo systemctl restart nginx
