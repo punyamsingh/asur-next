@@ -33,7 +33,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 Please ask the maintainers for the .env.local file before running it locally.
 
 Hosted Server and Site links
-[Vercel](https://asur-ams.vercel.app/) [Netlify](https://asur-ams.netlify.app/)
+[Vercel](https://asur-ams.vercel.app/)
+ [Netlify](https://asur-ams.netlify.app/)
 
 
 ![GitHub Contributors Image](https://contrib.rocks/image?repo=punyamsingh/asur-next)
