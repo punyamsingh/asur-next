@@ -4,7 +4,7 @@ import { format } from 'date-fns';
 import LoadingBar from 'react-top-loading-bar'; // Import the LoadingBar component
 
 const OverrideModal = ({ closeModal,data }) => {
-    const [selectedStatus,setSelectedStatus] = useState(data?.PorA);
+    const [selectedStatus,setSelectedStatus] = useState(data?.pora);
     const [progress,setProgress] = useState(0); // State to manage loading bar progress
 
     const handleSave = async () => {
@@ -12,10 +12,10 @@ const OverrideModal = ({ closeModal,data }) => {
             setProgress(30); // Set initial progress
 
             const values = {
-                stud_id: data?.Roll_No.toString(),
-                course_id: data?.subject_id.toString(),
-                date: formatDate(data?.Date_marked).toString(),
-                attendance_status: selectedStatus.toString(),
+                stud_id: data?.roll_no?.toString(),
+                course_id: data?.subject_id?.toString(),
+                date: formatDate(data?.date_marked).toString(),
+                attendance_status: selectedStatus?.toString(),
             };
 
             const response = await fetch('/api/MarkAttendance',{
@@ -71,7 +71,7 @@ const OverrideModal = ({ closeModal,data }) => {
                         <div className={styles.attDetails}>
                             <div className={styles.attDetailsItems}>
                                 <p>Date:</p>
-                                <p>{formatDate(data?.Date_marked)}</p>
+                                <p>{formatDate(data?.date_marked)}</p>
                             </div>
                             <div className={styles.attDetailsItems}>
                                 <p>Course ID:</p>

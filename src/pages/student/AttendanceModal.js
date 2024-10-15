@@ -81,21 +81,21 @@ const AttendanceModal = ({ course,onClose }) => {
                                         // </li>
                                         <tr key={index}>
                                             {/* <li>
-                                        {record.Date_marked}
+                                        {record.date_marked}
                                         </li> */}
-                                            {/* <td>{record.Roll_No}</td>
+                                            {/* <td>{record.roll_no}</td>
                                         <td>{record.subject_id}</td> */}
-                                            {record.Date_marked.split('T')[0] === "0999-12-31" || record.Date_marked.split('T')[0] === "1000-01-01" ? (
+                                            {record.date_marked.split('T')[0] === "0999-12-31" || record.date_marked.split('T')[0] === "1000-01-01" ? (
                                                 <>
                                                     <td>Default</td>
                                                     {/* <td>Default</td> */}
                                                 </>) : (
                                                 <>
-                                                    <td>{record.Date_marked.split('T')[0]}</td>
-                                                    {/* <td>{record.Date_marked.split('T')[1]}</td> */}
+                                                    <td>{record.date_marked.split('T')[0]}</td>
+                                                    {/* <td>{record.date_marked.split('T')[1]}</td> */}
                                                 </>)}
-                                            {/* <td>{record.Date_marked}</td> */}
-                                            <td>{record.PorA}</td>
+                                            {/* <td>{record.date_marked}</td> */}
+                                            <td>{record.pora}</td>
                                         </tr>
                                     ))}
                                 </tbody>

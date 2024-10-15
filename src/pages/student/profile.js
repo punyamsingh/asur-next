@@ -1,6 +1,6 @@
 import React from 'react';
 // import { useUser } from '../../contexts/UserContext';
-import { useState, useEffect } from 'react';
+import { useState,useEffect } from 'react';
 import useSWR from 'swr';
 import { useUser } from '@/contexts/UserContext';
 import Choice from '@/pages/Choice';
@@ -12,16 +12,16 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 // import styles from '@/styles/Profile.module.css';
 
 const Profile = () => {
-    const { userType, user } = useUser();
-    const [rollNumber, setRollNumber] = useState(null);
-    const [studProfile, setStudProfile] = useState(null);
+    const { userType,user } = useUser();
+    const [rollNumber,setRollNumber] = useState(null);
+    const [studProfile,setStudProfile] = useState(null);
 
-    const { data: rollNumberData, error: rollNumberError } = useSWR(
+    const { data: rollNumberData,error: rollNumberError } = useSWR(
         user ? `/api/GetRollNumFromEmail?email="${user.email}"` : null,
         fetcher
     );
 
-    const { data: studProfileData, error: studProfileError } = useSWR(
+    const { data: studProfileData,error: studProfileError } = useSWR(
         rollNumber ? `/api/GetStudentProfile?rollNo=${rollNumber}` : null,
         fetcher
     );
@@ -39,7 +39,7 @@ const Profile = () => {
                 // console.log(studProfileData)
             }
         }
-    }, [rollNumberData], [studProfileData]);
+    },[rollNumberData],[studProfileData]);
     // console.log(userType);
     return (
         <div>
@@ -69,7 +69,7 @@ const Profile = () => {
                                         <div className={profile.image}>
                                             <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" className={profile.avatar} />
                                         </div>
-                                        <h1 className={profile.name}>{studProfileData[0]?.First_Name + " " + studProfileData[0].Last_Name}</h1>
+                                        <h1 className={profile.name}>{studProfileData[0]?.first_name + " " + studProfileData[0].last_name}</h1>
                                     </div>
 
                                     <div className={profile.right}>
@@ -77,7 +77,7 @@ const Profile = () => {
                                             <h4 className={profile.bi}>Basic Information</h4>
                                             <p className={profile.white}>
                                                 <span className={profile.credentials}>Student ID</span>
-                                                {studProfileData[0]?.Roll_No}
+                                                {studProfileData[0]?.roll_no}
                                             </p>
                                             <p className={profile.white}>
                                                 <span className={profile.credentials}>Major</span>

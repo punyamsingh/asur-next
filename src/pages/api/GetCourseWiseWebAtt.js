@@ -8,7 +8,7 @@ export default async function handler(req,res) {
       const { data,error } = await supabase
         .from('attendance_details')
         .select('*')
-        .eq('Roll_No',rollNo)
+        .eq('roll_no',rollNo)
         .eq('subject_id',courseId);
 
       if (error) {

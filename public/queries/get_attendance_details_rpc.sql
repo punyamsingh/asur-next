@@ -13,20 +13,20 @@ SELECT subject.subject_id,
     subject.classroom_id,
     COUNT(
         CASE
-            WHEN attendance_details.PorA = 'P' THEN 1
+            WHEN attendance_details.pora = 'P' THEN 1
             ELSE NULL
         END
     ) AS P_count,
     COUNT(
         CASE
-            WHEN attendance_details.PorA = 'A' THEN 1
+            WHEN attendance_details.pora = 'A' THEN 1
             ELSE NULL
         END
     ) AS A_count,
     (
         COUNT(
             CASE
-                WHEN attendance_details.PorA = 'P' THEN 1
+                WHEN attendance_details.pora = 'P' THEN 1
                 ELSE NULL
             END
         ) / COUNT(*)

@@ -26,21 +26,21 @@ SET time_zone = "+00:00";
 -- Table structure for table `attendance_details`
 --
 CREATE TABLE `attendance_details` (
-  `Roll_No` int(11) NOT NULL,
+  `roll_no` int(11) NOT NULL,
   `subject_id` varchar(10) NOT NULL,
-  `Date_marked` date NOT NULL DEFAULT '0000-00-00',
-  `PorA` varchar(5) DEFAULT NULL,
-  `Percentage` double DEFAULT '0'
+  `date_marked` date NOT NULL DEFAULT '0000-00-00',
+  `pora` varchar(5) DEFAULT NULL,
+  `percentage` double DEFAULT '0'
 ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 --
 -- Dumping data for table `attendance_details`
 --
 INSERT INTO `attendance_details` (
-    `Roll_No`,
+    `roll_no`,
     `subject_id`,
-    `Date_marked`,
-    `PorA`,
-    `Percentage`
+    `date_marked`,
+    `pora`,
+    `percentage`
   )
 VALUES (100, 'CCC708', '1000-01-01', 'P', 0),
   (100, 'CCC708', '2023-09-11', 'A', 0),
@@ -112,22 +112,22 @@ VALUES (
 -- Table structure for table `student`
 --
 CREATE TABLE `student` (
-  `Roll_No` int(11) NOT NULL,
-  `First_Name` varchar(50) NOT NULL,
-  `Last_Name` varchar(50) DEFAULT NULL,
-  `DOB` date DEFAULT NULL,
-  `Picture_URL` varchar(255) DEFAULT NULL,
+  `roll_no` int(11) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) DEFAULT NULL,
+  `dob` date DEFAULT NULL,
+  `picture_url` varchar(255) DEFAULT NULL,
   `net_id` varchar(40) DEFAULT NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 --
 -- Dumping data for table `student`
 --
 INSERT INTO `student` (
-    `Roll_No`,
-    `First_Name`,
-    `Last_Name`,
-    `DOB`,
-    `Picture_URL`,
+    `roll_no`,
+    `first_name`,
+    `last_name`,
+    `dob`,
+    `picture_url`,
     `net_id`
   )
 VALUES (
@@ -255,13 +255,13 @@ VALUES (
 -- Table structure for table `studenttosubject`
 --
 CREATE TABLE `studenttosubject` (
-  `Roll_No` int(11) NOT NULL,
+  `roll_no` int(11) NOT NULL,
   `subject_id` varchar(10) NOT NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 --
 -- Dumping data for table `studenttosubject`
 --
-INSERT INTO `studenttosubject` (`Roll_No`, `subject_id`)
+INSERT INTO `studenttosubject` (`roll_no`, `subject_id`)
 VALUES (108, 'CCC708'),
   (117, 'CCC708'),
   (118, 'CCC708'),
@@ -388,8 +388,8 @@ VALUES (
 -- Indexes for table `attendance_details`
 --
 ALTER TABLE `attendance_details`
-ADD PRIMARY KEY (`Roll_No`, `subject_id`, `Date_marked`),
-  ADD KEY `index_date` (`Date_marked`);
+ADD PRIMARY KEY (`roll_no`, `subject_id`, `date_marked`),
+  ADD KEY `index_date` (`date_marked`);
 --
 -- Indexes for table `classroom`
 --
@@ -399,12 +399,12 @@ ADD PRIMARY KEY (`Room_ID`);
 -- Indexes for table `student`
 --
 ALTER TABLE `student`
-ADD PRIMARY KEY (`Roll_No`);
+ADD PRIMARY KEY (`roll_no`);
 --
 -- Indexes for table `studenttosubject`
 --
 ALTER TABLE `studenttosubject`
-ADD PRIMARY KEY (`Roll_No`, `subject_id`),
+ADD PRIMARY KEY (`roll_no`, `subject_id`),
   ADD KEY `subject_id` (`subject_id`);
 --
 -- Indexes for table `subject`
@@ -419,7 +419,7 @@ ADD PRIMARY KEY (`subject_id`),
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-MODIFY `Roll_No` int(11) NOT NULL AUTO_INCREMENT,
+MODIFY `roll_no` int(11) NOT NULL AUTO_INCREMENT,
   AUTO_INCREMENT = 402;
 --
 -- Constraints for dumped tables
@@ -428,7 +428,7 @@ MODIFY `Roll_No` int(11) NOT NULL AUTO_INCREMENT,
 -- Constraints for table `studenttosubject`
 --
 ALTER TABLE `studenttosubject`
-ADD CONSTRAINT `studenttosubject_ibfk_1` FOREIGN KEY (`Roll_No`) REFERENCES `student` (`Roll_No`),
+ADD CONSTRAINT `studenttosubject_ibfk_1` FOREIGN KEY (`roll_no`) REFERENCES `student` (`roll_no`),
   ADD CONSTRAINT `studenttosubject_ibfk_2` FOREIGN KEY (`subject_id`) REFERENCES `subject` (`subject_id`);
 COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */

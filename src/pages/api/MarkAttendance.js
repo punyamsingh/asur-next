@@ -1,6 +1,9 @@
 import supabase from './db.js';
+import middleware from '@/cors.js';
 
 export default async function handler(req,res) {
+  await middleware(req,res); // Apply CORS middleware
+
   if (req.method === 'POST') {
     try {
       const { stud_id,course_id,date,attendance_status } = req.body;
@@ -8,25 +11,27 @@ export default async function handler(req,res) {
       // Insert or update attendance details
       const { data,error } = await supabase
         .from('attendance_details')
-        .upsert([
-          {
-            Roll_No: stud_id,
-            subject_id: course_id,
-            Date_marked: date,
-            PorA: attendance_status,
-            Percentage: 0
-          }
-        ],{ onConflict: ['Roll_No','subject_id','Date_marked'] })
-        .eq('Roll_No',stud_id)
-        .eq('subject_id',course_id)
-        .eq('Date_marked',date);
+        .upsert(
+          [
+            {
+              roll_no: stud_id,
+              subject_id: course_id,
+              date_marked: date,
+              pora: attendance_status,
+              percentage: 0,
+            },
+          ],
+          { onConflict: ['roll_no','subject_id','date_marked'] }
+        );
 
       if (error) {
+        console.error('Error during upsert:',error); // Log error
         throw error;
       }
 
       res.status(200).json({ message: 'Attendance marked successfully' });
     } catch (error) {
+      console.error('Error marking attendance:',error); // Log error
       res.status(500).json({ error: 'Error marking attendance' });
     }
   } else {

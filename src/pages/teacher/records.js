@@ -96,14 +96,14 @@ const Records = () => {
                                     onClick={() => openModal(record)}
                                 >
                                     <div className={styles.courseID}>{record.subject_id}</div>
-                                    {record.Date_marked.split('T')[0] === "0999-12-31" || record.Date_marked.split('T')[0] === "1000-01-01" ?
+                                    {record?.date_marked.split('T')[0] === "0999-12-31" || record?.date_marked.split('T')[0] === "1000-01-01" ?
                                         (<>
                                             <div className={styles.dateMarked}>Default</div>
                                         </>
-                                        ) : (<div className={styles.dateMarked}>{formatDate(record.Date_marked)}</div>)}
-                                    {/* <div className={styles.dateMarked}>{formatDate(record.Date_marked)}</div> */}
-                                    <div className={`${styles.presence} ${record.PorA === 'P' ? styles.present : styles.absent}`}>
-                                        {record.PorA === 'P' ? 'Present' : 'Absent'}
+                                        ) : (<div className={styles.dateMarked}>{formatDate(record.date_marked)}</div>)}
+                                    {/* <div className={styles.dateMarked}>{formatDate(record.date_marked)}</div> */}
+                                    <div className={`${styles.presence} ${record.pora === 'P' ? styles.present : styles.absent}`}>
+                                        {record.pora === 'P' ? 'Present' : 'Absent'}
                                     </div>
                                 </div>
                             ))}

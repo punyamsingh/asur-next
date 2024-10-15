@@ -9,10 +9,10 @@ export default async function handler(req,res) {
 
       const { data,error } = await supabase
         .from('attendance_details')
-        .select('PorA')
-        .eq('Date_marked',date)
+        .select('pora')
+        .eq('date_marked',date)
         .eq('subject_id',courseCode)
-        .eq('Roll_No',rollNum)
+        .eq('roll_no',rollNum)
         .single();
 
       if (error) {

@@ -16,11 +16,11 @@ export default async function handler(req,res) {
 
       // Prepare attendance records
       const attendanceRecords = subjects.map(subject => ({
-        Roll_No: rollNo,
+        roll_no: rollNo,
         subject_id: subject.subject_id,
-        Date_marked: '2000-01-01',
-        PorA: 'P',
-        Percentage: 0
+        date_marked: '2000-01-01',
+        pora: 'P',
+        percentage: 0
       }));
 
       // Insert attendance records

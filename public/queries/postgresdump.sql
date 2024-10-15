@@ -8,19 +8,19 @@
 BEGIN;
 -- Table structure for table `attendance_details`
 CREATE TABLE public.attendance_details (
-    Roll_No integer NOT NULL,
+    roll_no integer NOT NULL,
     subject_id text NOT NULL,
-    Date_marked date NOT NULL DEFAULT '2000-01-01',
-    PorA char(1),
-    Percentage double precision DEFAULT 0
+    date_marked date NOT NULL DEFAULT '2000-01-01',
+    pora char(1),
+    percentage double precision DEFAULT 0
 );
 -- Dumping data for table `attendance_details`
 INSERT INTO public.attendance_details (
-        Roll_No,
+        roll_no,
         subject_id,
-        Date_marked,
-        PorA,
-        Percentage
+        date_marked,
+        pora,
+        percentage
     )
 VALUES (100, 'CCC708', '1000-01-01', 'P', 0),
     (100, 'CCC708', '2023-09-11', 'A', 0),
@@ -84,20 +84,20 @@ VALUES (
     );
 -- Table structure for table `student`
 CREATE TABLE public.student (
-    Roll_No serial PRIMARY KEY,
-    First_Name text NOT NULL,
-    Last_Name text,
-    DOB date,
-    Picture_URL text,
+    roll_no serial PRIMARY KEY,
+    first_name text NOT NULL,
+    last_name text,
+    dob date,
+    picture_url text,
     net_id text
 );
 -- Dumping data for table `student`
 INSERT INTO public.student (
-        Roll_No,
-        First_Name,
-        Last_Name,
-        DOB,
-        Picture_URL,
+        roll_no,
+        first_name,
+        last_name,
+        dob,
+        picture_url,
         net_id
     )
 VALUES (
@@ -222,11 +222,11 @@ VALUES (
     );
 -- Table structure for table `studenttosubject`
 CREATE TABLE public.studenttosubject (
-    Roll_No integer NOT NULL,
+    roll_no integer NOT NULL,
     subject_id text NOT NULL
 );
 -- Dumping data for table `studenttosubject`
-INSERT INTO public.studenttosubject (Roll_No, subject_id)
+INSERT INTO public.studenttosubject (roll_no, subject_id)
 VALUES (108, 'CCC708'),
     (117, 'CCC708'),
     (118, 'CCC708'),
@@ -343,7 +343,7 @@ VALUES (
     );
 -- Indexes for dumped tables
 -- Indexes for table `attendance_details`
-CREATE INDEX index_date ON public.attendance_details (Date_marked);
+CREATE INDEX index_date ON public.attendance_details (date_marked);
 -- Indexes for table `studenttosubject`
 CREATE INDEX studenttosubject_subject_id_idx ON public.studenttosubject (subject_id);
 -- Indexes for table `subject`
@@ -351,7 +351,7 @@ CREATE INDEX subject_start_time_idx ON public.subject (start_time);
 -- Foreign key constraints
 -- Constraints for table `studenttosubject`
 ALTER TABLE public.studenttosubject
-ADD CONSTRAINT studenttosubject_roll_no_fkey FOREIGN KEY (Roll_No) REFERENCES public.student (Roll_No),
+ADD CONSTRAINT studenttosubject_roll_no_fkey FOREIGN KEY (roll_no) REFERENCES public.student (roll_no),
     ADD CONSTRAINT studenttosubject_subject_id_fkey FOREIGN KEY (subject_id) REFERENCES public.subject (subject_id);
 -- Commit the transaction
 COMMIT;

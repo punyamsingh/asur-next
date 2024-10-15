@@ -7,7 +7,7 @@ export default async function (req,res) {
       const { data,error } = await supabase
         .from('student')
         .select('*')
-        .eq('Roll_No',rollNo);
+        .eq('roll_no',rollNo);
 
       if (error) {
         throw error;

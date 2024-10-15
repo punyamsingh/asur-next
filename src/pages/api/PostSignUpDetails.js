@@ -5,27 +5,27 @@ export default async function handler(req,res) {
   if (req.method === 'POST') {
     try {
       await middleware(req,res);
-      const { FirstName,LastName,DOB,NetId } = req.body;
+      const { FirstName,LastName,dob,NetId } = req.body;
 
       // Insert the new student
       const { data: insertData,error: insertError } = await supabase
         .from('student')
         .insert([
           {
-            First_Name: FirstName,
-            Last_Name: LastName,
-            DOB: DOB,
+            first_name: FirstName,
+            last_name: LastName,
+            dob: dob,
             net_id: NetId,
           },
         ])
-        .select('Roll_No')
+        .select('roll_no')
         .single();
 
       if (insertError) {
         throw insertError;
       }
 
-      const id = insertData.Roll_No;
+      const id = insertData.roll_no;
 
       // Enroll the new student into all subjects
       const { data: enrollData,error: enrollError } = await supabase
@@ -36,7 +36,7 @@ export default async function handler(req,res) {
             .select('subject_id')
             .then((subjects) =>
               subjects.data.map((subject) => ({
-                Roll_No: id,
+                roll_no: id,
                 subject_id: subject.subject_id,
               }))
             )

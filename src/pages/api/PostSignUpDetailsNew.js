@@ -9,7 +9,7 @@ export default async function handler(req,res) {
   if (req.method === 'POST') {
     await middleware(req,res);
     try {
-      const { FirstName,LastName,DOB,NetId,email,password } = req.body;
+      const { FirstName,LastName,dob,NetId,email,password } = req.body;
 
       // Create user in Firebase
       await createUserInFirebase(email,password,FirstName,LastName);
@@ -19,20 +19,20 @@ export default async function handler(req,res) {
         .from('student')
         .insert([
           {
-            First_Name: FirstName,
-            Last_Name: LastName,
-            DOB: DOB,
-            Net_ID: NetId,
+            first_name: FirstName,
+            last_name: LastName,
+            dob: dob,
+            net_id: NetId,
           },
         ])
-        .select('Roll_No')
+        .select('roll_no')
         .single();
 
       if (insertError) {
         throw insertError;
       }
 
-      const id = insertData.Roll_No;
+      const id = insertData.roll_no;
 
       // Enroll the new student into all subjects
       const { data: enrollData,error: enrollError } = await supabase
@@ -43,7 +43,7 @@ export default async function handler(req,res) {
             .select('subject_id')
             .then((subjects) =>
               subjects.data.map((subject) => ({
-                Roll_No: id,
+                roll_no: id,
                 subject_id: subject.subject_id,
               }))
             )

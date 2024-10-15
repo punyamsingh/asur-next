@@ -7,8 +7,8 @@ export default async function handler(req,res) {
 
       const { data,error } = await supabase
         .from('attendance_details')
-        .select('subject_id, PorA, Date_marked')
-        .eq('Roll_No',rollNo);
+        .select('subject_id, pora, date_marked')
+        .eq('roll_no',rollNo);
 
       if (error) {
         throw error;
@@ -17,11 +17,11 @@ export default async function handler(req,res) {
       if (data.length === 0) {
         // Return a response with 0% for each subject if no data is found
         const emptyResponse = [
-          { "subject_id": "CCC708","Percentage": 0 },
-          { "subject_id": "CSD101","Percentage": 0 },
-          { "subject_id": "CSD102","Percentage": 0 },
-          { "subject_id": "CSD311","Percentage": 0 },
-          { "subject_id": "MAT376","Percentage": 0 },
+          { "subject_id": "CCC708","percentage": 0 },
+          { "subject_id": "CSD101","percentage": 0 },
+          { "subject_id": "CSD102","percentage": 0 },
+          { "subject_id": "CSD311","percentage": 0 },
+          { "subject_id": "MAT376","percentage": 0 },
           // Add more subjects as needed
         ];
         res.status(200).json(emptyResponse);
@@ -31,7 +31,7 @@ export default async function handler(req,res) {
           if (!acc[curr.subject_id]) {
             acc[curr.subject_id] = { present: 0,total: 0 };
           }
-          if (curr.PorA === 'P') {
+          if (curr.pora === 'P') {
             acc[curr.subject_id].present += 1;
           }
           acc[curr.subject_id].total += 1;
@@ -40,7 +40,7 @@ export default async function handler(req,res) {
 
         const result = Object.keys(percentages).map(subject => ({
           subject_id: subject,
-          Percentage: (percentages[subject].present / percentages[subject].total) * 100
+          percentage: (percentages[subject].present / percentages[subject].total) * 100
         }));
 
         res.status(200).json(result);
