@@ -74,7 +74,7 @@ const Dashboard = ({ initialCourseData }) => {
           </thead>
 
           <tbody>
-            {courseData.length > 0 && courseData.map((course,index) => (
+            {courseData?.length > 0 && courseData.map((course,index) => (
               <tr key={index}>
                 <td id={styles.sno}>{course.subject_id}</td>
                 <td id={styles.subName}>{course.subject_name}</td>
