@@ -1,15 +1,15 @@
 import React,{ useState } from 'react';
 import styles from '@/styles/Records.module.css';
 import { format } from 'date-fns';
-import LoadingBar from 'react-top-loading-bar'; // Import the LoadingBar component
+import LoadingBar from 'react-top-loading-bar';
 
-const OverrideModal = ({ closeModal,data }) => {
+const OverrideModal = ({ closeModal,data,updateRecord }) => {
     const [selectedStatus,setSelectedStatus] = useState(data?.pora);
-    const [progress,setProgress] = useState(0); // State to manage loading bar progress
+    const [progress,setProgress] = useState(0);
 
     const handleSave = async () => {
         try {
-            setProgress(30); // Set initial progress
+            setProgress(30);
 
             const values = {
                 stud_id: data?.roll_no?.toString(),
@@ -26,23 +26,25 @@ const OverrideModal = ({ closeModal,data }) => {
                 body: JSON.stringify(values),
             });
 
-            setProgress(60); // Set progress after fetching data
+            setProgress(60);
 
             if (response.ok) {
-                // Perform any other operations if needed
-                // ...
+                // Update the record in the parent component
+                const updatedRecord = {
+                    ...data,
+                    pora: selectedStatus,
+                };
+                updateRecord(updatedRecord); // Call the update function passed from Records
 
                 // Close the modal
                 closeModal();
             } else {
                 console.error('Error marking attendance:',response.statusText);
-                // Handle error, e.g., show an error message to the user
             }
         } catch (error) {
             console.error('Error marking attendance:',error);
-            // Handle error, e.g., show an error message to the user
         } finally {
-            setProgress(100); // Set progress to 100 after the operation is complete
+            setProgress(100);
         }
     };
 

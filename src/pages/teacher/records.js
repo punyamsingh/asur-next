@@ -1,6 +1,4 @@
-// Records.js
-
-import React,{ useState,useEffect } from 'react';
+import React,{ useState } from 'react';
 import Navbar from './teacherNavbar';
 import useSWR from 'swr';
 import styles from '@/styles/Records.module.css';
@@ -45,8 +43,6 @@ const Records = () => {
         setSelectedRow(null);
     };
 
-
-
     const handleClearButtonClick = () => {
         setRollNumber('');
         setData([]);
@@ -60,6 +56,19 @@ const Records = () => {
             console.error('Error formatting date:',error);
             return 'Invalid Date';
         }
+    };
+
+    // Function to update the specific record in the data state
+    const updateRecord = (updatedRecord) => {
+        setData((prevData) =>
+            prevData.map((record) =>
+                record.roll_no === updatedRecord.roll_no &&
+                    record.subject_id === updatedRecord.subject_id &&
+                    record.date_marked === updatedRecord.date_marked
+                    ? { ...record,pora: updatedRecord.pora } // Update the specific field
+                    : record
+            )
+        );
     };
 
     return (
@@ -91,17 +100,16 @@ const Records = () => {
                             {data.map((record,index) => (
                                 <div
                                     key={index}
-                                    className={`${styles.recordContainer} ${selectedRow === record ? styles.selectedRow : ''
-                                        }`}
+                                    className={`${styles.recordContainer} ${selectedRow === record ? styles.selectedRow : ''}`}
                                     onClick={() => openModal(record)}
                                 >
                                     <div className={styles.courseID}>{record.subject_id}</div>
-                                    {record?.date_marked.split('T')[0] === "0999-12-31" || record?.date_marked.split('T')[0] === "1000-01-01" ?
-                                        (<>
-                                            <div className={styles.dateMarked}>Default</div>
-                                        </>
-                                        ) : (<div className={styles.dateMarked}>{formatDate(record.date_marked)}</div>)}
-                                    {/* <div className={styles.dateMarked}>{formatDate(record.date_marked)}</div> */}
+                                    {record?.date_marked.split('T')[0] === "0999-12-31" ||
+                                        record?.date_marked.split('T')[0] === "1000-01-01" ? (
+                                        <div className={styles.dateMarked}>Default</div>
+                                    ) : (
+                                        <div className={styles.dateMarked}>{formatDate(record.date_marked)}</div>
+                                    )}
                                     <div className={`${styles.presence} ${record.pora === 'P' ? styles.present : styles.absent}`}>
                                         {record.pora === 'P' ? 'Present' : 'Absent'}
                                     </div>
@@ -116,7 +124,7 @@ const Records = () => {
                 </div>
             </div>
             {selectedRow && (
-                <OverrideModal closeModal={closeModal} data={selectedRow} rollNumber={rollNumber} />
+                <OverrideModal closeModal={closeModal} data={selectedRow} rollNumber={rollNumber} updateRecord={updateRecord} />
             )}
         </div>
     );
