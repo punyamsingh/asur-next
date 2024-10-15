@@ -33,11 +33,11 @@ export default async function handler(req,res) {
         .insert(
           supabase
             .from('subject')
-            .select('Subject_ID')
+            .select('subject_id')
             .then((subjects) =>
               subjects.data.map((subject) => ({
                 Roll_No: id,
-                Subject_ID: subject.Subject_ID,
+                subject_id: subject.subject_id,
               }))
             )
         );

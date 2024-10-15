@@ -11,7 +11,7 @@ export default async function handler(req,res) {
         .from('attendance_details')
         .select('PorA')
         .eq('Date_marked',date)
-        .eq('Subject_ID',courseCode)
+        .eq('subject_id',courseCode)
         .eq('Roll_No',rollNum)
         .single();
 

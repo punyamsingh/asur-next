@@ -7,7 +7,7 @@ import styles from '@/styles/Records.module.css';
 import LoadingBar from 'react-top-loading-bar';
 import { BeatLoader } from 'react-spinners';
 import OverrideModal from './OverrideModal'; // Import the OverrideModal component
-import {format} from 'date-fns'; // Import the format function from date-fns
+import { format } from 'date-fns'; // Import the format function from date-fns
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -95,12 +95,12 @@ const Records = () => {
                                         }`}
                                     onClick={() => openModal(record)}
                                 >
-                                    <div className={styles.courseID}>{record.Subject_ID}</div>
-                                    {record.Date_marked.split('T')[0]==="0999-12-31" || record.Date_marked.split('T')[0]==="1000-01-01" ?
-                                    (<>
-                                        <div className={styles.dateMarked}>Default</div>
-                                    </>
-                                    ):(<div className={styles.dateMarked}>{formatDate(record.Date_marked)}</div>)}
+                                    <div className={styles.courseID}>{record.subject_id}</div>
+                                    {record.Date_marked.split('T')[0] === "0999-12-31" || record.Date_marked.split('T')[0] === "1000-01-01" ?
+                                        (<>
+                                            <div className={styles.dateMarked}>Default</div>
+                                        </>
+                                        ) : (<div className={styles.dateMarked}>{formatDate(record.Date_marked)}</div>)}
                                     {/* <div className={styles.dateMarked}>{formatDate(record.Date_marked)}</div> */}
                                     <div className={`${styles.presence} ${record.PorA === 'P' ? styles.present : styles.absent}`}>
                                         {record.PorA === 'P' ? 'Present' : 'Absent'}

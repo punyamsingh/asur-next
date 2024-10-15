@@ -11,14 +11,14 @@ export default async function handler(req,res) {
         .upsert([
           {
             Roll_No: stud_id,
-            Subject_ID: course_id,
+            subject_id: course_id,
             Date_marked: date,
             PorA: attendance_status,
             Percentage: 0
           }
-        ],{ onConflict: ['Roll_No','Subject_ID','Date_marked'] })
+        ],{ onConflict: ['Roll_No','subject_id','Date_marked'] })
         .eq('Roll_No',stud_id)
-        .eq('Subject_ID',course_id)
+        .eq('subject_id',course_id)
         .eq('Date_marked',date);
 
       if (error) {

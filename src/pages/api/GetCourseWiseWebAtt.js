@@ -9,7 +9,7 @@ export default async function handler(req,res) {
         .from('attendance_details')
         .select('*')
         .eq('Roll_No',rollNo)
-        .eq('Subject_ID',courseId);
+        .eq('subject_id',courseId);
 
       if (error) {
         throw error;

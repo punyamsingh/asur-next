@@ -38,7 +38,7 @@ export default async function handler(req,res) {
 
       const enrollments = subjects.map(subject => ({
         Roll_No: id,
-        Subject_Id: subject.subject_id,
+        subject_id: subject.subject_id,
       }));
 
       const { error: enrollError } = await supabase
@@ -52,7 +52,7 @@ export default async function handler(req,res) {
       // Insert default attendance
       const attendance = subjects.map(subject => ({
         Roll_No: id,
-        Subject_ID: subject.subject_id,
+        subject_id: subject.subject_id,
         Date_Marked: '1000-01-01',
         PorA: 'P',
         Percentage: 0,

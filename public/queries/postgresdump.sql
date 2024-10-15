@@ -9,7 +9,7 @@ BEGIN;
 -- Table structure for table `attendance_details`
 CREATE TABLE public.attendance_details (
     Roll_No integer NOT NULL,
-    Subject_ID text NOT NULL,
+    subject_id text NOT NULL,
     Date_marked date NOT NULL DEFAULT '2000-01-01',
     PorA char(1),
     Percentage double precision DEFAULT 0
@@ -17,7 +17,7 @@ CREATE TABLE public.attendance_details (
 -- Dumping data for table `attendance_details`
 INSERT INTO public.attendance_details (
         Roll_No,
-        Subject_ID,
+        subject_id,
         Date_marked,
         PorA,
         Percentage
@@ -223,10 +223,10 @@ VALUES (
 -- Table structure for table `studenttosubject`
 CREATE TABLE public.studenttosubject (
     Roll_No integer NOT NULL,
-    Subject_id text NOT NULL
+    subject_id text NOT NULL
 );
 -- Dumping data for table `studenttosubject`
-INSERT INTO public.studenttosubject (Roll_No, Subject_id)
+INSERT INTO public.studenttosubject (Roll_No, subject_id)
 VALUES (108, 'CCC708'),
     (117, 'CCC708'),
     (118, 'CCC708'),
@@ -264,27 +264,27 @@ VALUES (108, 'CCC708'),
     (401, 'MAT376');
 -- Table structure for table `subject`
 CREATE TABLE public.subject (
-    Subject_ID text PRIMARY KEY,
-    Subject_Name text NOT NULL,
-    Classroom_ID text NOT NULL,
-    Teacher_ID text NOT NULL,
-    Start_Time time NOT NULL,
-    End_Time time NOT NULL,
-    Seats integer,
-    LIVE char(2) DEFAULT 'NL',
-    TeacherName text
+    subject_id text PRIMARY KEY,
+    subject_name text NOT NULL,
+    classroom_id text NOT NULL,
+    teacher_id text NOT NULL,
+    start_time time NOT NULL,
+    end_time time NOT NULL,
+    seats integer,
+    live char(2) DEFAULT 'NL',
+    teachername text
 );
 -- Dumping data for table `subject`
 INSERT INTO public.subject (
-        Subject_ID,
-        Subject_Name,
-        Classroom_ID,
-        Teacher_ID,
-        Start_Time,
-        End_Time,
-        Seats,
-        LIVE,
-        TeacherName
+        subject_id,
+        subject_name,
+        classroom_id,
+        teacher_id,
+        start_time,
+        end_time,
+        seats,
+        live,
+        teachername
     )
 VALUES (
         'CCC708',
@@ -345,13 +345,13 @@ VALUES (
 -- Indexes for table `attendance_details`
 CREATE INDEX index_date ON public.attendance_details (Date_marked);
 -- Indexes for table `studenttosubject`
-CREATE INDEX studenttosubject_subject_id_idx ON public.studenttosubject (Subject_id);
+CREATE INDEX studenttosubject_subject_id_idx ON public.studenttosubject (subject_id);
 -- Indexes for table `subject`
-CREATE INDEX subject_start_time_idx ON public.subject (Start_Time);
+CREATE INDEX subject_start_time_idx ON public.subject (start_time);
 -- Foreign key constraints
 -- Constraints for table `studenttosubject`
 ALTER TABLE public.studenttosubject
 ADD CONSTRAINT studenttosubject_roll_no_fkey FOREIGN KEY (Roll_No) REFERENCES public.student (Roll_No),
-    ADD CONSTRAINT studenttosubject_subject_id_fkey FOREIGN KEY (Subject_id) REFERENCES public.subject (Subject_ID);
+    ADD CONSTRAINT studenttosubject_subject_id_fkey FOREIGN KEY (subject_id) REFERENCES public.subject (subject_id);
 -- Commit the transaction
 COMMIT;

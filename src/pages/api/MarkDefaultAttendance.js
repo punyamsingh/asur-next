@@ -8,7 +8,7 @@ export default async function handler(req,res) {
       // Get the subject IDs
       const { data: subjects,error: subjectError } = await supabase
         .from('subject')
-        .select('Subject_ID');
+        .select('subject_id');
 
       if (subjectError) {
         throw subjectError;
@@ -17,7 +17,7 @@ export default async function handler(req,res) {
       // Prepare attendance records
       const attendanceRecords = subjects.map(subject => ({
         Roll_No: rollNo,
-        Subject_ID: subject.Subject_ID,
+        subject_id: subject.subject_id,
         Date_marked: '2000-01-01',
         PorA: 'P',
         Percentage: 0

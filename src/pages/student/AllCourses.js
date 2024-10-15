@@ -28,7 +28,7 @@ const AllCourses = ({ courseData }) => {
                             <div className={styles.cell}>
                                 <div className={styles.courseInfo}>
                                     <div className={styles.courseID}>{course.subject_id}</div>
-                                    <div className={styles.teacherName}>{course.teachername}</div>
+                                    <div className={styles.teachername}>{course.teachername}</div>
                                 </div>
                             </div>
                             <div className={styles.cell}>

@@ -2,15 +2,17 @@ import supabase from './db.js';
 import middleware from '@/cors.js';
 
 export default async function handler(req,res) {
+  await middleware(req,res);
+
   if (req.method === 'POST') {
-    await middleware(req,res);
+
     try {
       const { course_id } = req.body;
 
-      // Toggle the LIVE status of the subject
+      // Toggle the live status of the subject
       const { data: subjects,error: subjectsError } = await supabase
         .from('subject')
-        .select('LIVE')
+        .select('live')
         .eq('subject_id',course_id)
         .single();
 
@@ -18,12 +20,12 @@ export default async function handler(req,res) {
         throw subjectsError;
       }
 
-      const currentLiveStatus = subjects.LIVE;
+      const currentLiveStatus = subjects.live;
 
       const { data: updateData,error: updateError } = await supabase
         .from('subject')
         .update({
-          LIVE: currentLiveStatus === 'L' ? 'NL' : 'L',
+          live: currentLiveStatus === 'L' ? 'NL' : 'L',
         })
         .eq('subject_id',course_id);
 
@@ -31,9 +33,9 @@ export default async function handler(req,res) {
         throw updateError;
       }
 
-      res.status(200).json({ message: 'Class LIVE status updated successfully' });
+      res.status(200).json({ message: 'Class live status updated successfully' });
     } catch (error) {
-      res.status(500).json({ error: 'Error updating class LIVE status: ' + error.message });
+      res.status(500).json({ error: 'Error updating class live status: ' + error.message });
     }
   } else {
     res.status(405).json({ error: 'Method not allowed' });

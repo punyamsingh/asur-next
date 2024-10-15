@@ -7,11 +7,11 @@ export default async function handler(req,res) {
     try {
       const { course_id } = req.body;
 
-      // Update the subject to set LIVE to 'NL'
+      // Update the subject to set live to 'NL'
       const { data,error } = await supabase
         .from('subject')
-        .update({ LIVE: 'NL' })
-        .eq('Subject_ID',course_id);
+        .update({ live: 'NL' })
+        .eq('subject_id',course_id);
 
       if (error) {
         throw error;

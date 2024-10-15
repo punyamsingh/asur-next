@@ -13,7 +13,7 @@ const OverrideModal = ({ closeModal,data }) => {
 
             const values = {
                 stud_id: data?.Roll_No.toString(),
-                course_id: data?.Subject_ID.toString(),
+                course_id: data?.subject_id.toString(),
                 date: formatDate(data?.Date_marked).toString(),
                 attendance_status: selectedStatus.toString(),
             };
@@ -75,7 +75,7 @@ const OverrideModal = ({ closeModal,data }) => {
                             </div>
                             <div className={styles.attDetailsItems}>
                                 <p>Course ID:</p>
-                                <p>{data?.Subject_ID}</p>
+                                <p>{data?.subject_id}</p>
                             </div>
                             <div className={styles.attDetailsItems}>
                                 <label>

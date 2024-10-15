@@ -7,17 +7,17 @@ export default async function handler(req,res) {
     try {
       const { course_id } = req.body;
 
-      // Update the subject to set LIVE to 'L'
+      // Update the subject to set live to 'L'
       const { data,error } = await supabase
         .from('subject')
-        .update({ LIVE: 'L' })
-        .eq('Subject_ID',course_id);
+        .update({ live: 'L' })
+        .eq('subject_id',course_id);
 
       if (error) {
         throw error;
       }
 
-      res.status(200).json({ message: 'Made class Live successful' });
+      res.status(200).json({ message: 'Made class live successful' });
     } catch (error) {
       res.status(500).json({ error: 'Error marking attendance' });
     }

@@ -9,8 +9,8 @@ export default async function handler(req,res) {
 
       const { data,error } = await supabase
         .from('subject')
-        .select('LIVE')
-        .eq('Subject_ID',coursecode)
+        .select('live')
+        .eq('subject_id',coursecode)
         .single();
 
       if (error) {

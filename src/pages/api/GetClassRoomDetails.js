@@ -8,8 +8,8 @@ export default async function handler(req,res) {
       // Fetch classroom_id from the subject table
       const { data: subjectData,error: subjectError } = await supabase
         .from('subject')
-        .select('Classroom_ID')
-        .eq('Subject_ID',coursecode)
+        .select('classroom_id')
+        .eq('subject_id',coursecode)
         .single();
 
       if (subjectError) {
@@ -21,7 +21,7 @@ export default async function handler(req,res) {
         return;
       }
 
-      const classroomId = subjectData.Classroom_ID;
+      const classroomId = subjectData.classroom_id;
 
       // Fetch classroom details from the classroom table
       const { data: classroomData,error: classroomError } = await supabase

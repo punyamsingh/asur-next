@@ -7,7 +7,7 @@ export default async function handler(req,res) {
 
       const { data,error } = await supabase
         .from('attendance_details')
-        .select('Subject_ID, PorA, Date_marked')
+        .select('subject_id, PorA, Date_marked')
         .eq('Roll_No',rollNo);
 
       if (error) {
@@ -17,29 +17,29 @@ export default async function handler(req,res) {
       if (data.length === 0) {
         // Return a response with 0% for each subject if no data is found
         const emptyResponse = [
-          { "Subject_ID": "CCC708","Percentage": 0 },
-          { "Subject_ID": "CSD101","Percentage": 0 },
-          { "Subject_ID": "CSD102","Percentage": 0 },
-          { "Subject_ID": "CSD311","Percentage": 0 },
-          { "Subject_ID": "MAT376","Percentage": 0 },
+          { "subject_id": "CCC708","Percentage": 0 },
+          { "subject_id": "CSD101","Percentage": 0 },
+          { "subject_id": "CSD102","Percentage": 0 },
+          { "subject_id": "CSD311","Percentage": 0 },
+          { "subject_id": "MAT376","Percentage": 0 },
           // Add more subjects as needed
         ];
         res.status(200).json(emptyResponse);
       } else {
         // Calculate the percentage
         const percentages = data.reduce((acc,curr) => {
-          if (!acc[curr.Subject_ID]) {
-            acc[curr.Subject_ID] = { present: 0,total: 0 };
+          if (!acc[curr.subject_id]) {
+            acc[curr.subject_id] = { present: 0,total: 0 };
           }
           if (curr.PorA === 'P') {
-            acc[curr.Subject_ID].present += 1;
+            acc[curr.subject_id].present += 1;
           }
-          acc[curr.Subject_ID].total += 1;
+          acc[curr.subject_id].total += 1;
           return acc;
         },{});
 
         const result = Object.keys(percentages).map(subject => ({
-          Subject_ID: subject,
+          subject_id: subject,
           Percentage: (percentages[subject].present / percentages[subject].total) * 100
         }));
 
