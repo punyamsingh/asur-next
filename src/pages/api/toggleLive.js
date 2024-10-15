@@ -21,14 +21,16 @@ export default async function handler(req,res) {
       }
 
       const currentLiveStatus = subjects.live;
-
+      console.log("phle ye tha ",subjects);
       const { data: updateData,error: updateError } = await supabase
         .from('subject')
         .update({
-          live: currentLiveStatus === 'L' ? 'NL' : 'L',
+          live: currentLiveStatus.trim() === 'L' ? 'NL' : 'L',
         })
-        .eq('subject_id',course_id);
+        .eq('subject_id',course_id)
+        .single();
 
+   
       if (updateError) {
         throw updateError;
       }
