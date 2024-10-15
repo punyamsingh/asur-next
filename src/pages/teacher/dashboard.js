@@ -1,76 +1,77 @@
 import useSWR from "swr";
 import Navbar from "./teacherNavbar";
 import styles from "@/styles/Teacher.module.css";
-import { useState, useEffect } from "react";
-import { HashLoader, BeatLoader } from 'react-spinners';
+import { useState,useEffect } from "react";
+import { HashLoader,BeatLoader } from "react-spinners";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const Dashboard = () => {
-  const { data: apiData, error } = useSWR("/api/GetCourseList", fetcher);
-  const [liveCourses, setLiveCourses] = useState(new Set());
-  const [courseData, setCourseData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { data: apiData,error } = useSWR("/api/GetCourseList",fetcher);
+  const [liveCourses,setLiveCourses] = useState(new Set());
+  const [courseData,setCourseData] = useState([]);
+  const [loading,setLoading] = useState(true);
 
   const handleInitiateClick = async (course_id) => {
     try {
-      const courseToUpdate = courseData.find((course) => course.Subject_ID === course_id);
-      if (courseToUpdate) {
-        courseToUpdate.loading = true;
-        setCourseData([...courseData]);
+      const courseIndex = courseData.findIndex(
+        (course) => course.subject_id === course_id
+      );
+
+      if (courseIndex >= 0) {
+        const updatedCourseData = [...courseData];
+        updatedCourseData[courseIndex].loading = true;
+        setCourseData(updatedCourseData);
       }
-  
-      const response = await fetch("https://asur-ams.vercel.app/api/toggleLive", {
+
+      const response = await fetch("https://asur-ams.vercel.app/api/toggleLive",{
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ course_id }),
       });
-  
+
       if (response.ok) {
-        if (liveCourses.has(course_id)) {
-          liveCourses.delete(course_id);
+        const updatedLiveCourses = new Set(liveCourses);
+        if (updatedLiveCourses.has(course_id)) {
+          updatedLiveCourses.delete(course_id);
         } else {
-          liveCourses.add(course_id);
+          updatedLiveCourses.add(course_id);
         }
-        setLiveCourses(new Set(liveCourses));
-  
-        // Find the course to update its loading state
-        const updatedCourseData = courseData.map((c) => {
-          if (c.Subject_ID === course_id) {
+
+        const updatedCourseData = courseData.map((course) => {
+          if (course.subject_id === course_id) {
             return {
-              ...c,
+              ...course,
               loading: false,
-              liveStatus: c.liveStatus === "Initiate" ? "End Class" : "Initiate",
+              liveStatus: course.liveStatus === "Initiate" ? "End Class" : "Initiate",
             };
           }
-          return c;
+          return course;
         });
-  
+
+        setLiveCourses(updatedLiveCourses);
         setCourseData(updatedCourseData);
       } else {
-        console.error("Error:", response.statusText);
+        console.error("Error:",response.statusText);
       }
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error:",error);
     }
   };
 
   useEffect(() => {
     if (apiData && apiData.length > 0) {
-      // Update the courseData state with the live status
-      const updatedCourseData = apiData?.map((course) => ({
+      const updatedCourseData = apiData.map((course) => ({
         ...course,
-        liveStatus: course.LIVE === "NL" ? "Initiate" : "End Class",
+        liveStatus: course.live === "NL" ? "Initiate" : "End Class",
+        loading: false, // Initialize loading state per course
       }));
-      console.log(courseData)
       setCourseData(updatedCourseData);
-      // console.log(updatedCourseData)
-      // Set loading to false when data is successfully fetched
       setLoading(false);
     }
-  }, [apiData]);
+  },[apiData]);
 
   if (error) {
     return (
@@ -95,44 +96,35 @@ const Dashboard = () => {
           <table className={styles.table}>
             <thead>
               <tr>
-                <th id={styles.sno} className={styles.th}>
-                  Course ID
-                </th>
-                <th id={styles.course_name} className={styles.th}>
-                  Course Name
-                </th>
-                <th id={styles.attendance} className={styles.th}>
-                  Initiate Attendance
-                </th>
+                <th id={styles.sno} className={styles.th}>Course ID</th>
+                <th id={styles.course_name} className={styles.th}>Course Name</th>
+                <th id={styles.attendance} className={styles.th}>Initiate Attendance</th>
               </tr>
-              <tr></tr>
-              <tr></tr>
             </thead>
-
             <tbody>
-              {courseData.length>0 && courseData?.map((course, index) => (
-                <tr key={index}>
-                  <td id={styles.sno}>{course.Subject_ID}</td>
-                  <td id={styles.subName}>
-                    {course.Subject_Name} <br />
-                  </td>
-                  <td id={styles.button}>
-                    <button
-                      className={`${course.liveStatus === "Initiate"
-                        ? styles.nonActiveButton
-                        : styles.activeButton
-                        }`}
-                      onClick={() => handleInitiateClick(course.Subject_ID)}
-                    >
-                      {course.loading ? (
-                        <BeatLoader color="red" loading={true} />
-                      ) : (
-                        course.liveStatus
-                      )}
-                    </button>
-                  </td>
-                </tr>
-              ))}
+              {courseData.length > 0 &&
+                courseData.map((course,index) => (
+                  <tr key={index}>
+                    <td id={styles.sno}>{course.subject_id}</td>
+                    <td id={styles.subName}>{course.subject_name}</td>
+                    <td id={styles.button}>
+                      <button
+                        className={
+                          course.liveStatus === "Initiate"
+                            ? styles.nonActiveButton
+                            : styles.activeButton
+                        }
+                        onClick={() => handleInitiateClick(course.subject_id)}
+                      >
+                        {course.loading ? (
+                          <BeatLoader color="red" loading={true} />
+                        ) : (
+                          course.liveStatus
+                        )}
+                      </button>
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>
